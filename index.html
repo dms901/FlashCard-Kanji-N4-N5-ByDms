@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FlashCard Kanji N5-N4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfcfd;
+            color: #1e293b;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        .card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .shadow-premium {
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown-content {
+            transform-origin: top;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        
+        @keyframes shuffle-pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1); }
+        }
+        .animate-shuffle { animation: shuffle-pop 0.4s ease-out; }
+
+        .active-part {
+            background: #fef2f2;
+            color: #ef4444;
+            border-left: 4px solid #ef4444;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center min-h-screen">
+
+    <!-- Header -->
+    <header class="w-full max-w-md sticky top-0 bg-[#fcfcfd]/90 backdrop-blur-md z-50 border-b border-slate-100">
+        <div class="flex justify-between items-center px-6 py-4">
+            <div class="flex flex-col relative">
+                <h1 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Master Kanji</h1>
+                
+                <!-- Modern Dropdown Trigger -->
+                <button onclick="toggleDropdown(event)" id="dropdownBtn" class="flex items-center gap-2 text-lg font-extrabold text-slate-900 group">
+                    <span id="currentPartTitle">Bagian 1</span>
+                    <div class="w-5 h-5 flex items-center justify-center rounded-full bg-slate-100 group-active:bg-red-100 transition-colors">
+                        <svg id="dropdownArrow" class="transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                </button>
+
+                <!-- Modern Dropdown Menu -->
+                <div id="partDropdown" class="absolute top-full left-0 mt-3 w-56 bg-white rounded-3xl shadow-2xl border border-slate-50 hidden opacity-0 -translate-y-4 dropdown-content overflow-hidden z-[60]">
+                    <div class="p-2 max-h-[400px] overflow-y-auto custom-scroll" id="dropdownList">
+                        <!-- Items injected via JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="togglePreview()" class="w-11 h-11 flex items-center justify-center bg-white border border-slate-200 rounded-2xl shadow-sm active:scale-90 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-md px-6 pb-20 pt-8" onclick="closeDropdown()">
+        
+        <!-- Progress Bar -->
+        <div class="mb-10 px-1">
+            <div class="flex justify-between items-end mb-3">
+                <div class="flex flex-col">
+                    <span id="counterText" class="text-xs font-black text-slate-900 leading-none">0 / 0</span>
+                    <span class="text-[8px] font-bold text-slate-400 uppercase mt-1">Hafalan Saat Ini</span>
+                </div>
+                <span id="percentageText" class="text-[10px] font-black text-red-500 bg-red-50 px-2 py-0.5 rounded-md">0%</span>
+            </div>
+            <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                <div id="progressBar" class="h-full bg-red-500 transition-all duration-700 ease-out shadow-[0_0_10px_rgba(239,68,68,0.3)]" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Flashcard -->
+        <div id="flashcard" class="perspective-1000 w-full aspect-[4/4.8] cursor-pointer" onclick="flipCard()">
+            <div id="cardInner" class="card-inner relative w-full h-full preserve-3d">
+                <!-- Depan -->
+                <div class="absolute inset-0 backface-hidden bg-white rounded-[3rem] shadow-premium border border-slate-50 flex flex-col items-center justify-center p-8 text-center">
+                    <div id="kanjiDisplay" class="text-6xl font-extrabold text-slate-900 tracking-tighter">...</div>
+                    <div class="absolute bottom-10 flex flex-col items-center">
+                        <div class="w-1 h-1 bg-red-500 rounded-full mb-2"></div>
+                        <span class="text-[9px] font-bold text-slate-300 uppercase tracking-[0.3em]">Lihat Arti</span>
+                    </div>
+                </div>
+                <!-- Belakang -->
+                <div class="absolute inset-0 backface-hidden bg-white rounded-[3rem] shadow-premium border-4 border-red-50 rotate-y-180 flex flex-col items-center justify-center p-8 text-center overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-red-50/50 to-transparent"></div>
+                    <div id="readingDisplay" class="text-3xl font-black text-red-500 mb-3 leading-tight z-10">...</div>
+                    <div id="meaningDisplay" class="text-2xl font-semibold text-slate-600 leading-tight z-10 px-4">...</div>
+                    <div class="absolute bottom-10 w-12 h-1 bg-slate-100 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="mt-12 flex items-center justify-between px-4">
+            <button onclick="prevCard()" class="w-14 h-14 flex items-center justify-center bg-white border border-slate-100 rounded-[1.5rem] shadow-sm text-slate-400 active:scale-90 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            
+            <button onclick="shuffleCurrentPart()" class="w-16 h-16 flex items-center justify-center bg-slate-900 rounded-[1.8rem] shadow-xl text-white active:scale-95 transition-all group">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-active:rotate-45 transition-transform"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></svg>
+            </button>
+
+            <button onclick="nextCard()" class="w-14 h-14 flex items-center justify-center bg-red-500 rounded-[1.5rem] shadow-lg shadow-red-100 text-white active:scale-90 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+        </div>
+    </main>
+
+    <!-- List Modal -->
+    <div id="previewModal" class="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-md hidden items-end sm:items-center justify-center p-4" onclick="togglePreview()">
+        <div class="bg-white w-full max-w-md h-[80vh] rounded-[3rem] shadow-2xl flex flex-col overflow-hidden transition-transform duration-500 translate-y-full" id="modalBox" onclick="event.stopPropagation()">
+            <div class="p-8 flex justify-between items-center border-b border-slate-50">
+                <div>
+                    <h2 class="font-extrabold text-slate-900 text-xl tracking-tight">Koleksi Kanji</h2>
+                    <p id="modalSub" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Bagian 1</p>
+                </div>
+                <button onclick="togglePreview()" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div id="modalContent" class="flex-1 overflow-y-auto p-6 space-y-3 custom-scroll"></div>
+        </div>
+    </div>
+
+    <script>
+        const allData = {
+            1: [
+                {k:"名前",r:"なまえ",m:"Nama"},
+{k:"指名",r:"しめい",m:"Nama lengkap"},
+{k:"前",r:"まえ",m:"Depan / Sebelum"},
+{k:"午前",r:"ごぜん",m:"Pagi (AM)"},
+{k:"国",r:"くに",m:"Negara"},
+
+{k:"国際交流",r:"こくさいこうりゅう",m:"Pertukaran internasional"},
+{k:"外国",r:"がいこく",m:"Luar negeri"},
+{k:"私",r:"わたし",m:"Saya"},
+{k:"父",r:"ちち",m:"Ayah (saya)"},
+{k:"お父さん",r:"おとうさん",m:"Ayah (orang lain)"},
+
+{k:"母",r:"はは",m:"Ibu (saya)"},
+{k:"お母さん",r:"おかあさん",m:"Ibu (orang lain)"},
+{k:"子供",r:"こども",m:"Anak"},
+{k:"男の子",r:"おとこのこ",m:"Anak laki-laki"},
+{k:"女の子",r:"おんなのこ",m:"Anak perempuan"},
+
+{k:"日本",r:"にほん",m:"Jepang"},
+{k:"〜曜日",r:"〜ようび",m:"Hari ..."},
+{k:"〜日",r:"〜にち",m:"Tanggal ..."},
+{k:"今日",r:"きょう",m:"Hari ini"},
+{k:"日本語",r:"にほんご",m:"Bahasa Jepang"},
+
+{k:"昨日",r:"きのう",m:"Kemarin"},
+{k:"明日",r:"あした",m:"Besok"},
+{k:"毎日",r:"まいにち",m:"Setiap hari"},
+{k:"誕生日",r:"たんじょうび",m:"Ulang tahun"},
+{k:"本",r:"ほん",m:"Buku"},
+
+{k:"水曜日",r:"すいようび",m:"Hari Rabu"},
+{k:"水道",r:"すいどう",m:"Air ledeng"},
+{k:"食べます",r:"たべます",m:"Makan"},
+{k:"食堂",r:"しょくどう",m:"Kantin"},
+{k:"食事",r:"しょくじ",m:"Makan / Bersantap"},
+
+{k:"飲みます",r:"のみます",m:"Minum"},
+{k:"飲み物",r:"のみもの",m:"Minuman"},
+{k:"魚",r:"さかな",m:"Ikan"},
+{k:"肉",r:"にく",m:"Daging"},
+{k:"牛肉",r:"ぎゅうにく",m:"Daging sapi"}
+            ],
+
+            2: [
+                {k:"豚肉",r:"ぶたにく",m:"Daging babi"},
+{k:"好き(な)",r:"すき(な)",m:"Suka"},
+{k:"家",r:"いえ",m:"Rumah"},
+{k:"家族",r:"かぞく",m:"Keluarga"},
+{k:"新しい",r:"あたらしい",m:"Baru"},
+
+{k:"広い",r:"ひろい",m:"Luas"},
+{k:"広場",r:"ひろば",m:"Lapangan"},
+{k:"古い",r:"ふるい",m:"Tua / Lama"},
+{k:"上",r:"うえ",m:"Atas"},
+{k:"上手(な)",r:"じょうず(な)",m:"Mahir / Pandai"},
+
+{k:"〜以上",r:"〜いじょう",m:"Lebih dari / Di atas"},
+{k:"下",r:"した",m:"Bawah"},
+{k:"中",r:"なか",m:"Dalam / Tengah"},
+{k:"中止",r:"ちゅうし",m:"Pembatalan"},
+{k:"月曜日",r:"げつようび",m:"Hari Senin"},
+
+{k:"〜月",r:"〜がつ",m:"Bulan ..."},
+{k:"今月",r:"こんげつ",m:"Bulan ini"},
+{k:"正月",r:"しょうがつ",m:"Tahun baru Jepang"},
+{k:"火曜日",r:"かようび",m:"Hari Selasa"},
+{k:"木曜日",r:"もくようび",m:"Hari Kamis"},
+
+{k:"金曜日",r:"きんようび",m:"Hari Jumat"},
+{k:"お金",r:"おかね",m:"Uang"},
+{k:"料金",r:"りょうきん",m:"Biaya / Tarif"},
+{k:"土曜日",r:"どようび",m:"Hari Sabtu"},
+{k:"朝",r:"あさ",m:"Pagi"},
+
+{k:"昼",r:"ひる",m:"Siang"},
+{k:"夜",r:"よる",m:"Malam"},
+{k:"〜時",r:"〜じ",m:"Jam ..."},
+{k:"時間",r:"じかん",m:"Waktu / Jam"},
+{k:"時計",r:"とけい",m:"Jam (alat)"},
+
+{k:"〜分",r:"〜ふん / 〜ぷん",m:"Menit ..."},
+{k:"自分",r:"じぶん",m:"Diri sendiri"},
+{k:"分ける",r:"わける",m:"Membagi / Memisahkan"},
+{k:"〜半",r:"〜はん",m:"Setengah ..."},
+{k:"〜枚",r:"〜まい",m:"Lembar (counter benda tipis)"}
+            ],
+            3:[{k:"読みます",r:"よみます",m:"Membaca"},
+{k:"聞きます",r:"ききます",m:"Mendengar / Bertanya"},
+{k:"見ます",r:"みます",m:"Melihat"},
+{k:"友だち",r:"ともだち",m:"Teman"},
+{k:"何",r:"なに / なん",m:"Apa"},
+
+{k:"去年",r:"きょねん",m:"Tahun lalu"},
+{k:"来年",r:"らいねん",m:"Tahun depan"},
+{k:"今年",r:"ことし",m:"Tahun ini"},
+{k:"昨年",r:"さくねん",m:"Tahun lalu (formal)"},
+{k:"毎年",r:"まいとし / まいねん",m:"Setiap tahun"},
+
+{k:"今日",r:"きょう",m:"Hari ini"},
+{k:"今週",r:"こんしゅう",m:"Minggu ini"},
+{k:"今度",r:"こんど",m:"Nanti / Kali ini"},
+{k:"今",r:"いま",m:"Sekarang"},
+{k:"今月",r:"こんげつ",m:"Bulan ini"},
+
+{k:"来週",r:"らいしゅう",m:"Minggu depan"},
+{k:"先週",r:"せんしゅう",m:"Minggu lalu"},
+{k:"週末",r:"しゅうまつ",m:"Akhir pekan"},
+{k:"温度",r:"おんど",m:"Suhu"},
+{k:"東",r:"ひがし",m:"Timur"},
+
+{k:"東京",r:"とうきょう",m:"Tokyo"},
+{k:"西",r:"にし",m:"Barat"},
+{k:"南",r:"みなみ",m:"Selatan"},
+{k:"北",r:"きた",m:"Utara"},
+{k:"会社",r:"かいしゃ",m:"Perusahaan"},
+
+{k:"会います",r:"あいます",m:"Bertemu"},
+{k:"会計",r:"かいけい",m:"Kasir / Pembayaran"},
+{k:"会場",r:"かいじょう",m:"Tempat acara"},
+{k:"神社",r:"じんじゃ",m:"Kuil Shinto"},
+{k:"来ます",r:"きます",m:"Datang"},
+
+{k:"持って行く",r:"もっていく",m:"Membawa (pergi)"},
+{k:"乗ります",r:"のります",m:"Naik (kendaraan)"},
+{k:"行きます",r:"いきます",m:"Pergi"},
+{k:"旅行します",r:"りょこうします",m:"Berwisata / Bepergian"},
+{k:"銀行",r:"ぎんこう",m:"Bank"}], 
+
+4:[{ "k": "大きい", "r": "おおきい", "m": "Besar" },
+  { "k": "大人", "r": "おとな", "m": "Dewasa" },
+  { "k": "大変（な）", "r": "たいへん（な）", "m": "Sangat / Berat / Sulit" },
+  { "k": "高い", "r": "たかい", "m": "Tinggi / Mahal" },
+  { "k": "低い", "r": "ひくい", "m": "Rendah" },
+  { "k": "午後", "r": "ごご", "m": "P.M. / Siang hari" },
+  { "k": "入口", "r": "いりぐち", "m": "Pintu Masuk" },
+  { "k": "記入する", "r": "きにゅうする", "m": "Mengisi (formulir/data)" },
+  { "k": "入院する", "r": "にゅういんする", "m": "Masuk Rumah Sakit (Rawat Inap)" },
+  { "k": "入力する", "r": "にゅうりょくする", "m": "Menginput / Memasukkan data" },
+  { "k": "入れる", "r": "いれる", "m": "Memasukkan" },
+  { "k": "入りまづ", "r": "はいります", "m": "Masuk" },
+  { "k": "横", "r": "よこ", "m": "Samping" },
+  { "k": "後ろ", "r": "うしろ", "m": "Belakang" },
+  { "k": "高校", "r": "こうこう", "m": "SMA (Sekolah Menengah Atas)" },
+  { "k": "小さい", "r": "ちいさい", "m": "Kecil" },
+  { "k": "大切（な）", "r": "たいせつ（な）", "m": "Penting / Berharga" },
+  { "k": "大学", "r": "だいがく", "m": "Universitas" },
+  { "k": "出口", "r": "でぐち", "m": "Pintu Keluar" },
+  { "k": "窓口", "r": "まどぐち", "m": "Loket" },
+  { "k": "一", "r": "いち", "m": "Satu" },
+  { "k": "安い", "r": "やすい", "m": "Murah" },
+  { "k": "引く", "r": "ひく", "m": "Menarik" },
+  { "k": "～階", "r": "～かい", "m": "Lantai ~" },
+  { "k": "出発する", "r": "しゅっぱつする", "m": "Berangkat" },
+  { "k": "二", "r": "に", "m": "Dua" },
+  { "k": "押す", "r": "おす", "m": "Mendorong / Menekan" },
+  { "k": "出す", "r": "だす", "m": "Mengeluarkan" },
+  { "k": "出かける", "r": "でかける", "m": "Pergi Keluar" },
+  { "k": "口", "r": "くち", "m": "Mulut" },
+  { "k": "三", "r": "さん", "m": "Tiga" },
+  { "k": "四", "r": "よん / し", "m": "Empat" },
+  { "k": "五", "r": "ご", "m": "Lima" },
+  { "k": "六", "r": "ろく", "m": "Enam" },
+  { "k": "七", "r": "なな / しち", "m": "Tujuh" }],
+
+5:[{k:"八",r:"はち",m:"Delapan"},
+{k:"九",r:"きゅう / く",m:"Sembilan"},
+{k:"十",r:"じゅう",m:"Sepuluh"},
+{k:"百",r:"ひゃく",m:"Seratus"},
+{k:"万",r:"まん",m:"Sepuluh ribu"},
+
+{k:"千",r:"せん",m:"Seribu"},
+{k:"～円",r:"～えん",m:"~ yen"},
+{k:"映画",r:"えいが",m:"Film"},
+{k:"勉強します",r:"べんきょうします",m:"Belajar"},
+{k:"買います",r:"かいます",m:"Membeli"},
+
+{k:"生活",r:"せいかつ",m:"Kehidupan"},
+{k:"学校",r:"がっこう",m:"Sekolah"},
+{k:"旅館",r:"りょかん",m:"Ryokan / Penginapan tradisional"},
+{k:"指定席",r:"していせき",m:"Kursi reservasi"},
+{k:"予定",r:"よてい",m:"Rencana / Jadwal"},
+
+{k:"電気",r:"でんき",m:"Listrik"},
+{k:"生",r:"せい / なま",m:"Hidup / Mentah"},
+{k:"休み",r:"やすみ",m:"Libur / Istirahat"},
+{k:"計画",r:"けいかく",m:"Rencana / Perencanaan"},
+{k:"英語",r:"えいご",m:"Bahasa Inggris"},
+
+{k:"学生",r:"がくせい",m:"Pelajar / Mahasiswa"},
+{k:"設定する",r:"せっていする",m:"Mengatur / Setting"},
+{k:"予約",r:"よやく",m:"Reservasi"},
+{k:"温泉",r:"おんせん",m:"Pemandian air panas"},
+{k:"強い",r:"つよい",m:"Kuat"},
+
+{k:"留学する",r:"りゅうがくする",m:"Belajar di luar negeri"},
+{k:"先生",r:"せんせい",m:"Guru"},
+{k:"生まれる",r:"うまれる",m:"Lahir"},
+{k:"生産する",r:"せいさんする",m:"Memproduksi"},
+{k:"連絡先",r:"れんらくさき",m:"Kontak / Alamat kontak"},
+
+{k:"元気(な)",r:"げんき",m:"Sehat / Semangat"},
+{k:"工事",r:"こうじ",m:"Konstruksi / Pekerjaan bangunan"},
+{k:"用事",r:"ようじ",m:"Urusan"},
+{k:"仕事",r:"しごと",m:"Pekerjaan"},
+{k:"天気",r:"てんき",m:"Cuaca"}], 
+
+6:[{k:"病気",r:"びょうき",m:"Sakit / Penyakit"},
+{k:"花",r:"はな",m:"Bunga"},
+{k:"秋",r:"あき",m:"Musim gugur"},
+{k:"暑い",r:"あつい",m:"Panas (cuaca)"},
+{k:"台風",r:"たいふう",m:"Topan / Taifun"},
+
+{k:"働く",r:"はたらく",m:"Bekerja"},
+{k:"同じ",r:"おなじ",m:"Sama"},
+{k:"春",r:"はる",m:"Musim semi"},
+{k:"晴れ",r:"はれ",m:"Cerah"},
+{k:"明るい",r:"あかるい",m:"Terang / Ceria"},
+
+{k:"人",r:"ひと",m:"Orang"},
+{k:"夏",r:"なつ",m:"Musim panas"},
+{k:"電話番号",r:"でんわばんごう",m:"Nomor telepon"},
+{k:"雪",r:"ゆき",m:"Salju"},
+{k:"町",r:"まち",m:"Kota / Kota kecil"},
+
+{k:"家族",r:"かぞく",m:"Keluarga"},
+{k:"冬",r:"ふゆ",m:"Musim dingin"},
+{k:"習慣",r:"しゅうかん",m:"Kebiasaan"},
+{k:"忙しい",r:"いそがしい",m:"Sibuk"},
+{k:"説明する",r:"せつめいする",m:"Menjelaskan"},
+
+{k:"調理方法",r:"ちょうりほうほう",m:"Cara memasak"},
+{k:"季節",r:"きせつ",m:"Musim"},
+{k:"習う",r:"ならう",m:"Belajar (dari guru)"},
+{k:"作る",r:"つくる",m:"Membuat"},
+{k:"風",r:"かぜ",m:"Angin"},
+
+{k:"音楽",r:"おんがく",m:"Musik"},
+{k:"話す",r:"はなす",m:"Berbicara"},
+{k:"音",r:"おと",m:"Suara"},
+{k:"犬",r:"いぬ",m:"Anjing"},
+{k:"雨",r:"あめ",m:"Hujan"},
+
+{k:"楽しい",r:"たのしい",m:"Menyenangkan"},
+{k:"練習",r:"れんしゅう",m:"Latihan"},
+{k:"～方",r:"～かた",m:"Cara ~"},
+{k:"夕方",r:"ゆうがた",m:"Sore hari"},
+{k:"寒い",r:"さむい",m:"Dingin (cuaca)"}], 7:[{k:"店",r:"みせ",m:"Toko"},
+{k:"店長",r:"てんちょう",m:"Kepala toko / Manajer toko"},
+{k:"便利",r:"べんり",m:"Praktis / Mudah / Nyaman"},
+{k:"郵便局",r:"ゆうびんきょく",m:"Kantor pos"},
+{k:"静か",r:"しずか",m:"Tenang / Sepi"},
+
+{k:"道具",r:"どうぐ",m:"Alat / Peralatan"},
+{k:"公園",r:"こうえん",m:"Taman"},
+{k:"道",r:"みち",m:"Jalan"},
+{k:"少し",r:"すこし",m:"Sedikit"},
+{k:"多い",r:"おおい",m:"Banyak"},
+
+{k:"遠い",r:"とおい",m:"Jauh"},
+{k:"少ない",r:"すくない",m:"Sedikit / Sedikit jumlahnya"},
+{k:"有名",r:"ゆうめい",m:"Terkenal"},
+{k:"利用する",r:"りようする",m:"Menggunakan / Memanfaatkan"},
+{k:"不便",r:"ふべん",m:"Tidak praktis / Tidak nyaman"},
+
+{k:"止まる",r:"とまる",m:"Berhenti"},
+{k:"左",r:"ひだり",m:"Kiri"},
+{k:"近所",r:"きんじょ",m:"Lingkungan sekitar / Sekitar rumah"},
+{k:"着く",r:"つく",m:"Tiba"},
+{k:"店員",r:"てんいん",m:"Pegawai toko"},
+
+{k:"待つ",r:"まつ",m:"Menunggu"},
+{k:"場所",r:"ばしょ",m:"Tempat"},
+{k:"車",r:"くるま",m:"Mobil / Kendaraan"},
+{k:"右",r:"みぎ",m:"Kanan"},
+{k:"動物園",r:"どうぶつえん",m:"Kebun binatang"},
+
+{k:"着る",r:"きる",m:"Memakai (baju)"},
+{k:"場合",r:"ばあい",m:"Jika / Dalam hal / Kasus"},
+{k:"自転車",r:"じてんしゃ",m:"Sepeda"},
+{k:"近く",r:"ちかく",m:"Dekat / Sekitar"},
+{k:"最近",r:"さいきん",m:"Akhir-akhir ini / Baru-baru ini"},
+
+{k:"禁止",r:"きんし",m:"Larangan"},
+{k:"駅",r:"えき",m:"Stasiun"},
+{k:"受付",r:"うけつけ",m:"Resepsionis / Bagian penerimaan"},
+{k:"送る",r:"おくる",m:"Mengirim"},
+{k:"電車",r:"でんしゃ",m:"Kereta listrik"}
+], 8:[{k:"到着する",r:"とうちゃくする",m:"Tiba / Sampai / Datang"},
+{k:"急に",r:"きゅうに",m:"Tiba-tiba"},
+{k:"図書館",r:"としょかん",m:"Perpustakaan"},
+{k:"～回",r:"～かい",m:"~ kali (penanda jumlah kejadian)"},
+{k:"用意する",r:"よういする",m:"Mempersiapkan"},
+
+{k:"運動する",r:"うんどうする",m:"Berolahraga"},
+{k:"都合",r:"つごう",m:"Keadaan / Situasi / Jadwal"},
+{k:"試合",r:"しあい",m:"Pertandingan"},
+{k:"全部",r:"ぜんぶ",m:"Semua"},
+{k:"参加する",r:"さんかする",m:"Berpartisipasi"},
+
+{k:"合格する",r:"ごうかくする",m:"Lulus"},
+{k:"難しい",r:"むずかしい",m:"Sulit"},
+{k:"登る",r:"のぼる",m:"Naik / Mendaki"},
+{k:"教える",r:"おしえる",m:"Mengajar / Memberi tahu"},
+{k:"全員",r:"ぜんいん",m:"Semua orang / Seluruh anggota"},
+
+{k:"自動",r:"じどう",m:"Otomatis"},
+{k:"動く",r:"うごく",m:"Bergerak"},
+{k:"博物館",r:"はくぶつかん",m:"Museum"},
+{k:"教科書",r:"きょうかしょ",m:"Buku pelajaran"},
+{k:"意味",r:"いみ",m:"Arti / Makna"},
+
+{k:"急ぐ",r:"いそぐ",m:"Bergegas"},
+{k:"書く",r:"かく",m:"Menulis"},
+{k:"貸す",r:"かす",m:"Meminjamkan"},
+{k:"言う",r:"いう",m:"Mengatakan"},
+{k:"野菜",r:"やさい",m:"Sayuran"},
+
+{k:"漢字",r:"かんじ",m:"Huruf kanji"},
+{k:"材料",r:"ざいりょう",m:"Bahan / Material"},
+{k:"教室",r:"きょうしつ",m:"Ruang kelas"},
+{k:"お酒",r:"おさけ",m:"Minuman beralkohol / Sake"},
+{k:"皿",r:"さら",m:"Piring"},
+
+{k:"数字",r:"すうじ",m:"Angka"},
+{k:"無料",r:"むりょう",m:"Gratis"},
+{k:"売る",r:"うる",m:"Menjual"},
+{k:"卵",r:"たまご",m:"Telur"},
+{k:"お茶",r:"おちゃ",m:"Teh"}
+],9:[{k:"理由",r:"りゆう",m:"Alasan"},
+{k:"終わる",r:"おわる",m:"Selesai / Berakhir"},
+{k:"机",r:"つくえ",m:"Meja"},
+{k:"使う",r:"つかう",m:"Menggunakan"},
+{k:"寝る",r:"ねる",m:"Tidur"},
+
+{k:"調べる",r:"しらべる",m:"Menyelidiki / Mencari tahu"},
+{k:"自由",r:"じゆう",m:"Bebas"},
+{k:"歌手",r:"かしゅ",m:"Penyanyi"},
+{k:"お願いします",r:"おねがいします",m:"Tolong / Mohon"},
+{k:"医者",r:"いしゃ",m:"Dokter"},
+
+{k:"甘い",r:"あまい",m:"Manis"},
+{k:"税別",r:"ぜいべつ",m:"Belum termasuk pajak"},
+{k:"苦労する",r:"くろうする",m:"Bersusah payah"},
+{k:"特別",r:"とくべつ",m:"Khusus / Istimewa"},
+{k:"住む",r:"すむ",m:"Tinggal / Menetap"},
+
+{k:"苦手",r:"にがて",m:"Tidak pandai / Kurang suka"},
+{k:"吸う",r:"すう",m:"Menghisap / Merokok"},
+{k:"辛い",r:"からい",m:"Pedas"},
+{k:"早く",r:"はやく",m:"Cepat / Lebih awal"},
+{k:"痛い",r:"いたい",m:"Sakit (rasa nyeri)"},
+
+{k:"手",r:"て",m:"Tangan"},
+{k:"帰る",r:"かえる",m:"Pulang"},
+{k:"味",r:"あじ",m:"Rasa"},
+{k:"取る",r:"とる",m:"Mengambil"},
+{k:"眠い",r:"ねむい",m:"Mengantuk"},
+
+{k:"～機",r:"～き",m:"Mesin ~ (akhiran untuk mesin)"},
+{k:"熱",r:"ねつ",m:"Demam / Panas"},
+{k:"お湯",r:"おゆ",m:"Air panas"},
+{k:"伝える",r:"つたえる",m:"Menyampaikan"},
+{k:"薬",r:"くすり",m:"Obat"},
+
+{k:"悪い",r:"わるい",m:"Buruk / Jahat"},
+{k:"病院",r:"びょういん",m:"Rumah sakit"},
+{k:"料理",r:"りょうり",m:"Masakan / Memasak"},
+{k:"住所",r:"じゅうしょ",m:"Alamat"},
+{k:"体",r:"からだ",m:"Tubuh"}
+], 10:[{k:"体験",r:"たいけん",m:"Pengalaman"},
+{k:"顔",r:"かお",m:"Wajah"},
+{k:"耳",r:"みみ",m:"Telinga"},
+{k:"海",r:"うみ",m:"Laut"},
+{k:"森",r:"もり",m:"Hutan"},
+
+{k:"目",r:"め",m:"Mata"},
+{k:"思う",r:"おもう",m:"Berpikir / Mengira"},
+{k:"足",r:"あし",m:"Kaki"},
+{k:"山",r:"やま",m:"Gunung"},
+{k:"観光地",r:"かんこうち",m:"Tempat wisata"},
+
+{k:"頭",r:"あたま",m:"Kepala"},
+{k:"結婚",r:"けっこん",m:"Menikah / Pernikahan"},
+{k:"起きる",r:"おきる",m:"Bangun (tidur)"},
+{k:"選ぶ",r:"えらぶ",m:"Memilih"},
+{k:"光る",r:"ひかる",m:"Bersinar"},
+
+{k:"満足",r:"まんぞく",m:"Puas"},
+{k:"女性",r:"じょせい",m:"Wanita"},
+{k:"走る",r:"はしる",m:"Berlari"},
+{k:"幸せ",r:"しあわせ",m:"Bahagia"},
+{k:"客",r:"きゃく",m:"Tamu / Pelanggan"},
+
+{k:"歩く",r:"あるく",m:"Berjalan"},
+{k:"親切",r:"しんせつ",m:"Baik hati / Ramah"},
+{k:"兄",r:"あに",m:"Kakak laki-laki (sendiri)"},
+{k:"お祝い",r:"おいわい",m:"Ucapan selamat / Perayaan"},
+{k:"島",r:"しま",m:"Pulau"},
+
+{k:"運転",r:"うんてん",m:"Mengemudi"},
+{k:"妻",r:"つま",m:"Istri (sendiri)"},
+{k:"弟",r:"おとうと",m:"Adik laki-laki"},
+{k:"男性",r:"だんせい",m:"Pria"},
+{k:"川",r:"かわ",m:"Sungai"},
+
+{k:"姉",r:"あね",m:"Kakak perempuan (sendiri)"},
+{k:"妹",r:"いもうと",m:"Adik perempuan"},
+{k:"夫",r:"おっと",m:"Suami (sendiri)"},
+{k:"両親",r:"りょうしん",m:"Orang tua"},
+{k:"価格",r:"かかく",m:"Harga"}
+], 11:[
+  { "k": "経験", "r": "けいけん", "m": "Pengalaman" },
+  { "k": "遊ぶ", "r": "あそぶ", "m": "Bermain" },
+  { "k": "地震", "r": "じしん", "m": "Gempa Bumi" },
+  { "k": "船", "r": "ふね", "m": "Kapal" },
+  { "k": "故障", "r": "こしょう", "m": "Kerusakan / Mogok" },
+  { "k": "歌", "r": "うた", "m": "Lagu" },
+  { "k": "普通", "r": "ふつう", "m": "Biasa / Normal" },
+  { "k": "写真", "r": "しゃしん", "m": "Foto" },
+  { "k": "交通", "r": "こうつう", "m": "Lalu Lintas" },
+  { "k": "絵", "r": "え", "m": "Gambar / Lukisan" },
+  { "k": "短い", "r": "みじかい", "m": "Pendek" },
+  { "k": "焼く", "r": "やく", "m": "Membakar / Memanggang" },
+  { "k": "長い", "r": "ながい", "m": "Panjang" },
+  { "k": "大切（な）", "r": "たいせつ（な）", "m": "Penting / Berharga" },
+  { "k": "泳ぐ", "r": "およぐ", "m": "Berenang" },
+  { "k": "役に立つ", "r": "やくにたつ", "m": "Bermanfaat" },
+  { "k": "切る", "r": "きる", "m": "Memotong" },
+  { "k": "立つ", "r": "たつ", "m": "Berdiri" },
+  { "k": "～屋", "r": "～や", "m": "Toko ~" },
+  { "k": "空", "r": "そら", "m": "Langit" },
+  { "k": "注文", "r": "ちゅうもん", "m": "Pesanan" },
+  { "k": "量", "r": "りょう", "m": "Jumlah / Kuantitas" },
+  { "k": "泣く", "r": "なく", "m": "Menangis" },
+  { "k": "油", "r": "あぶら", "m": "Minyak" },
+  { "k": "お知らせ", "r": "おしらせ", "m": "Pengumuman / Pemberitahuan" },
+  { "k": "～様", "r": "～さま", "m": "Tuan/Nyonya ~ (Hormat)" },
+  { "k": "塩", "r": "しお", "m": "Garam" },
+  { "k": "文化", "r": "ぶんか", "m": "Budaya" },
+  { "k": "事故", "r": "じこ", "m": "Kecelakaan" },
+  { "k": "条件", "r": "じょうけん", "m": "Syarat / Kondisi" },
+  { "k": "牛乳", "r": "ぎゅうにゅう", "m": "Susu Sapi" },
+  { "k": "自然", "r": "しぜん", "m": "Alam / Alami" },
+  { "k": "ご飯", "r": "ごはん", "m": "Nasi / Makan" },
+  { "k": "禁煙", "r": "きんえん", "m": "Dilarang Merokok" },
+  { "k": "開く", "r": "あく", "m": "Terbuka" }
+], 12:[
+  { "k": "世界", "r": "せかい", "m": "Dunia" },
+  { "k": "重い", "r": "おもい", "m": "Berat" },
+  { "k": "変わる", "r": "かわる", "m": "Berubah" },
+  { "k": "申し込む", "r": "もうしこむ", "m": "Mendaftar" },
+  { "k": "消す", "r": "けす", "m": "Mematikan / Menghapus" },
+  { "k": "始まる", "r": "はじまる", "m": "Dimulai" },
+  { "k": "消費税", "r": "しょうひぜい", "m": "Pajak Konsumsi" },
+  { "k": "返す", "r": "かえす", "m": "Mengembalikan" },
+  { "k": "～式", "r": "～しき", "m": "Upacara / Gaya ~" },
+  { "k": "値段", "r": "ねだん", "m": "Harga" },
+  { "k": "祭り", "r": "まつり", "m": "Festival" },
+  { "k": "商品", "r": "しょうひん", "m": "Produk / Barang Dagangan" },
+  { "k": "借りる", "r": "かりる", "m": "Meminjam" },
+  { "k": "特に", "r": "とくに", "m": "Khususnya / Terutama" },
+  { "k": "案内する", "r": "あんないする", "m": "Memandu / Menjelaskan" },
+  { "k": "米", "r": "こめ", "m": "Beras" },
+  { "k": "卒業する", "r": "そつぎょうする", "m": "Lulus" },
+  { "k": "閉まる", "r": "しまる", "m": "Tertutup" },
+  { "k": "袋", "r": "ふくろ", "m": "Kantong / Tas" },
+  { "k": "授業", "r": "じゅぎょう", "m": "Pelajaran / Kuliah" },
+  { "k": "服", "r": "ふく", "m": "Pakaian" },
+  { "k": "営業する", "r": "えいぎょうする", "m": "Berbisnis / Buka (Toko)" },
+  { "k": "情報", "r": "じょうほう", "m": "Informasi" },
+  { "k": "暗い", "r": "くらい", "m": "Gelap" },
+  { "k": "白", "r": "しろ", "m": "Putih" },
+  { "k": "慣れる", "r": "なれる", "m": "Menjadi Terbiasa" },
+  { "k": "黒", "r": "くろ", "m": "Hitam" },
+  { "k": "質問", "r": "しつもん", "m": "Pertanyaan" },
+  { "k": "色", "r": "いろ", "m": "Warna" },
+  { "k": "青", "r": "あお", "m": "Biru" },
+  { "k": "怒る", "r": "おこる", "m": "Marah" },
+  { "k": "赤", "r": "あか", "m": "Merah" },
+  { "k": "紙", "r": "かみ", "m": "Kertas" },
+  { "k": "軽い", "r": "かるい", "m": "Ringan" },
+  { "k": "必要（な）", "r": "ひつよう（な）", "m": "Perlu / Dibutuhkan" }
+], 13:[
+  { "k": "市", "r": "し", "m": "Kota" },
+  { "k": "外", "r": "そと", "m": "Luar" },
+  { "k": "危険", "r": "きけん", "m": "Bahaya" },
+  { "k": "～種類", "r": "～しゅるい", "m": "Jenis ~ / Macam ~" },
+  { "k": "燃える", "r": "もえる", "m": "Membakar / Terbakar" },
+  { "k": "増える", "r": "ふえる", "m": "Bertambah" },
+  { "k": "困る", "r": "こまる", "m": "Susah / Bermasalah" },
+  { "k": "進む", "r": "すすむ", "m": "Maju" },
+  { "k": "集まる", "r": "あつまる", "m": "Berkumpul" },
+  { "k": "声", "r": "こえ", "m": "Suara" },
+  { "k": "希望", "r": "きぼう", "m": "Harapan" },
+  { "k": "続ける", "r": "つづける", "m": "Melanjutkan" },
+  { "k": "考える", "r": "かんがえる", "m": "Berpikir" },
+  { "k": "建てる", "r": "たてる", "m": "Membangun (Gedung/Rumah)" },
+  { "k": "笑う", "r": "わらう", "m": "Tertawa" },
+  { "k": "決める", "r": "きめる", "m": "Memutuskan" },
+  { "k": "心配（な）", "r": "しんぱい（な）", "m": "Khawatir" },
+  { "k": "募集", "r": "ぼしゅう", "m": "Rekrutmen / Lowongan" },
+  { "k": "問題", "r": "もんだい", "m": "Masalah / Soal" },
+  { "k": "違う", "r": "ちがう", "m": "Berbeda / Salah" },
+  { "k": "捨てる", "r": "すてる", "m": "Membuang" },
+  { "k": "危ない", "r": "あぶない", "m": "Bahaya" },
+  { "k": "洗う", "r": "あらう", "m": "Mencuci" },
+  { "k": "相談", "r": "そうだん", "m": "Konsultasi" },
+  { "k": "門", "r": "もん", "m": "Gerbang" },
+  { "k": "雲", "r": "くも", "m": "Awan" },
+  { "k": "空気", "r": "くうき", "m": "Udara" },
+  { "k": "京都", "r": "きょうと", "m": "Kyoto" },
+  { "k": "地図", "r": "ちず", "m": "Peta" },
+  { "k": "面接", "r": "めんせつ", "m": "Wawancara" },
+  { "k": "汚い", "r": "きたない", "m": "Kotor" },
+  { "k": "猫", "r": "ねこ", "m": "Kucing" },
+  { "k": "鳥", "r": "とり", "m": "Burung" },
+  { "k": "馬", "r": "うま", "m": "Kuda" },
+  { "k": "面談", "r": "めんだん", "m": "Diskusi / Pertemuan Tatap Muka" }
+], 14:[{ "k": "月", "r": "げつ", "m": "Senin/Bulan" },
+  { "k": "火", "r": "か", "m": "Selasa/Api" },
+  { "k": "水", "r": "すい", "m": "Rabu/Air" },
+  { "k": "木", "r": "もく", "m": "Kamis/Pohon" },
+  { "k": "土", "r": "ど", "m": "Sabtu/Tanah" },
+  { "k": "皆", "r": "みんな", "m": "Semua orang" },
+  { "k": "村", "r": "むら", "m": "Desa" },
+  { "k": "傘", "r": "かさ", "m": "Payung" },
+  { "k": "日記", "r": "にっき", "m": "Buku Harian" },
+  { "k": "靴", "r": "くつ", "m": "Sepatu" },
+  { "k": "彼", "r": "かれ", "m": "Dia (laki-laki)" },
+  { "k": "彼女", "r": "かのじょ", "m": "Dia (perempuan)" },
+  { "k": "親", "r": "おや", "m": "Orang tua" },
+  { "k": "招待", "r": "しょうたい", "m": "Undangan" },
+  { "k": "丁寧", "r": "ていねい", "m": "Sopan" },
+  { "k": "最後", "r": "さいご", "m": "Terakhir" },
+  { "k": "最高", "r": "さいこう", "m": "Terbaik" },
+  { "k": "最低", "r": "さいてい", "m": "Terburuk/Paling rendah" },
+  { "k": "最悪", "r": "さいあく", "m": "Paling buruk" },
+  { "k": "池", "r": "いけ", "m": "Kolam" },
+  { "k": "旅", "r": "たび", "m": "Perjalanan" },
+  { "k": "林", "r": "はやし", "m": "Hutan kecil" },
+  { "k": "力", "r": "ちから", "m": "Kekuatan" },
+  { "k": "祖母", "r": "そぼ", "m": "Nenek" },
+  { "k": "祖父", "r": "そふ", "m": "Kakek" },
+  { "k": "泊まる", "r": "とまる", "m": "Menginap" },
+  { "k": "自己紹介", "r": "じこしょうかい", "m": "Perkenalan diri" },
+  { "k": "熱い", "r": "あつい", "m": "Panas (benda)" },
+  { "k": "厚い", "r": "あつい", "m": "Tebal" },
+  { "k": "喜ぶ", "r": "よろこぶ", "m": "Senang" },
+  { "k": "成長", "r": "せいちょう", "m": "Pertumbuhan" },
+  { "k": "若い", "r": "わかい", "m": "Muda" },
+  { "k": "帰国", "r": "きこく", "m": "Pulang ke negara asal" },
+  { "k": "薬局", "r": "やっきょく", "m": "Apotek" },
+  { "k": "人形", "r": "にんぎょう", "m": "Boneka" }
+]
+        };
+
+        let currentPart = 1;
+        let currentData = [...allData[1]];
+        let currentIndex = 0;
+        let flipped = false;
+
+        function initDropdown() {
+            const list = document.getElementById('dropdownList');
+            list.innerHTML = '';
+            for(let i=1; i<=14; i++) {
+                const btn = document.createElement('button');
+                btn.className = `w-full flex items-center justify-between px-4 py-3.5 text-xs font-bold rounded-2xl transition-all mb-1 last:mb-0 ${i === currentPart ? 'active-part' : 'text-slate-500 hover:bg-slate-50'}`;
+                btn.innerHTML = `
+                    <span>Bagian ${i}</span>
+                    ${allData[i].length > 0 ? `<span class="text-[8px] bg-slate-100 text-slate-400 px-1.5 py-0.5 rounded-md">${allData[i].length}</span>` : ''}
+                `;
+                btn.onclick = () => { switchPart(i); closeDropdown(); };
+                list.appendChild(btn);
+            }
+        }
+
+        function toggleDropdown(e) {
+            e.stopPropagation();
+            const dd = document.getElementById('partDropdown');
+            const arrow = document.getElementById('dropdownArrow');
+            if(dd.classList.contains('hidden')) {
+                dd.classList.remove('hidden');
+                setTimeout(() => {
+                    dd.classList.replace('opacity-0', 'opacity-100');
+                    dd.classList.replace('-translate-y-4', 'translate-y-0');
+                    arrow.style.transform = 'rotate(180deg)';
+                }, 10);
+            } else {
+                closeDropdown();
+            }
+        }
+
+        function closeDropdown() {
+            const dd = document.getElementById('partDropdown');
+            const arrow = document.getElementById('dropdownArrow');
+            dd.classList.replace('opacity-100', 'opacity-0');
+            dd.classList.replace('translate-y-0', '-translate-y-4');
+            arrow.style.transform = 'rotate(0deg)';
+            setTimeout(() => dd.classList.add('hidden'), 300);
+        }
+
+        function switchPart(n) {
+            currentPart = n;
+            currentData = allData[n].length > 0 ? [...allData[n]] : [{k:"?", r:"Belum Ada Data", m:"Part " + n + " Masih Kosong"}];
+            currentIndex = 0;
+            document.getElementById('currentPartTitle').innerText = "Bagian " + n;
+            initDropdown();
+            render();
+        }
+
+        function render() {
+            const item = currentData[currentIndex];
+            document.getElementById('kanjiDisplay').innerText = item.k;
+            document.getElementById('readingDisplay').innerText = item.r;
+            document.getElementById('meaningDisplay').innerText = item.m;
+            
+            document.getElementById('counterText').innerText = `${currentIndex + 1} / ${currentData.length}`;
+            const perc = currentData.length > 0 ? Math.round(((currentIndex + 1) / currentData.length) * 100) : 0;
+            document.getElementById('progressBar').style.width = `${perc}%`;
+            document.getElementById('percentageText').innerText = `${perc}%`;
+            resetFlip();
+        }
+
+        function shuffleCurrentPart() {
+            if(currentData.length <= 1) return;
+            const card = document.getElementById('flashcard');
+            card.classList.add('animate-shuffle');
+            setTimeout(() => card.classList.remove('animate-shuffle'), 400);
+
+            for (let i = currentData.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentData[i], currentData[j]] = [currentData[j], currentData[i]];
+            }
+            currentIndex = 0;
+            render();
+        }
+
+        function flipCard() { flipped = !flipped; document.getElementById('cardInner').classList.toggle('rotate-y-180', flipped); }
+        function resetFlip() { flipped = false; document.getElementById('cardInner').classList.remove('rotate-y-180'); }
+        function nextCard() { currentIndex = (currentIndex + 1) % currentData.length; render(); }
+        function prevCard() { currentIndex = (currentIndex - 1 + currentData.length) % currentData.length; render(); }
+
+        function togglePreview() {
+            const modal = document.getElementById('previewModal');
+            const box = document.getElementById('modalBox');
+            const content = document.getElementById('modalContent');
+            if(modal.classList.contains('hidden')) {
+                document.getElementById('modalSub').innerText = `Bagian ${currentPart} • ${currentData.length} Item`;
+                content.innerHTML = currentData.map((item, idx) => `
+                    <div onclick="jumpTo(${idx})" class="group flex items-center justify-between p-5 rounded-[2rem] cursor-pointer border-2 transition-all ${currentIndex === idx ? 'bg-red-50 border-red-100' : 'bg-white border-slate-50 hover:border-slate-100'}">
+                        <div class="flex items-center gap-5">
+                            <span class="text-3xl font-extrabold text-slate-900">${item.k}</span>
+                            <div class="flex flex-col">
+                                <span class="text-xs font-black text-slate-800 uppercase tracking-tight">${item.m}</span>
+                                <span class="text-[10px] font-bold text-slate-400 mt-0.5">${item.r}</span>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-400"><path d="m9 18 6-6-6-6"/></svg>
+                        </div>
+                    </div>
+                `).join('');
+                modal.classList.remove('hidden');
+                setTimeout(() => box.classList.replace('translate-y-full', 'translate-y-0'), 10);
+            } else {
+                box.classList.replace('translate-y-0', 'translate-y-full');
+                setTimeout(() => modal.classList.add('hidden'), 500);
+            }
+        }
+
+        function jumpTo(idx) { currentIndex = idx; render(); togglePreview(); }
+
+        window.onload = () => { initDropdown(); render(); };
+    </script>
+</body>
+</html>
