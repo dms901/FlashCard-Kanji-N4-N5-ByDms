@@ -907,7 +907,7 @@
                 content.innerHTML = currentData.map((item, idx) => `
                     <div onclick="jumpTo(${idx})" class="group flex items-center justify-between p-5 rounded-[2rem] cursor-pointer border-2 transition-all ${currentIndex === idx ? 'bg-red-50 border-red-100' : 'bg-white border-slate-50 hover:border-slate-100'}">
                         <div class="flex items-center gap-5">
-                            <span class="text-3xl font-extrabold text-slate-900">${item.k}</span>
+                            <span class="text-3xl text-slate-900">${item.k}</span>
                             <div class="flex flex-col">
                                 <span class="text-xs font-black text-slate-800 uppercase tracking-tight">${item.m}</span>
                                 <span class="text-[10px] font-bold text-slate-400 mt-0.5">${item.r}</span>
