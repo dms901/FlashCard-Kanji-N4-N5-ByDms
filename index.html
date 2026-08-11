@@ -2435,151 +2435,104 @@
            IS MASTERED
         ===================================================== */
 
-        function isMastered(item) {
+       function isMastered(item) {
+    const id = getCardId(currentPart, item);
 
-            const id =
-                getCardId(
-                    currentPart,
-                    item
-                );
-
-
-            return progressMap[id]?.status ===
-                "mastered";
-        }
+    return progressMap[id]?.status === "mastered";
+}
 
 
         /* =====================================================
            SAVE PROGRESS
         ===================================================== */
 
-        async function saveProgress(item, status) {
+      async function toggleMastered(event) {
 
-            if (!currentUser) {
-                return;
-            }
+    event.stopPropagation();
 
+    const item = currentData[currentIndex];
 
-            const cardId =
-                getCardId(
-                    currentPart,
-                    item
-                );
+    if (!item || !currentUser) return;
 
+    const cardId = getCardId(currentPart, item);
 
-            const old =
-                progressMap[cardId];
+    const mastered = isMastered(item);
 
+    try {
 
-            const reviewCount =
-                (old?.review_count || 0) + 1;
+        // ==========================================
+        // KALAU SUDAH HAFAL → HAPUS DARI DATABASE
+        // ==========================================
 
+        if (mastered) {
+
+            const { error } = await supabaseClient
+                .from("card_progress")
+                .delete()
+                .eq("user_id", currentUser.id)
+                .eq("card_id", cardId);
+
+            if (error) throw error;
+
+            // Hapus dari progressMap
+            delete progressMap[cardId];
+
+        }
+
+        // ==========================================
+        // KALAU BELUM HAFAL → SIMPAN MASTERED
+        // ==========================================
+
+        else {
 
             const row = {
-
-                user_id:
-                    currentUser.id,
-
-                card_id:
-                    cardId,
-
-                part:
-                    currentPart,
-
-                status:
-                    status,
-
-                review_count:
-                    reviewCount,
-
-                updated_at:
-                    new Date().toISOString()
-
+                user_id: currentUser.id,
+                card_id: cardId,
+                part: currentPart,
+                status: "mastered",
+                review_count: 1,
+                updated_at: new Date().toISOString()
             };
 
-
-            const { data, error } =
-                await supabaseClient
+            const { data, error } = await supabaseClient
                 .from("card_progress")
                 .upsert(
                     row,
                     {
-                        onConflict:
-                            "user_id,card_id"
+                        onConflict: "user_id,card_id"
                     }
                 )
                 .select()
                 .single();
 
+            if (error) throw error;
 
-            if (error) {
+            progressMap[cardId] = data;
 
-                console.error(
-                    "Gagal menyimpan:",
-                    error
-                );
-
-                alert(
-                    "Gagal menyimpan progres.\n\n" +
-                    error.message
-                );
-
-                return;
-            }
-
-
-            progressMap[cardId] =
-                data;
-
-
-            render();
-
-            updateTotalProgress();
-
-            initDropdown();
         }
 
+        // Update tampilan
+        render();
 
-        /* =====================================================
-           TOGGLE MASTERED
-        ===================================================== */
+        updateTotalProgress();
 
-        async function toggleMastered(event) {
+        // Update dropdown supaya angka ikut berubah
+        initDropdown();
 
-            if (event) {
-                event.stopPropagation();
-            }
+    } catch (error) {
 
+        console.error(
+            "Gagal mengubah status hafalan:",
+            error
+        );
 
-            const item =
-                currentData[currentIndex];
+        alert(
+            "Gagal mengubah status hafalan:\n\n" +
+            error.message
+        );
 
-
-            if (!item) {
-                return;
-            }
-
-
-            const mastered =
-                isMastered(item);
-
-
-            if (mastered) {
-
-                await saveProgress(
-                    item,
-                    "learning"
-                );
-
-            } else {
-
-                await saveProgress(
-                    item,
-                    "mastered"
-                );
-            }
-        }
-
+    }
+}
 
         /* =====================================================
            DROPDOWN
