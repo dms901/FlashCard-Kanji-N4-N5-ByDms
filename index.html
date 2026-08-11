@@ -1,163 +1,935 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FlashCard Kanji N5-N4</title>
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Master Kanji N5-N4</title>
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- TAILWIND -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap');
-        
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fcfcfd;
+            background: #fcfcfd;
             color: #1e293b;
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
         }
 
-        .perspective-1000 { perspective: 1000px; }
-        .preserve-3d { transform-style: preserve-3d; }
-        .backface-hidden { backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
-        
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
         .card-inner {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform .6s cubic-bezier(.4, 0, .2, 1);
         }
 
         .shadow-premium {
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, .05);
         }
-
-        .dropdown-content {
-            transform-origin: top;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .custom-scroll::-webkit-scrollbar { width: 4px; }
-        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-        
-        @keyframes shuffle-pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05) rotate(2deg); }
-            100% { transform: scale(1); }
-        }
-        .animate-shuffle { animation: shuffle-pop 0.4s ease-out; }
 
         .active-part {
             background: #fef2f2;
             color: #ef4444;
             border-left: 4px solid #ef4444;
         }
+
+        .dropdown-content {
+            transform-origin: top;
+            transition: all .3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        @keyframes shuffle-pop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05) rotate(2deg);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-shuffle {
+            animation: shuffle-pop .4s ease-out;
+        }
+
+        .mastered {
+            background: #f0fdf4 !important;
+            border-color: #bbf7d0 !important;
+        }
+
+        #app {
+            display: none;
+        }
+
+        #loadingScreen {
+            display: flex;
+        }
     </style>
 </head>
-<body class="flex flex-col items-center min-h-screen">
 
-    <!-- Header -->
-    <header class="w-full max-w-md sticky top-0 bg-[#fcfcfd]/90 backdrop-blur-md z-50 border-b border-slate-100">
-        <div class="flex justify-between items-center px-6 py-4">
-            <div class="flex flex-col relative">
-                <h1 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Master Kanji</h1>
-                
-                <!-- Modern Dropdown Trigger -->
-                <button onclick="toggleDropdown(event)" id="dropdownBtn" class="flex items-center gap-2 text-lg font-extrabold text-slate-900 group">
-                    <span id="currentPartTitle">Bagian 1</span>
-                    <div class="w-5 h-5 flex items-center justify-center rounded-full bg-slate-100 group-active:bg-red-100 transition-colors">
-                        <svg id="dropdownArrow" class="transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
-                </button>
+<body class="min-h-screen">
 
-                <!-- Modern Dropdown Menu -->
-                <div id="partDropdown" class="absolute top-full left-0 mt-3 w-56 bg-white rounded-3xl shadow-2xl border border-slate-50 hidden opacity-0 -translate-y-4 dropdown-content overflow-hidden z-[60]">
-                    <div class="p-2 max-h-[400px] overflow-y-auto custom-scroll" id="dropdownList">
-                        <!-- Items injected via JS -->
-                    </div>
-                </div>
-            </div>
-            
-            <button onclick="togglePreview()" class="w-11 h-11 flex items-center justify-center bg-white border border-slate-200 rounded-2xl shadow-sm active:scale-90 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600">
-                    <rect x="3" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="14" width="7" height="7"></rect>
-                    <rect x="3" y="14" width="7" height="7"></rect>
-                </svg>
-            </button>
-        </div>
-    </header>
+    <!-- =====================================================
+         LOADING
+    ====================================================== -->
 
-    <main class="w-full max-w-md px-6 pb-20 pt-8" onclick="closeDropdown()">
-        
-        <!-- Progress Bar -->
-        <div class="mb-10 px-1">
-            <div class="flex justify-between items-end mb-3">
-                <div class="flex flex-col">
-                    <span id="counterText" class="text-xs font-black text-slate-900 leading-none">0 / 0</span>
-                    <span class="text-[8px] font-bold text-slate-400 uppercase mt-1">Hafalan Saat Ini</span>
-                </div>
-                <span id="percentageText" class="text-[10px] font-black text-red-500 bg-red-50 px-2 py-0.5 rounded-md">0%</span>
+    <div id="loadingScreen"
+        class="min-h-screen items-center justify-center">
+
+        <div class="text-center">
+
+            <div class="w-12 h-12
+                        border-4 border-slate-200
+                        border-t-red-500
+                        rounded-full
+                        animate-spin
+                        mx-auto mb-4">
             </div>
-            <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                <div id="progressBar" class="h-full bg-red-500 transition-all duration-700 ease-out shadow-[0_0_10px_rgba(239,68,68,0.3)]" style="width: 0%"></div>
-            </div>
+
+            <p class="text-sm font-bold text-slate-500">
+                Memuat aplikasi...
+            </p>
+
         </div>
 
-        <!-- Flashcard -->
-        <div id="flashcard" class="perspective-1000 w-full aspect-[4/4.8] cursor-pointer" onclick="flipCard()">
-            <div id="cardInner" class="card-inner relative w-full h-full preserve-3d">
-                <!-- Depan -->
-                <div class="absolute inset-0 backface-hidden bg-white rounded-[3rem] shadow-premium border border-slate-50 flex flex-col items-center justify-center p-8 text-center">
-                    <div id="kanjiDisplay" class="text-6xl text-slate-900 tracking-tighter">...</div>
-                    <div class="absolute bottom-10 flex flex-col items-center">
-                        <div class="w-1 h-1 bg-red-500 rounded-full mb-2"></div>
-                        <span class="text-[9px] font-bold text-slate-300 uppercase tracking-[0.3em]">Lihat Arti</span>
-                    </div>
-                </div>
-                <!-- Belakang -->
-                <div class="absolute inset-0 backface-hidden bg-white rounded-[3rem] shadow-premium border-4 border-red-50 rotate-y-180 flex flex-col items-center justify-center p-8 text-center overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-red-50/50 to-transparent"></div>
-                    <div id="readingDisplay" class="text-3xl font-black text-red-500 mb-3 leading-tight z-10">...</div>
-                    <div id="meaningDisplay" class="text-2xl font-semibold text-slate-600 leading-tight z-10 px-4">...</div>
-                    <div class="absolute bottom-10 w-12 h-1 bg-slate-100 rounded-full"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="mt-12 flex items-center justify-between px-4">
-            <button onclick="prevCard()" class="w-14 h-14 flex items-center justify-center bg-white border border-slate-100 rounded-[1.5rem] shadow-sm text-slate-400 active:scale-90 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
-            
-            <button onclick="shuffleCurrentPart()" class="w-16 h-16 flex items-center justify-center bg-slate-900 rounded-[1.8rem] shadow-xl text-white active:scale-95 transition-all group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-active:rotate-45 transition-transform"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.9c1.5 0 2.9.9 3.6 2.2"/><path d="M22 18h-5.9c-1.3 0-2.6-.7-3.3-1.8l-.5-.8"/><path d="m18 14 4 4-4 4"/></svg>
-            </button>
-
-            <button onclick="nextCard()" class="w-14 h-14 flex items-center justify-center bg-red-500 rounded-[1.5rem] shadow-lg shadow-red-100 text-white active:scale-90 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-        </div>
-    </main>
-
-    <!-- List Modal -->
-    <div id="previewModal" class="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-md hidden items-end sm:items-center justify-center p-4" onclick="togglePreview()">
-        <div class="bg-white w-full max-w-md h-[80vh] rounded-[3rem] shadow-2xl flex flex-col overflow-hidden transition-transform duration-500 translate-y-full" id="modalBox" onclick="event.stopPropagation()">
-            <div class="p-8 flex justify-between items-center border-b border-slate-50">
-                <div>
-                    <h2 class="font-extrabold text-slate-900 text-xl tracking-tight">Koleksi Kanji</h2>
-                    <p id="modalSub" class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Bagian 1</p>
-                </div>
-                <button onclick="togglePreview()" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            <div id="modalContent" class="flex-1 overflow-y-auto p-6 space-y-3 custom-scroll"></div>
-        </div>
     </div>
-  <script>
+
+
+    <!-- =====================================================
+         AUTH
+    ====================================================== -->
+
+    <div id="authScreen"
+        class="hidden min-h-screen
+               items-center justify-center
+               px-6 py-10">
+
+        <div class="w-full max-w-md">
+
+            <div class="text-center mb-10">
+
+                <div class="w-16 h-16
+                            bg-red-500
+                            text-white
+                            rounded-3xl
+                            flex items-center
+                            justify-center
+                            text-3xl
+                            font-black
+                            mx-auto mb-5
+                            shadow-lg shadow-red-100">
+
+                    漢
+
+                </div>
+
+                <h1 class="text-2xl font-black text-slate-900">
+                    Master Kanji
+                </h1>
+
+                <p class="text-sm text-slate-400 mt-2">
+                    Belajar Kanji N5-N4
+                </p>
+
+            </div>
+
+
+            <div class="bg-white
+                        rounded-[2rem]
+                        border border-slate-100
+                        shadow-premium
+                        p-7">
+
+                <!-- TABS -->
+
+                <div class="flex
+                            bg-slate-100
+                            rounded-2xl
+                            p-1 mb-6">
+
+                    <button id="loginTab"
+                        onclick="showLogin()"
+                        class="flex-1 py-3
+                               rounded-xl
+                               bg-white
+                               text-slate-900
+                               font-bold text-sm
+                               shadow-sm">
+
+                        Login
+
+                    </button>
+
+                    <button id="registerTab"
+                        onclick="showRegister()"
+                        class="flex-1 py-3
+                               rounded-xl
+                               text-slate-400
+                               font-bold text-sm">
+
+                        Daftar
+
+                    </button>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div id="authMessage"
+                    class="hidden mb-4
+                           p-3 rounded-xl
+                           text-xs font-bold">
+                </div>
+
+
+                <!-- FORM -->
+
+                <form id="authForm"
+                    onsubmit="handleAuth(event)">
+
+                    <div class="mb-4">
+
+                        <label class="block
+                                      text-xs
+                                      font-black
+                                      text-slate-500
+                                      mb-2">
+
+                            Email
+
+                        </label>
+
+                        <input id="emailInput"
+                            type="email"
+                            required
+                            autocomplete="email"
+                            placeholder="email@example.com"
+                            class="w-full px-4 py-4
+                                   rounded-2xl
+                                   border border-slate-200
+                                   outline-none
+                                   focus:border-red-400
+                                   text-sm">
+
+                    </div>
+
+
+                    <div class="mb-6">
+
+                        <label class="block
+                                      text-xs
+                                      font-black
+                                      text-slate-500
+                                      mb-2">
+
+                            Password
+
+                        </label>
+
+                        <input id="passwordInput"
+                            type="password"
+                            required
+                            minlength="6"
+                            autocomplete="current-password"
+                            placeholder="Minimal 6 karakter"
+                            class="w-full px-4 py-4
+                                   rounded-2xl
+                                   border border-slate-200
+                                   outline-none
+                                   focus:border-red-400
+                                   text-sm">
+
+                    </div>
+
+
+                    <button id="authButton"
+                        type="submit"
+                        class="w-full py-4
+                               bg-red-500
+                               text-white
+                               rounded-2xl
+                               font-black
+                               shadow-lg
+                               shadow-red-100
+                               active:scale-95
+                               transition">
+
+                        Login
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         APP
+    ====================================================== -->
+
+    <div id="app"
+        class="flex flex-col items-center min-h-screen">
+
+
+        <!-- HEADER -->
+
+        <header class="w-full max-w-md
+                       sticky top-0
+                       bg-[#fcfcfd]/90
+                       backdrop-blur-md
+                       z-50
+                       border-b border-slate-100">
+
+            <div class="flex justify-between
+                        items-center
+                        px-6 py-4">
+
+                <!-- PART SELECTOR -->
+
+                <div class="flex flex-col relative">
+
+                    <h1 class="text-[10px]
+                               font-black
+                               text-slate-400
+                               uppercase
+                               tracking-[0.2em]
+                               mb-1">
+
+                        Master Kanji
+
+                    </h1>
+
+
+                    <button onclick="toggleDropdown(event)"
+                        id="dropdownBtn"
+                        class="flex items-center
+                               gap-2 text-lg
+                               font-extrabold
+                               text-slate-900">
+
+                        <span id="currentPartTitle">
+                            Bagian 1
+                        </span>
+
+                        <div class="w-5 h-5
+                                    flex items-center
+                                    justify-center
+                                    rounded-full
+                                    bg-slate-100">
+
+                            <svg id="dropdownArrow"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3">
+
+                                <path d="m6 9 6 6 6-6" />
+
+                            </svg>
+
+                        </div>
+
+                    </button>
+
+
+                    <!-- DROPDOWN -->
+
+                    <div id="partDropdown"
+                        class="absolute
+                               top-full left-0 mt-3
+                               w-56
+                               bg-white
+                               rounded-3xl
+                               shadow-2xl
+                               border border-slate-50
+                               hidden
+                               opacity-0
+                               -translate-y-4
+                               dropdown-content
+                               overflow-hidden
+                               z-[60]">
+
+                        <div class="p-2
+                                    max-h-[400px]
+                                    overflow-y-auto
+                                    custom-scroll"
+                            id="dropdownList">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HEADER BUTTONS -->
+
+                <div class="flex items-center gap-2">
+
+                    <button onclick="logout()"
+                        class="px-3 py-2
+                               rounded-xl
+                               bg-slate-100
+                               text-[9px]
+                               font-black
+                               text-slate-500">
+
+                        Keluar
+
+                    </button>
+
+
+                    <button onclick="togglePreview()"
+                        class="w-11 h-11
+                               flex items-center
+                               justify-center
+                               bg-white
+                               border border-slate-200
+                               rounded-2xl
+                               shadow-sm">
+
+                        <svg width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5">
+
+                            <rect x="3" y="3"
+                                width="7" height="7" />
+
+                            <rect x="14" y="3"
+                                width="7" height="7" />
+
+                            <rect x="14" y="14"
+                                width="7" height="7" />
+
+                            <rect x="3" y="14"
+                                width="7" height="7" />
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+
+        <main class="w-full max-w-md
+                     px-6 pb-20 pt-8"
+            onclick="closeDropdown()">
+
+
+            <!-- PROGRESS -->
+
+            <div class="mb-8 px-1">
+
+                <div class="flex
+                            justify-between
+                            items-end mb-3">
+
+                    <div>
+
+                        <span id="counterText"
+                            class="text-xs
+                                   font-black
+                                   text-slate-900">
+
+                            0 / 0
+
+                        </span>
+
+                        <span class="block
+                                     text-[8px]
+                                     font-bold
+                                     text-slate-400
+                                     uppercase
+                                     mt-1">
+
+                            Hafalan Bagian Ini
+
+                        </span>
+
+                    </div>
+
+
+                    <span id="percentageText"
+                        class="text-[10px]
+                               font-black
+                               text-red-500
+                               bg-red-50
+                               px-2 py-1
+                               rounded-md">
+
+                        0%
+
+                    </span>
+
+                </div>
+
+
+                <div class="h-1.5
+                            bg-slate-100
+                            rounded-full
+                            overflow-hidden">
+
+                    <div id="progressBar"
+                        class="h-full
+                               bg-red-500
+                               transition-all duration-700"
+                        style="width:0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FLASHCARD -->
+
+            <div id="flashcard"
+                class="perspective-1000
+                       w-full
+                       aspect-[4/4.8]
+                       cursor-pointer"
+                onclick="flipCard()">
+
+                <div id="cardInner"
+                    class="card-inner
+                           relative
+                           w-full h-full
+                           preserve-3d">
+
+
+                    <!-- DEPAN -->
+
+                    <div class="absolute inset-0
+                                backface-hidden
+                                bg-white
+                                rounded-[3rem]
+                                shadow-premium
+                                border border-slate-50
+                                flex flex-col
+                                items-center
+                                justify-center
+                                p-8 text-center">
+
+                        <div id="kanjiDisplay"
+                            class="text-6xl
+                                   text-slate-900
+                                   tracking-tighter">
+
+                            ...
+
+                        </div>
+
+
+                        <div class="absolute
+                                    bottom-10
+                                    flex flex-col
+                                    items-center">
+
+                            <div class="w-1 h-1
+                                        bg-red-500
+                                        rounded-full
+                                        mb-2">
+                            </div>
+
+                            <span class="text-[9px]
+                                         font-bold
+                                         text-slate-300
+                                         uppercase
+                                         tracking-[0.3em]">
+
+                                Lihat Arti
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BELAKANG -->
+
+                    <div class="absolute inset-0
+                                backface-hidden
+                                bg-white
+                                rounded-[3rem]
+                                shadow-premium
+                                border-4
+                                border-red-50
+                                rotate-y-180
+                                flex flex-col
+                                items-center
+                                justify-center
+                                p-8 text-center">
+
+                        <div id="readingDisplay"
+                            class="text-3xl
+                                   font-black
+                                   text-red-500
+                                   mb-3">
+
+                            ...
+
+                        </div>
+
+                        <div id="meaningDisplay"
+                            class="text-2xl
+                                   font-semibold
+                                   text-slate-600
+                                   leading-tight">
+
+                            ...
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLS -->
+
+            <div class="mt-8 px-2">
+
+                <!-- NAVIGASI -->
+
+                <div class="flex items-center
+                            justify-between">
+
+                    <!-- PREVIOUS -->
+
+                    <button onclick="prevCard(event)"
+                        class="w-14 h-14
+                               flex items-center
+                               justify-center
+                               bg-white
+                               border border-slate-100
+                               rounded-[1.5rem]
+                               shadow-sm
+                               text-xl
+                               active:scale-90
+                               transition">
+
+                        ←
+
+                    </button>
+
+
+                    <!-- MASTERED -->
+
+                    <button id="masteredButton"
+                        onclick="toggleMastered(event)"
+                        class="flex-1
+                               mx-3
+                               h-14
+                               bg-slate-900
+                               text-white
+                               rounded-[1.5rem]
+                               font-black
+                               text-sm
+                               active:scale-95
+                               transition">
+
+                        ✓ Tandai Sudah Hafal
+
+                    </button>
+
+
+                    <!-- NEXT -->
+
+                    <button onclick="nextCard(event)"
+                        class="w-14 h-14
+                               flex items-center
+                               justify-center
+                               bg-red-500
+                               text-white
+                               rounded-[1.5rem]
+                               shadow-lg
+                               text-xl
+                               active:scale-90
+                               transition">
+
+                        →
+
+                    </button>
+
+                </div>
+
+
+                <!-- SHUFFLE -->
+
+                <button onclick="shuffleCurrentPart(event)"
+                    class="w-full
+                           h-12
+                           mt-3
+                           bg-white
+                           border border-slate-200
+                           text-slate-700
+                           rounded-2xl
+                           font-black
+                           text-xs
+                           flex items-center
+                           justify-center
+                           gap-2
+                           active:scale-[0.97]
+                           transition">
+
+                    <span class="text-lg">
+                        🔀
+                    </span>
+
+                    <span>
+                        Acak Kartu
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- TOTAL PROGRESS -->
+
+            <div class="mt-6
+                        bg-white
+                        border border-slate-100
+                        rounded-3xl
+                        p-5">
+
+                <div class="flex
+                            justify-between
+                            items-center">
+
+                    <div>
+
+                        <p class="text-xs
+                                  font-black
+                                  text-slate-900">
+
+                            Total Hafalan
+
+                        </p>
+
+                        <p class="text-[9px]
+                                  text-slate-400
+                                  mt-1">
+
+                            Semua bagian
+
+                        </p>
+
+                    </div>
+
+
+                    <div id="totalProgressText"
+                        class="text-lg
+                               font-black
+                               text-red-500">
+
+                        0%
+
+                    </div>
+
+                </div>
+
+
+                <div class="mt-3
+                            h-2
+                            bg-slate-100
+                            rounded-full
+                            overflow-hidden">
+
+                    <div id="totalProgressBar"
+                        class="h-full
+                               bg-red-500
+                               transition-all"
+                        style="width:0%">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         PREVIEW MODAL
+    ====================================================== -->
+
+    <div id="previewModal"
+        class="fixed inset-0
+               z-[100]
+               bg-slate-900/40
+               backdrop-blur-md
+               hidden
+               items-end
+               justify-center
+               p-4">
+
+        <div id="modalBox"
+            class="bg-white
+                   w-full
+                   max-w-md
+                   h-[80vh]
+                   rounded-[3rem]
+                   shadow-2xl
+                   flex flex-col
+                   overflow-hidden
+                   translate-y-full
+                   transition-transform duration-500"
+            onclick="event.stopPropagation()">
+
+
+            <div class="p-8
+                        flex
+                        justify-between
+                        items-center
+                        border-b
+                        border-slate-50">
+
+                <div>
+
+                    <h2 class="font-extrabold
+                               text-slate-900
+                               text-xl">
+
+                        Koleksi Kanji
+
+                    </h2>
+
+                    <p id="modalSub"
+                        class="text-[10px]
+                               text-slate-400
+                               uppercase
+                               tracking-widest
+                               mt-1">
+
+                        Bagian 1
+
+                    </p>
+
+                </div>
+
+
+                <button onclick="togglePreview()"
+                    class="w-10 h-10
+                           rounded-full
+                           bg-slate-50">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <div id="modalContent"
+                class="flex-1
+                       overflow-y-auto
+                       p-6 space-y-3
+                       custom-scroll">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           SUPABASE
+        ===================================================== */
+
+        const SUPABASE_URL =
+            "https://qtypsrxgxwbqhvzhckdw.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_QStjT4xsn9Xq73oclGj-3Q_ludvWKTs";
+
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* =====================================================
+           DATA
+        ===================================================== */
+
         const allData = {
-            1:[
+
+          1:[
   { "k": "残業", "r": "ざんぎょう", "m": "Lembur" },
   { "k": "残る", "r": "のこる", "m": "Tinggal, tersisa" },
   { "k": "残念", "r": "ざんねん", "m": "Disayangkan" },
@@ -1095,8 +1867,7 @@
   { "k": "頼", "r": "よりゆき", "m": "Mempercayai" },
   { "k": "頼む", "r": "たのむ", "m": "Memohon" },
   { "k": "頼り", "r": "たより", "m": "Kepercayaan" },
-  { "k": "宿る", "r": "やどる", "m": "Tinggal" },
-  { "k": "宿", "r": "やど", "m": "Losmen" },
+  { "k": "宿る", "r": "やどる", "m": "Tinggal" },{ "k": "宿", "r": "やど", "m": "Losmen" },
   { "k": "宿泊客", "r": "しゅくはくきゃく", "m": "Tamu hotel" },
   { "k": "熱い", "r": "あつい", "m": "Panas" },
   { "k": "熱水", "r": "ねっすい", "m": "Air panas" },
@@ -1301,128 +2072,1344 @@
   { "k": "緒締め", "r": "おじめ", "m": "Pengikat tali" },
   { "k": "緒言", "r": "しょげん", "m": "Kata pengantar, permulaan" }
 ]
-      
-      
-      
+
         };
 
+
+        /* =====================================================
+           STATE
+        ===================================================== */
+
+        let currentUser = null;
+
         let currentPart = 1;
-        let currentData = [...allData[1]];
+
+        let currentData = [];
+
         let currentIndex = 0;
+
         let flipped = false;
 
+        let progressMap = {};
+
+        let authMode = "login";
+
+
+        /* =====================================================
+           AUTH MODE
+        ===================================================== */
+
+        function showLogin() {
+
+            authMode = "login";
+
+            document.getElementById("loginTab").className =
+                "flex-1 py-3 rounded-xl bg-white text-slate-900 font-bold text-sm shadow-sm";
+
+            document.getElementById("registerTab").className =
+                "flex-1 py-3 rounded-xl text-slate-400 font-bold text-sm";
+
+            document.getElementById("authButton").innerText =
+                "Login";
+
+            document.getElementById("passwordInput").autocomplete =
+                "current-password";
+        }
+
+
+        function showRegister() {
+
+            authMode = "register";
+
+            document.getElementById("registerTab").className =
+                "flex-1 py-3 rounded-xl bg-white text-slate-900 font-bold text-sm shadow-sm";
+
+            document.getElementById("loginTab").className =
+                "flex-1 py-3 rounded-xl text-slate-400 font-bold text-sm";
+
+            document.getElementById("authButton").innerText =
+                "Buat Akun";
+
+            document.getElementById("passwordInput").autocomplete =
+                "new-password";
+        }
+
+
+        /* =====================================================
+           AUTH MESSAGE
+        ===================================================== */
+
+        function authMessage(text, error = true) {
+
+            const box =
+                document.getElementById("authMessage");
+
+            box.innerText = text;
+
+            box.classList.remove(
+                "hidden",
+                "bg-red-50",
+                "text-red-500",
+                "bg-green-50",
+                "text-green-600"
+            );
+
+            if (error) {
+
+                box.classList.add(
+                    "bg-red-50",
+                    "text-red-500"
+                );
+
+            } else {
+
+                box.classList.add(
+                    "bg-green-50",
+                    "text-green-600"
+                );
+
+            }
+        }
+
+
+        /* =====================================================
+           LOGIN / REGISTER
+        ===================================================== */
+
+        async function handleAuth(event) {
+
+            event.preventDefault();
+
+            const email =
+                document
+                .getElementById("emailInput")
+                .value
+                .trim();
+
+            const password =
+                document
+                .getElementById("passwordInput")
+                .value;
+
+            const button =
+                document.getElementById("authButton");
+
+            button.disabled = true;
+
+            button.innerText =
+                "Memproses...";
+
+
+            try {
+
+                if (authMode === "register") {
+
+                    const { data, error } =
+                        await supabaseClient.auth.signUp({
+                            email: email,
+                            password: password
+                        });
+
+
+                    if (error) {
+                        throw error;
+                    }
+
+
+                    if (!data.session) {
+
+                        authMessage(
+                            "Akun berhasil dibuat. Cek email untuk verifikasi.",
+                            false
+                        );
+
+                        button.disabled = false;
+
+                        button.innerText =
+                            "Buat Akun";
+
+                        return;
+                    }
+
+                } else {
+
+                    const { error } =
+                        await supabaseClient.auth.signInWithPassword({
+                            email: email,
+                            password: password
+                        });
+
+
+                    if (error) {
+                        throw error;
+                    }
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                authMessage(
+                    error.message ||
+                    "Terjadi kesalahan."
+                );
+            }
+
+
+            button.disabled = false;
+
+            button.innerText =
+                authMode === "login"
+                    ? "Login"
+                    : "Buat Akun";
+        }
+
+
+        /* =====================================================
+           SESSION
+        ===================================================== */
+
+        async function checkSession() {
+
+            const { data } =
+                await supabaseClient
+                .auth
+                .getSession();
+
+
+            currentUser =
+                data.session
+                    ? data.session.user
+                    : null;
+
+
+            if (currentUser) {
+
+                await startApp();
+
+            } else {
+
+                showAuth();
+
+            }
+
+
+            supabaseClient.auth.onAuthStateChange(
+                async (event, session) => {
+
+                    currentUser =
+                        session
+                            ? session.user
+                            : null;
+
+
+                    if (currentUser) {
+
+                        await startApp();
+
+                    } else {
+
+                        showAuth();
+
+                    }
+
+                }
+            );
+        }
+
+
+        /* =====================================================
+           SHOW AUTH
+        ===================================================== */
+
+        function showAuth() {
+
+            document.getElementById("loadingScreen")
+                .style.display = "none";
+
+            document.getElementById("app")
+                .style.display = "none";
+
+            document.getElementById("authScreen")
+                .classList.remove("hidden");
+
+            document.getElementById("authScreen")
+                .classList.add("flex");
+        }
+
+
+        /* =====================================================
+           START APP
+        ===================================================== */
+
+        async function startApp() {
+
+            document.getElementById("loadingScreen")
+                .style.display = "none";
+
+            document.getElementById("authScreen")
+                .classList.add("hidden");
+
+            document.getElementById("authScreen")
+                .classList.remove("flex");
+
+            document.getElementById("app")
+                .style.display = "flex";
+
+
+            await loadProgress();
+
+
+            currentPart = 1;
+
+            currentData =
+                [...(allData[1] || [])];
+
+            currentIndex = 0;
+
+
+            document.getElementById(
+                "currentPartTitle"
+            ).innerText = "Bagian 1";
+
+
+            initDropdown();
+
+            render();
+
+            updateTotalProgress();
+        }
+
+
+        /* =====================================================
+           LOAD PROGRESS
+        ===================================================== */
+
+        async function loadProgress() {
+
+            progressMap = {};
+
+
+            if (!currentUser) {
+                return;
+            }
+
+
+            const { data, error } =
+                await supabaseClient
+                .from("card_progress")
+                .select("*")
+                .eq("user_id", currentUser.id);
+
+
+            if (error) {
+
+                console.error(
+                    "Gagal mengambil progress:",
+                    error
+                );
+
+                return;
+            }
+
+
+            for (const row of data || []) {
+
+                progressMap[row.card_id] =
+                    row;
+            }
+        }
+
+
+        /* =====================================================
+           CARD ID
+        ===================================================== */
+
+        function getCardId(part, item) {
+
+            return `part${part}_${item.k}`;
+        }
+
+
+        /* =====================================================
+           IS MASTERED
+        ===================================================== */
+
+        function isMastered(item) {
+
+            const id =
+                getCardId(
+                    currentPart,
+                    item
+                );
+
+
+            return progressMap[id]?.status ===
+                "mastered";
+        }
+
+
+        /* =====================================================
+           SAVE PROGRESS
+        ===================================================== */
+
+        async function saveProgress(item, status) {
+
+            if (!currentUser) {
+                return;
+            }
+
+
+            const cardId =
+                getCardId(
+                    currentPart,
+                    item
+                );
+
+
+            const old =
+                progressMap[cardId];
+
+
+            const reviewCount =
+                (old?.review_count || 0) + 1;
+
+
+            const row = {
+
+                user_id:
+                    currentUser.id,
+
+                card_id:
+                    cardId,
+
+                part:
+                    currentPart,
+
+                status:
+                    status,
+
+                review_count:
+                    reviewCount,
+
+                updated_at:
+                    new Date().toISOString()
+
+            };
+
+
+            const { data, error } =
+                await supabaseClient
+                .from("card_progress")
+                .upsert(
+                    row,
+                    {
+                        onConflict:
+                            "user_id,card_id"
+                    }
+                )
+                .select()
+                .single();
+
+
+            if (error) {
+
+                console.error(
+                    "Gagal menyimpan:",
+                    error
+                );
+
+                alert(
+                    "Gagal menyimpan progres.\n\n" +
+                    error.message
+                );
+
+                return;
+            }
+
+
+            progressMap[cardId] =
+                data;
+
+
+            render();
+
+            updateTotalProgress();
+
+            initDropdown();
+        }
+
+
+        /* =====================================================
+           TOGGLE MASTERED
+        ===================================================== */
+
+        async function toggleMastered(event) {
+
+            if (event) {
+                event.stopPropagation();
+            }
+
+
+            const item =
+                currentData[currentIndex];
+
+
+            if (!item) {
+                return;
+            }
+
+
+            const mastered =
+                isMastered(item);
+
+
+            if (mastered) {
+
+                await saveProgress(
+                    item,
+                    "learning"
+                );
+
+            } else {
+
+                await saveProgress(
+                    item,
+                    "mastered"
+                );
+            }
+        }
+
+
+        /* =====================================================
+           DROPDOWN
+        ===================================================== */
+
         function initDropdown() {
-            const list = document.getElementById('dropdownList');
-            list.innerHTML = '';
-            for(let i=1; i<=40; i++) {
-                const btn = document.createElement('button');
-                btn.className = `w-full flex items-center justify-between px-4 py-3.5 text-xs font-bold rounded-2xl transition-all mb-1 last:mb-0 ${i === currentPart ? 'active-part' : 'text-slate-500 hover:bg-slate-50'}`;
+
+            const list =
+                document.getElementById(
+                    "dropdownList"
+                );
+
+
+            list.innerHTML = "";
+
+
+            for (let i = 1; i <= 11; i++) {
+
+                const data =
+                    allData[i] || [];
+
+
+                const mastered =
+                    data.filter(item => {
+
+                        const id =
+                            getCardId(i, item);
+
+                        return progressMap[id]
+                            ?.status ===
+                            "mastered";
+
+                    }).length;
+
+
+                const btn =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                btn.className =
+                    `w-full flex items-center
+                     justify-between px-4 py-3.5
+                     text-xs font-bold rounded-2xl
+                     transition-all mb-1
+                     ${
+                        i === currentPart
+                        ? "active-part"
+                        : "text-slate-500 hover:bg-slate-50"
+                     }`;
+
+
                 btn.innerHTML = `
-                    <span>Bagian ${i}</span>
-                    ${allData[i].length > 0 ? `<span class="text-[8px] bg-slate-100 text-slate-400 px-1.5 py-0.5 rounded-md">${allData[i].length}</span>` : ''}
+
+                    <span>
+                        Bagian ${i}
+                    </span>
+
+                    <span class="text-[8px]
+                                 px-1.5 py-0.5
+                                 rounded-md
+                                 ${
+                                    mastered === data.length &&
+                                    data.length > 0
+                                    ? "bg-green-100 text-green-600"
+                                    : "bg-slate-100 text-slate-400"
+                                 }">
+
+                        ${mastered}/${data.length}
+
+                    </span>
+
                 `;
-                btn.onclick = () => { switchPart(i); closeDropdown(); };
+
+
+                btn.onclick = () => {
+
+                    switchPart(i);
+
+                    closeDropdown();
+                };
+
+
                 list.appendChild(btn);
             }
         }
 
-        function toggleDropdown(e) {
-            e.stopPropagation();
-            const dd = document.getElementById('partDropdown');
-            const arrow = document.getElementById('dropdownArrow');
-            if(dd.classList.contains('hidden')) {
-                dd.classList.remove('hidden');
-                setTimeout(() => {
-                    dd.classList.replace('opacity-0', 'opacity-100');
-                    dd.classList.replace('-translate-y-4', 'translate-y-0');
-                    arrow.style.transform = 'rotate(180deg)';
-                }, 10);
+
+        /* =====================================================
+           SWITCH PART
+        ===================================================== */
+
+        function switchPart(n) {
+
+            currentPart = n;
+
+
+            currentData =
+                [...(allData[n] || [])];
+
+
+            currentIndex = 0;
+
+
+            document.getElementById(
+                "currentPartTitle"
+            ).innerText =
+                "Bagian " + n;
+
+
+            initDropdown();
+
+            render();
+        }
+
+
+        /* =====================================================
+           RENDER
+        ===================================================== */
+
+        function render() {
+
+            if (!currentData.length) {
+
+                document.getElementById(
+                    "kanjiDisplay"
+                ).innerText = "?";
+
+
+                document.getElementById(
+                    "readingDisplay"
+                ).innerText = "-";
+
+
+                document.getElementById(
+                    "meaningDisplay"
+                ).innerText = "Tidak ada data";
+
+
+                return;
+            }
+
+
+            const item =
+                currentData[currentIndex];
+
+
+            document.getElementById(
+                "kanjiDisplay"
+            ).innerText =
+                item.k;
+
+
+            document.getElementById(
+                "readingDisplay"
+            ).innerText =
+                item.r;
+
+
+            document.getElementById(
+                "meaningDisplay"
+            ).innerText =
+                item.m;
+
+
+            const mastered =
+                isMastered(item);
+
+
+            const button =
+                document.getElementById(
+                    "masteredButton"
+                );
+
+
+            if (mastered) {
+
+                button.innerText =
+                    "✓ Sudah Hafal";
+
+
+                button.className =
+                    `flex-1 mx-3 h-14
+                     bg-green-500
+                     text-white
+                     rounded-[1.5rem]
+                     font-black text-sm
+                     active:scale-95
+                     transition`;
+
             } else {
+
+                button.innerText =
+                    "✓ Tandai Sudah Hafal";
+
+
+                button.className =
+                    `flex-1 mx-3 h-14
+                     bg-slate-900
+                     text-white
+                     rounded-[1.5rem]
+                     font-black text-sm
+                     active:scale-95
+                     transition`;
+            }
+
+
+            const masteredCount =
+                currentData.filter(
+                    item => isMastered(item)
+                ).length;
+
+
+            const percentage =
+                currentData.length
+                    ? Math.round(
+                        masteredCount /
+                        currentData.length *
+                        100
+                    )
+                    : 0;
+
+
+            document.getElementById(
+                "counterText"
+            ).innerText =
+                `${masteredCount} / ${currentData.length}`;
+
+
+            document.getElementById(
+                "percentageText"
+            ).innerText =
+                `${percentage}%`;
+
+
+            document.getElementById(
+                "progressBar"
+            ).style.width =
+                `${percentage}%`;
+
+
+            resetFlip();
+        }
+
+
+        /* =====================================================
+           FLIP
+        ===================================================== */
+
+        function flipCard() {
+
+            flipped = !flipped;
+
+
+            document.getElementById(
+                "cardInner"
+            ).classList.toggle(
+                "rotate-y-180",
+                flipped
+            );
+        }
+
+
+        /* =====================================================
+           RESET FLIP
+        ===================================================== */
+
+        function resetFlip() {
+
+            flipped = false;
+
+
+            document.getElementById(
+                "cardInner"
+            ).classList.remove(
+                "rotate-y-180"
+            );
+        }
+
+
+        /* =====================================================
+           NEXT
+        ===================================================== */
+
+        function nextCard(event) {
+
+            if (event) {
+                event.stopPropagation();
+            }
+
+
+            if (!currentData.length) {
+                return;
+            }
+
+
+            currentIndex =
+                (currentIndex + 1)
+                % currentData.length;
+
+
+            render();
+        }
+
+
+        /* =====================================================
+           PREVIOUS
+        ===================================================== */
+
+        function prevCard(event) {
+
+            if (event) {
+                event.stopPropagation();
+            }
+
+
+            if (!currentData.length) {
+                return;
+            }
+
+
+            currentIndex =
+                (currentIndex - 1 +
+                 currentData.length)
+                % currentData.length;
+
+
+            render();
+        }
+
+
+        /* =====================================================
+           SHUFFLE
+        ===================================================== */
+
+        function shuffleCurrentPart(event) {
+
+            if (event) {
+                event.stopPropagation();
+            }
+
+
+            if (currentData.length <= 1) {
+
+                alert(
+                    "Kartu tidak cukup untuk diacak."
+                );
+
+                return;
+            }
+
+
+            const card =
+                document.getElementById(
+                    "flashcard"
+                );
+
+
+            /* Animasi */
+
+            card.classList.remove(
+                "animate-shuffle"
+            );
+
+
+            void card.offsetWidth;
+
+
+            card.classList.add(
+                "animate-shuffle"
+            );
+
+
+            setTimeout(() => {
+
+                card.classList.remove(
+                    "animate-shuffle"
+                );
+
+            }, 400);
+
+
+            /* Fisher-Yates Shuffle */
+
+            for (
+                let i = currentData.length - 1;
+                i > 0;
+                i--
+            ) {
+
+                const j =
+                    Math.floor(
+                        Math.random() *
+                        (i + 1)
+                    );
+
+
+                const temp =
+                    currentData[i];
+
+
+                currentData[i] =
+                    currentData[j];
+
+
+                currentData[j] =
+                    temp;
+            }
+
+
+            /* Mulai dari awal */
+
+            currentIndex = 0;
+
+
+            /* Balik ke depan */
+
+            resetFlip();
+
+
+            /* Tampilkan kartu */
+
+            render();
+        }
+
+
+        /* =====================================================
+           TOTAL PROGRESS
+        ===================================================== */
+
+        function updateTotalProgress() {
+
+            let total = 0;
+
+            let mastered = 0;
+
+
+            for (
+                let part = 1;
+                part <= 11;
+                part++
+            ) {
+
+                const data =
+                    allData[part] || [];
+
+
+                total += data.length;
+
+
+                for (const item of data) {
+
+                    const id =
+                        getCardId(
+                            part,
+                            item
+                        );
+
+
+                    if (
+                        progressMap[id]
+                        ?.status ===
+                        "mastered"
+                    ) {
+
+                        mastered++;
+                    }
+                }
+            }
+
+
+            const percentage =
+                total
+                    ? Math.round(
+                        mastered /
+                        total *
+                        100
+                    )
+                    : 0;
+
+
+            document.getElementById(
+                "totalProgressText"
+            ).innerText =
+                `${percentage}%`;
+
+
+            document.getElementById(
+                "totalProgressBar"
+            ).style.width =
+                `${percentage}%`;
+        }
+
+
+        /* =====================================================
+           DROPDOWN OPEN / CLOSE
+        ===================================================== */
+
+        function toggleDropdown(e) {
+
+            e.stopPropagation();
+
+
+            const dd =
+                document.getElementById(
+                    "partDropdown"
+                );
+
+
+            const arrow =
+                document.getElementById(
+                    "dropdownArrow"
+                );
+
+
+            if (dd.classList.contains("hidden")) {
+
+                dd.classList.remove("hidden");
+
+
+                setTimeout(() => {
+
+                    dd.classList.replace(
+                        "opacity-0",
+                        "opacity-100"
+                    );
+
+
+                    dd.classList.replace(
+                        "-translate-y-4",
+                        "translate-y-0"
+                    );
+
+
+                    arrow.style.transform =
+                        "rotate(180deg)";
+
+                }, 10);
+
+            } else {
+
                 closeDropdown();
             }
         }
 
+
         function closeDropdown() {
-            const dd = document.getElementById('partDropdown');
-            const arrow = document.getElementById('dropdownArrow');
-            dd.classList.replace('opacity-100', 'opacity-0');
-            dd.classList.replace('translate-y-0', '-translate-y-4');
-            arrow.style.transform = 'rotate(0deg)';
-            setTimeout(() => dd.classList.add('hidden'), 300);
-        }
 
-        function switchPart(n) {
-            currentPart = n;
-            currentData = allData[n].length > 0 ? [...allData[n]] : [{k:"?", r:"Belum Ada Data", m:"Part " + n + " Masih Kosong"}];
-            currentIndex = 0;
-            document.getElementById('currentPartTitle').innerText = "Bagian " + n;
-            initDropdown();
-            render();
-        }
+            const dd =
+                document.getElementById(
+                    "partDropdown"
+                );
 
-        function render() {
-            const item = currentData[currentIndex];
-            document.getElementById('kanjiDisplay').innerText = item.k;
-            document.getElementById('readingDisplay').innerText = item.r;
-            document.getElementById('meaningDisplay').innerText = item.m;
-            
-            document.getElementById('counterText').innerText = `${currentIndex + 1} / ${currentData.length}`;
-            const perc = currentData.length > 0 ? Math.round(((currentIndex + 1) / currentData.length) * 100) : 0;
-            document.getElementById('progressBar').style.width = `${perc}%`;
-            document.getElementById('percentageText').innerText = `${perc}%`;
-            resetFlip();
-        }
 
-        function shuffleCurrentPart() {
-            if(currentData.length <= 1) return;
-            const card = document.getElementById('flashcard');
-            card.classList.add('animate-shuffle');
-            setTimeout(() => card.classList.remove('animate-shuffle'), 400);
+            const arrow =
+                document.getElementById(
+                    "dropdownArrow"
+                );
 
-            for (let i = currentData.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [currentData[i], currentData[j]] = [currentData[j], currentData[i]];
+
+            if (
+                dd.classList.contains(
+                    "hidden"
+                )
+            ) {
+                return;
             }
-            currentIndex = 0;
-            render();
+
+
+            dd.classList.replace(
+                "opacity-100",
+                "opacity-0"
+            );
+
+
+            dd.classList.replace(
+                "translate-y-0",
+                "-translate-y-4"
+            );
+
+
+            arrow.style.transform =
+                "rotate(0deg)";
+
+
+            setTimeout(() => {
+
+                dd.classList.add(
+                    "hidden"
+                );
+
+            }, 300);
         }
 
-        function flipCard() { flipped = !flipped; document.getElementById('cardInner').classList.toggle('rotate-y-180', flipped); }
-        function resetFlip() { flipped = false; document.getElementById('cardInner').classList.remove('rotate-y-180'); }
-        function nextCard() { currentIndex = (currentIndex + 1) % currentData.length; render(); }
-        function prevCard() { currentIndex = (currentIndex - 1 + currentData.length) % currentData.length; render(); }
+
+        /* =====================================================
+           PREVIEW
+        ===================================================== */
 
         function togglePreview() {
-            const modal = document.getElementById('previewModal');
-            const box = document.getElementById('modalBox');
-            const content = document.getElementById('modalContent');
-            if(modal.classList.contains('hidden')) {
-                document.getElementById('modalSub').innerText = `Bagian ${currentPart} • ${currentData.length} Item`;
-                content.innerHTML = currentData.map((item, idx) => `
-                    <div onclick="jumpTo(${idx})" class="group flex items-center justify-between p-5 rounded-[2rem] cursor-pointer border-2 transition-all ${currentIndex === idx ? 'bg-red-50 border-red-100' : 'bg-white border-slate-50 hover:border-slate-100'}">
-                        <div class="flex items-center gap-5">
-                            <span class="text-3xl text-slate-900">${item.k}</span>
-                            <div class="flex flex-col">
-                                <span class="text-xs font-black text-slate-800 uppercase tracking-tight">${item.m}</span>
-                                <span class="text-[10px] font-bold text-slate-400 mt-0.5">${item.r}</span>
-                            </div>
-                        </div>
-                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-400"><path d="m9 18 6-6-6-6"/></svg>
-                        </div>
-                    </div>
-                `).join('');
-                modal.classList.remove('hidden');
-                setTimeout(() => box.classList.replace('translate-y-full', 'translate-y-0'), 10);
+
+            const modal =
+                document.getElementById(
+                    "previewModal"
+                );
+
+
+            const box =
+                document.getElementById(
+                    "modalBox"
+                );
+
+
+            if (
+                modal.classList.contains(
+                    "hidden"
+                )
+            ) {
+
+                renderPreview();
+
+
+                modal.classList.remove(
+                    "hidden"
+                );
+
+
+                modal.classList.add(
+                    "flex"
+                );
+
+
+                setTimeout(() => {
+
+                    box.classList.replace(
+                        "translate-y-full",
+                        "translate-y-0"
+                    );
+
+                }, 10);
+
             } else {
-                box.classList.replace('translate-y-0', 'translate-y-full');
-                setTimeout(() => modal.classList.add('hidden'), 500);
+
+                box.classList.replace(
+                    "translate-y-0",
+                    "translate-y-full"
+                );
+
+
+                setTimeout(() => {
+
+                    modal.classList.add(
+                        "hidden"
+                    );
+
+
+                    modal.classList.remove(
+                        "flex"
+                    );
+
+                }, 500);
             }
         }
 
-        function jumpTo(idx) { currentIndex = idx; render(); togglePreview(); }
 
-        window.onload = () => { initDropdown(); render(); };
+        /* =====================================================
+           PREVIEW LIST
+        ===================================================== */
+
+        function renderPreview() {
+
+            const content =
+                document.getElementById(
+                    "modalContent"
+                );
+
+
+            document.getElementById(
+                "modalSub"
+            ).innerText =
+                `Bagian ${currentPart} • ${currentData.length} Item`;
+
+
+            content.innerHTML =
+                currentData.map(
+                    (item, idx) => {
+
+                        const mastered =
+                            isMastered(item);
+
+
+                        return `
+
+                            <div
+                                onclick="jumpTo(${idx})"
+                                class="
+                                    flex
+                                    items-center
+                                    justify-between
+                                    p-5
+                                    rounded-[2rem]
+                                    cursor-pointer
+                                    border-2
+                                    transition-all
+                                    ${
+                                        mastered
+                                        ? "mastered"
+                                        : "bg-white border-slate-50"
+                                    }
+                                ">
+
+                                <div class="
+                                    flex
+                                    items-center
+                                    gap-5
+                                ">
+
+                                    <span class="
+                                        text-3xl
+                                        text-slate-900
+                                    ">
+
+                                        ${item.k}
+
+                                    </span>
+
+
+                                    <div>
+
+                                        <span class="
+                                            block
+                                            text-xs
+                                            font-black
+                                            text-slate-800
+                                        ">
+
+                                            ${item.m}
+
+                                        </span>
+
+
+                                        <span class="
+                                            block
+                                            text-[10px]
+                                            font-bold
+                                            text-slate-400
+                                            mt-1
+                                        ">
+
+                                            ${item.r}
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="text-lg">
+
+                                    ${
+                                        mastered
+                                        ? "✓"
+                                        : "○"
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+                    }
+                ).join("");
+        }
+
+
+        /* =====================================================
+           JUMP TO CARD
+        ===================================================== */
+
+        function jumpTo(idx) {
+
+            currentIndex = idx;
+
+            render();
+
+            togglePreview();
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        async function logout() {
+
+            const yes =
+                confirm(
+                    "Yakin ingin keluar?"
+                );
+
+
+            if (!yes) {
+                return;
+            }
+
+
+            await supabaseClient
+                .auth
+                .signOut();
+        }
+
+
+        /* =====================================================
+           START
+        ===================================================== */
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                checkSession();
+
+            }
+        );
+
     </script>
+
 </body>
+
 </html>
