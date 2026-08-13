@@ -25,6 +25,6 @@ Aplikasi web flashcard untuk belajar 700+ Kanji JLPT N3. Dibuat dengan Vanilla J
 Jangan lupa ganti Supabase Key sebelum deploy ke public.
 
 ## 🎯 Roadmap
-- [ ] Simpan progress ke Supabase Database
+- [✅] Simpan progress ke Supabase Database
 - [ ] Tambah Audio Onyomi/Kunyomi
 - [ ] Mode Quiz
