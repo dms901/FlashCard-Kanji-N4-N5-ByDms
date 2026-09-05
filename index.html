@@ -928,1152 +928,4072 @@
         ===================================================== */
 
         const allData = {
-
-          1:[
-  { "k": "残業", "r": "ざんぎょう", "m": "Lembur" },
-  { "k": "残る", "r": "のこる", "m": "Tinggal, tersisa" },
-  { "k": "残念", "r": "ざんねん", "m": "Disayangkan" },
-  { "k": "残す", "r": "のこす", "m": "Meninggalkan, menyisakan" },
-  { "k": "席", "r": "せき", "m": "Tempat duduk" },
-  { "k": "出席", "r": "しゅっせき", "m": "Menghadiri" },
-  { "k": "欠席", "r": "けっせき", "m": "Tidak hadir" },
-  { "k": "階段", "r": "かいだん", "m": "Tangga" },
-  { "k": "賞", "r": "しょう", "m": "Hadiah / Penghargaan" },
-  { "k": "賞味期限", "r": "しょうみきげん", "m": "Batas waktu konsumsi" },
-  { "k": "賞金", "r": "しょうきん", "m": "Hadiah uang" },
-  { "k": "賞品", "r": "しょうひん", "m": "Hadiah barang" },
-  { "k": "関心", "r": "かんしん", "m": "Minat" },
-  { "k": "関する", "r": "かんする", "m": "Berkaitan dengan" },
-  { "k": "無休", "r": "むきゅう", "m": "Tanpa libur" },
-  { "k": "無理", "r": "むり", "m": "Tidak mungkin / Memaksakan" },
-  { "k": "無料", "r": "むりょう", "m": "Gratis" },
-  { "k": "無い", "r": "ない", "m": "Tidak ada" },
-  { "k": "全部", "r": "ぜんぶ", "m": "Semua" },
-  { "k": "安全", "r": "あんぜん", "m": "Keselamatan / Aman" },
-  { "k": "全席", "r": "ぜんせき", "m": "Semua kursi" },
-  { "k": "全国", "r": "ぜんこく", "m": "Seluruh negeri" },
-  { "k": "便利", "r": "べんり", "m": "Praktis / Berguna" },
-  { "k": "利用", "r": "りよう", "m": "Menggunakan" },
-  { "k": "連休", "r": "れんきゅう", "m": "Libur berturut-turut" },
-  { "k": "連れて行く", "r": "つれていく", "m": "Membawa pergi" },
-  { "k": "家内", "r": "かない", "m": "Istri" },
-  { "k": "国内", "r": "こくない", "m": "Dalam negeri" },
-  { "k": "内側", "r": "うちがわ", "m": "Bagian dalam" },
-  { "k": "室内", "r": "しつない", "m": "Di dalam ruangan" }
-] ,
-            
-
-            2:[
-  { "k": "存在", "r": "そんざい", "m": "Eksistensi / Keberadaan" },
-  { "k": "存念", "r": "そんねん", "m": "Pendapat / Ide" },
-  { "k": "存命", "r": "そんめい", "m": "Hidup / Masih hidup" },
-  { "k": "他", "r": "ほか", "m": "Yang lain" },
-  { "k": "他県", "r": "たけん", "m": "Prefektur lain" },
-  { "k": "他世界", "r": "たせかい", "m": "Dunia lain" },
-  { "k": "易しい", "r": "やさしい", "m": "Mudah" },
-  { "k": "易動度", "r": "いどうど", "m": "Mobilitas" },
-  { "k": "易断", "r": "えきだん", "m": "Ramalan" },
-  { "k": "積", "r": "せき", "m": "Produk / Perkalian" },
-  { "k": "積集合", "r": "せきしゅうごう", "m": "Persimpangan / Irisan" },
-  { "k": "積極", "r": "せっきょく", "m": "Positif / Aktif" },
-  { "k": "教師", "r": "きょうし", "m": "Guru" },
-  { "k": "師弟", "r": "してい", "m": "Guru dan murid" },
-  { "k": "師儒", "r": "しじゅ", "m": "Sarjana / Cendekiawan" },
-  { "k": "突然", "r": "とつぜん", "m": "Tiba-tiba" },
-  { "k": "突破", "r": "とっぱ", "m": "Penerobosan" },
-  { "k": "突撃砲", "r": "とつげきほう", "m": "Senapan serbu" },
-  { "k": "否", "r": "いや", "m": "Bukan / Tidak" },
-  { "k": "否定", "r": "ひてい", "m": "Negatif / Penolakan" },
-  { "k": "否応無し", "r": "いやおうなし", "m": "Wajib / Mau gak mau" },
-  { "k": "失敗", "r": "しっぱい", "m": "Kegagalan" },
-  { "k": "敗", "r": "はい", "m": "Kekalahan" },
-  { "k": "敗北主義", "r": "はいぼくしゅぎ", "m": "Sikap menyerah" },
-  { "k": "処理", "r": "しょり", "m": "Pemrosesan / Pengolahan" },
-  { "k": "処刑", "r": "しょけい", "m": "Eksekusi / Hukuman mati" },
-  { "k": "処理過程", "r": "しょりかてい", "m": "Prosedur / Proses" },
-  { "k": "程", "r": "ほど", "m": "Derajat / Kira-kira" },
-  { "k": "程度問題", "r": "ていどモンダイ", "m": "Soal derajat / Masalah tingkat" },
-  { "k": "程副詞", "r": "ていどふくし", "m": "Kata keterangan derajat" }
+  1: [
+  {
+    "k": "キッチン・台所",
+    "r": "キッチン・だいどころ",
+    "m": "dapur"
+  },
+  {
+    "k": "ワイングラス",
+    "r": "ワイングラス",
+    "m": "gelas wine"
+  },
+  {
+    "k": "冷蔵庫",
+    "r": "れいぞうこ",
+    "m": "kulkas"
+  },
+  {
+    "k": "コーヒーカップ",
+    "r": "コーヒーカップ",
+    "m": "cangkir kopi"
+  },
+  {
+    "k": "電子レンジ",
+    "r": "でんしレンジ",
+    "m": "microwave"
+  },
+  {
+    "k": "ガスレンジ/ガスコンロ",
+    "r": "ガスレンジ/ガスコンロ",
+    "m": "kompor"
+  },
+  {
+    "k": "ガラスのコップ",
+    "r": "ガラスのコップ",
+    "m": "gelas kaca"
+  },
+  {
+    "k": "レバー",
+    "r": "レバー",
+    "m": "tuas (putaran) keran"
+  },
+  {
+    "k": "湯のみ(茶わん)",
+    "r": "ゆのみ(ちゃわん)",
+    "m": "gelas air/teh"
+  },
+  {
+    "k": "茶わん",
+    "r": "ちゃわん",
+    "m": "mangkuk kecil"
+  },
+  {
+    "k": "流し",
+    "r": "ながし",
+    "m": "sink (bak wastafel)"
+  },
+  {
+    "k": "居間・リビング",
+    "r": "いま・リビング",
+    "m": "living room"
+  },
+  {
+    "k": "窓ガラス",
+    "r": "まどガラス",
+    "m": "kaca jendela"
+  },
+  {
+    "k": "雨戸",
+    "r": "あまど",
+    "m": "pintu penghalang air hujan"
+  },
+  {
+    "k": "ヒーター",
+    "r": "ヒーター",
+    "m": "penghangat"
+  },
+  {
+    "k": "網戸",
+    "r": "あみど",
+    "m": "pintu penghalang serangga"
+  },
+  {
+    "k": "コンセント",
+    "r": "コンセント",
+    "m": "stop kontak"
+  },
+  {
+    "k": "床",
+    "r": "ゆか",
+    "m": "lantai"
+  },
+  {
+    "k": "じゅうたん/カーペット",
+    "r": "じゅうたん/カーペット",
+    "m": "karpet"
+  },
+  {
+    "k": "天井",
+    "r": "てんじょう",
+    "m": "atap"
+  }
 ],
-
-            3:[
-  { "k": "合格", "r": "ごうかく", "m": "Lulus" },
-  { "k": "格安", "r": "かくやす", "m": "Harga murah" },
-  { "k": "〜歳", "r": "〜さい", "m": "Umur... tahun" },
-  { "k": "高齢", "r": "こうれい", "m": "Lanjut usia" },
-  { "k": "必要", "r": "ひつよう", "m": "Perlu" },
-  { "k": "必ず", "r": "かならず", "m": "Pasti" },
-  { "k": "正確", "r": "せいかく", "m": "Benar, akurat" },
-  { "k": "確かめる", "r": "たしかめる", "m": "Memastikan" },
-  { "k": "確か", "r": "たしか", "m": "Kalau tidak salah" },
-  { "k": "結婚式", "r": "けっこんしき", "m": "Upacara pernikahan" },
-  { "k": "入学式", "r": "にゅうがくしき", "m": "Upacara masuk sekolah" },
-  { "k": "両親", "r": "りょうしん", "m": "Kedua orang tua" },
-  { "k": "車両", "r": "しゃりょう", "m": "Jumlah gerbong / Kendaraan" },
-  { "k": "表示", "r": "ひょうじ", "m": "Indikasi, tampilan" },
-  { "k": "示す", "r": "しめす", "m": "Menunjukkan" },
-  { "k": "指示", "r": "しじ", "m": "Instruksi / Perintah" },
-  { "k": "関係", "r": "かんけい", "m": "Hubungan" },
-  { "k": "係", "r": "かかり", "m": "Petugas" },
-  { "k": "増加", "r": "ぞうか", "m": "Bertambah" },
-  { "k": "増やす", "r": "ふやす", "m": "Menambah" },
-  { "k": "増える", "r": "ふえる", "m": "Bertambah" },
-  { "k": "目次", "r": "もくじ", "m": "Daftar isi" },
-  { "k": "次回", "r": "じかい", "m": "Selanjutnya / Berikutnya" },
-  { "k": "次", "r": "つぎ", "m": "Selanjutnya" }
-], 
-
-4:[
-  { "k": "労する", "r": "ろうする", "m": "Bersusah payah" },
-  { "k": "労働", "r": "ろうどう", "m": "Tenaga kerja" },
-  { "k": "労働契約書", "r": "ろうどうけいやくしょ", "m": "Kontrak kerja" },
-  { "k": "育つ", "r": "そだつ", "m": "Tumbuh" },
-  { "k": "育ち", "r": "そだち", "m": "Pertumbuhan" },
-  { "k": "育てる", "r": "そだてる", "m": "Mendidik / Mengasuh" },
-  { "k": "助ける", "r": "たすける", "m": "Membantu / Menolong" },
-  { "k": "助手", "r": "じょしゅ", "m": "Asisten" },
-  { "k": "助言する", "r": "じょげんする", "m": "Menasehati" },
-  { "k": "害", "r": "がい", "m": "Kerugian / Kerusakan" },
-  { "k": "害者", "r": "がいしゃ", "m": "Korban" },
-  { "k": "害魚", "r": "がいぎょ", "m": "Ikan berbahaya" },
-  { "k": "念話", "r": "ねんわ", "m": "Telepat" },
-  { "k": "念動", "r": "ねんどう", "m": "Telekinesis" },
-  { "k": "想念", "r": "そうねん", "m": "Pemikiran" },
-  { "k": "備える", "r": "そなえる", "m": "Mempersiapkan" },
-  { "k": "備忘", "r": "びぼう", "m": "Pengingat" },
-  { "k": "備考", "r": "びこう", "m": "Keterangan" },
-  { "k": "想う", "r": "おもう", "m": "Berpikir" },
-  { "k": "想念", "r": "そうねん", "m": "Pemikiran" },
-  { "k": "想察", "r": "そうさつ", "m": "Hipotesis" },
-  { "k": "規", "r": "き", "m": "Aturan" },
-  { "k": "規格", "r": "きかく", "m": "Standar / Norma" },
-  { "k": "規模", "r": "きぼ", "m": "Skala" },
-  { "k": "訪れる", "r": "おとずれる", "m": "Berkunjung / Mengunjungi" },
-  { "k": "訪問先", "r": "ほうもんさき", "m": "Tempat yang ingin dikunjungi" },
-  { "k": "訪日", "r": "ほうにち", "m": "Kunjungan ke Jepang" },
-  { "k": "違う", "r": "ちがう", "m": "Tidak, bukan / Salah, beda" },
-  { "k": "違反", "r": "いはん", "m": "Pelanggaran" },
-  { "k": "違法性", "r": "いほうせい", "m": "Ketidakabsahan" }
+  2: [
+  {
+    "k": "コード",
+    "r": "コード",
+    "m": "kabel"
+  },
+  {
+    "k": "エアコン",
+    "r": "エアコン",
+    "m": "air conditioner"
+  },
+  {
+    "k": "水道の蛇口をひねる",
+    "r": "すいどうのじゃぐちをひねる",
+    "m": "memutar air keran"
+  },
+  {
+    "k": "氷になる",
+    "r": "こおりになる",
+    "m": "menjadi es"
+  },
+  {
+    "k": "水が凍る",
+    "r": "みずがこおる",
+    "m": "air nya membeku"
+  },
+  {
+    "k": "冷凍して保存する",
+    "r": "れいとうしてほぞんする",
+    "m": "menyimpan dengan membekukannya"
+  },
+  {
+    "k": "残り物を温める",
+    "r": "のこりものをあたためる",
+    "m": "menghangatkan makanan yang tersisa"
+  },
+  {
+    "k": "ビールを冷やす",
+    "r": "ビールをひやす",
+    "m": "mendinginkan bir"
+  },
+  {
+    "k": "ビールが冷えている",
+    "r": "ビールがひえている",
+    "m": "bir nya dingin"
+  },
+  {
+    "k": "エアコンのリモコン",
+    "r": "エアコンのリモコン",
+    "m": "remot AC"
+  },
+  {
+    "k": "スイッチ",
+    "r": "スイッチ",
+    "m": "tombol sakelar"
+  },
+  {
+    "k": "電源を切る",
+    "r": "でんげんをきる",
+    "m": "mematikan"
+  },
+  {
+    "k": "電源を入れる",
+    "r": "でんげんをいれる",
+    "m": "menyalakan"
+  },
+  {
+    "k": "じゅうたんを敷く",
+    "r": "じゅうたんをしく",
+    "m": "menggelar karpet"
+  },
+  {
+    "k": "部屋を暖める",
+    "r": "へやをあたためる",
+    "m": "menghangatkan ruangan"
+  },
+  {
+    "k": "暖房をつける",
+    "r": "だんぼうをつける",
+    "m": "menyalakan penghangat"
+  },
+  {
+    "k": "冷房(クーラー)が効いている",
+    "r": "れいぼう(クーラー)がきいている",
+    "m": "dinginnya terasa"
+  },
+  {
+    "k": "日当たりがいい",
+    "r": "ひあたりがいい",
+    "m": "(terkena sinar matahari)"
+  },
+  {
+    "k": "日当たりが悪い",
+    "r": "ひあたりがわるい",
+    "m": "(tidak terkena sinar matahari)"
+  },
+  {
+    "k": "まな板包丁",
+    "r": "まな",
+    "m": "pisau talenan"
+  }
 ],
-5:[
-  { "k": "両側", "r": "りょうがわ", "m": "Kedua sisi" },
-  { "k": "右側", "r": "みぎがわ", "m": "Sebelah kanan" },
-  { "k": "窓側", "r": "まどがわ", "m": "Kursi dekat jendela" },
-  { "k": "件名", "r": "けんめい", "m": "Subjek, judul" },
-  { "k": "事件", "r": "じけん", "m": "Kecelakaan / Peristiwa" },
-  { "k": "不在", "r": "ふざい", "m": "Tidak ada" },
-  { "k": "現在", "r": "げんざい", "m": "Sekarang" },
-  { "k": "送信", "r": "そうしん", "m": "Mengirim" },
-  { "k": "信じる", "r": "しんじる", "m": "Percaya" },
-  { "k": "自信", "r": "じしん", "m": "Percaya diri" },
-  { "k": "信用", "r": "しんよう", "m": "Kepercayaan" },
-  { "k": "便利", "r": "べんり", "m": "Praktis" },
-  { "k": "利用", "r": "りよう", "m": "Menggunakan" },
-  { "k": "参加", "r": "さんか", "m": "Mengikuti / Partisipasi" },
-  { "k": "参考書", "r": "さんこうしょ", "m": "Buku referensi" },
-  { "k": "参る", "r": "まいる", "m": "Datang" },
-  { "k": "確認", "r": "かくにん", "m": "Konfirmasi" },
-  { "k": "認める", "r": "みとめる", "m": "Menerima, mengakui" },
-  { "k": "広告", "r": "こうこく", "m": "Iklan" },
-  { "k": "全面", "r": "ぜんめん", "m": "Semuanya" },
-  { "k": "画面", "r": "がめん", "m": "Layar, display" },
-  { "k": "〜方面", "r": "〜ほうめん", "m": "Area, lajur" },
-  { "k": "方向", "r": "ほうこう", "m": "Arah" },
-  { "k": "向こう", "r": "むこう", "m": "Sana, di sana" },
-  { "k": "向かう", "r": "むかう", "m": "Mengarah" },
-  { "k": "向き", "r": "むき", "m": "Diperuntukkan" }
-], 
-6:[
-  { "k": "共通", "r": "きょうつう", "m": "Umum" },
-  { "k": "共同性", "r": "きょうどうせい", "m": "Kerja sama" },
-  { "k": "共通化", "r": "きょうつうか", "m": "Kolaborasi" },
-  { "k": "原", "r": "はら", "m": "Asli, padang" },
-  { "k": "原作", "r": "げんさく", "m": "Asli pekerjaan" },
-  { "k": "原因調査", "r": "げんいんちょうさ", "m": "Investigasi" },
-  { "k": "活動", "r": "かつどう", "m": "Aktivitas" },
-  { "k": "活動家", "r": "かつどうか", "m": "Aktivis" },
-  { "k": "活", "r": "かつ", "m": "Menjalani hidup" },
-  { "k": "済み", "r": "すみ", "m": "Lunas" },
-  { "k": "済みません", "r": "すみません", "m": "Maaf" },
-  { "k": "済む", "r": "すむ", "m": "Perlu / Selesai" },
-  { "k": "報いる", "r": "むくいる", "m": "Pahala, skor" },
-  { "k": "報告", "r": "ほうこく", "m": "Laporan" },
-  { "k": "報道人", "r": "ほうどうじん", "m": "Reporter" },
-  { "k": "権", "r": "けん", "m": "Kewenangan" },
-  { "k": "権利", "r": "けんり", "m": "Hak, wewenang" },
-  { "k": "権的", "r": "ごんてき", "m": "Selir" },
-  { "k": "初めて", "r": "はじめて", "m": "Pertama kali" },
-  { "k": "初公開", "r": "はつこうかい", "m": "Debut" },
-  { "k": "初月", "r": "しょげつ", "m": "Bulan pertama" },
-  { "k": "加える", "r": "くわえる", "m": "Menambah" },
-  { "k": "加工", "r": "かこう", "m": "Pengolahan" },
-  { "k": "加速する", "r": "かそくする", "m": "Mempercepat" },
-  { "k": "平氏", "r": "へいし", "m": "Tenang" },
-  { "k": "平均的", "r": "へいきんてき", "m": "Rata-rata" },
-  { "k": "平和", "r": "へいわ", "m": "Ketentraman" },
-  { "k": "和らぐ", "r": "やわらぐ", "m": "Moderat / Melunak" },
-  { "k": "和方", "r": "わほう", "m": "Obat tradisional Jepang" },
-  { "k": "和平合意", "r": "わへいごうい", "m": "Kesepakatan damai" }
-], 7:[
-  { "k": "容疑", "r": "ようぎ", "m": "Tersangka, kecurigaan" },
-  { "k": "容積", "r": "ようせき", "m": "Volume" },
-  { "k": "容量集合", "r": "ようりょうしゅうごう", "m": "Kapasitas" },
-  { "k": "疑う", "r": "うたがう", "m": "Ragu" },
-  { "k": "疑問", "r": "ぎもん", "m": "Kesangsian" },
-  { "k": "疑問点", "r": "ぎもんてん", "m": "Ketidakpastian" },
-  { "k": "政府", "r": "せいふ", "m": "Pemerintah" },
-  { "k": "政治", "r": "せいじ", "m": "Politik" },
-  { "k": "流す", "r": "ながす", "m": "Mengalir" },
-  { "k": "流れ者", "r": "ながれもの", "m": "Gelandangan" },
-  { "k": "流し", "r": "ながし", "m": "Wastafel" },
-  { "k": "置く", "r": "おく", "m": "Menaruh" },
-  { "k": "置物", "r": "おきもの", "m": "Patung, patung" },
-  { "k": "置き方", "r": "おきかた", "m": "Penempatan" },
-  { "k": "議会", "r": "ぎかい", "m": "Parlemen" },
-  { "k": "議会選挙", "r": "ぎかいせんきょ", "m": "Pemilihan Parlemen" },
-  { "k": "位", "r": "くらい", "m": "Pangkat" },
-  { "k": "位付け", "r": "くらいづけ", "m": "Peringkat" },
-  { "k": "位置", "r": "いち", "m": "Lokasi, posisi" },
-  { "k": "翌", "r": "よく", "m": "Berikutnya, selanjutnya" },
-  { "k": "翌晩", "r": "よくばん", "m": "Malam berikutnya" },
-  { "k": "翌春", "r": "よくしゅん", "m": "Musim semi berikutnya" },
-  { "k": "談", "r": "だん", "m": "Bicara, cerita" },
-  { "k": "談話会", "r": "だんわかい", "m": "Simposium" },
-  { "k": "談語", "r": "だんご", "m": "Diskusi" },
-  { "k": "争い", "r": "あらそい", "m": "Konflik" },
-  { "k": "争い事", "r": "あらそいごと", "m": "Perselisihan" },
-  { "k": "争奪", "r": "そうだつ", "m": "Berebut" }
-], 8:[
-  { "k": "昨", "r": "さく", "m": "Terakhir" },
-  { "k": "昨年夏", "r": "さくねんなつ", "m": "Musim panas tahun lalu" },
-  { "k": "昨日", "r": "きのう", "m": "Kemarin" },
-  { "k": "求める", "r": "もとめる", "m": "Meminta" },
-  { "k": "求人広告", "r": "きゅうじんこうこく", "m": "Bantuan iklan" },
-  { "k": "求人", "r": "きゅうじん", "m": "Tawaran pekerjaan" },
-  { "k": "任せる", "r": "まかせる", "m": "Menyerahkan" },
-  { "k": "任務部隊", "r": "にんむぶたい", "m": "Gugus tugas" },
-  { "k": "任務", "r": "にんむ", "m": "Misi, jabatan" },
-  { "k": "組", "r": "くみ", "m": "Set, pasang" },
-  { "k": "組織的", "r": "そしきてき", "m": "Sistematis" },
-  { "k": "組織", "r": "そしき", "m": "Jaringan" },
-  { "k": "判断", "r": "はんだん", "m": "Keputusan" },
-  { "k": "判断基準", "r": "はんだんきじゅん", "m": "Kriteria evaluasi" },
-  { "k": "判明", "r": "はんめい", "m": "Ditemukan" },
-  { "k": "反", "r": "はん", "m": "Kekuatan, melawan" },
-  { "k": "反対側", "r": "はんたいがわ", "m": "Pihak oposisi" },
-  { "k": "反応", "r": "はんのう", "m": "Perilaku, tingkah" },
-  { "k": "勝る", "r": "まさる", "m": "Lebih penting dari" },
-  { "k": "勝利者", "r": "しょうりしゃ", "m": "Pemenang" },
-  { "k": "勝手", "r": "かって", "m": "Egois" },
-  { "k": "際", "r": "きわ", "m": "Ketika, waktu" },
-  { "k": "際立つ", "r": "きわだつ", "m": "Menonjol" },
-  { "k": "際限", "r": "さいげん", "m": "Batas" },
-  { "k": "資産", "r": "しさん", "m": "Aset" },
-  { "k": "資産家", "r": "しさんか", "m": "Orang kaya" },
-  { "k": "資料館", "r": "しりょうかん", "m": "Arsip" },
-  { "k": "得る", "r": "える", "m": "Mendapatkan" },
-  { "k": "得意", "r": "とくい", "m": "Pelanggan" },
-  { "k": "得々", "r": "とくどく", "m": "Dengan bangga" }
-],9:[
-  { "k": "予定", "r": "よてい", "m": "Rencana" },
-  { "k": "予習", "r": "よしゅう", "m": "Persiapan belajar" },
-  { "k": "交番", "r": "こうばん", "m": "Pos polisi" },
-  { "k": "交通", "r": "こうつう", "m": "Transportasi" },
-  { "k": "交換", "r": "こうかん", "m": "Tukar, menukar" },
-  { "k": "理解", "r": "りかい", "m": "Memahami" },
-  { "k": "解答", "r": "かいとう", "m": "Jawaban" },
-  { "k": "解説", "r": "かいせつ", "m": "Menjelaskan" },
-  { "k": "分解", "r": "ぶんかい", "m": "Membagi" },
-  { "k": "交差点", "r": "こうさてん", "m": "Perempatan" },
-  { "k": "点数", "r": "てんすう", "m": "Skor" },
-  { "k": "〜点", "r": "〜てん", "m": "Poin..." },
-  { "k": "支店", "r": "してん", "m": "Toko cabang" },
-  { "k": "支社", "r": "ししゃ", "m": "Kantor cabang" },
-  { "k": "指定", "r": "してい", "m": "Menunjuk" },
-  { "k": "指定席", "r": "していせき", "m": "Kursi yang dipesan" },
-  { "k": "指", "r": "ゆび", "m": "Jari" },
-  { "k": "指輪", "r": "ゆびわ", "m": "Cincin" },
-  { "k": "記入", "r": "きにゅう", "m": "Mengisi" },
-  { "k": "日記", "r": "にっき", "m": "Catatan harian" },
-  { "k": "記号", "r": "きごう", "m": "Simbol, tanda" },
-  { "k": "記事", "r": "きじ", "m": "Artikel" },
-  { "k": "数字", "r": "すうじ", "m": "Angka" },
-  { "k": "数学", "r": "すうがく", "m": "Matematika" },
-  { "k": "数", "r": "かず", "m": "Jumlah" },
-  { "k": "数える", "r": "かぞえる", "m": "Menghitung" },
-  { "k": "接続", "r": "せつぞく", "m": "Terhubung" },
-  { "k": "続く", "r": "つづく", "m": "Berlanjut" },
-  { "k": "続ける", "r": "つづける", "m": "Melanjutkan" },
-  { "k": "受ける", "r": "うける", "m": "Menerima" },
-  { "k": "受験", "r": "じゅけん", "m": "Menempuh ujian" },
-  { "k": "受信", "r": "じゅしん", "m": "Menerima" }
-], 10:[
-  { "k": "石", "r": "いし", "m": "batu" },
-  { "k": "石焼き", "r": "いしやき", "m": "porselen" },
-  { "k": "石製品", "r": "せきせいひん", "m": "artefak batu" },
-  { "k": "収める", "r": "おさめる", "m": "membayar pendapatan" },
-  { "k": "収穫時", "r": "しゅうかくじ", "m": "waktu panen" },
-  { "k": "収集", "r": "しゅうしゅう", "m": "koleksi" },
-  { "k": "夫", "r": "おっと", "m": "suami" },
-  { "k": "夫妻", "r": "ふさい", "m": "pasangan" },
-  { "k": "夫婦", "r": "ふうふ", "m": "suami istri" },
-  { "k": "難しい", "r": "むずかしい", "m": "susah, sulit" },
-  { "k": "難関", "r": "なんかん", "m": "pembatas" },
-  { "k": "難平", "r": "なんぴん", "m": "rata rata" },
-  { "k": "構える", "r": "かまえる", "m": "mendirikan" },
-  { "k": "構成", "r": "こうせい", "m": "formasi pembentukan" },
-  { "k": "構造的", "r": "こうぞうてき", "m": "struktural" },
-  { "k": "供える", "r": "そなえる", "m": "membaktikan" },
-  { "k": "供物", "r": "そなえもの", "m": "persembahan" },
-  { "k": "供犠", "r": "くぎ", "m": "hewan kurban" },
-  { "k": "与える", "r": "あたえる", "m": "memberikan" },
-  { "k": "与太話", "r": "よたばなし", "m": "gosip" },
-  { "k": "与党", "r": "よとう", "m": "partai yang berkuasa" },
-  { "k": "職員", "r": "しょくいん", "m": "karyawan pekerja" },
-  { "k": "職質", "r": "しょくしつ", "m": "interogasi" },
-  { "k": "職業人", "r": "しょくぎょうじん", "m": "professional" },
-  { "k": "球団", "r": "きゅうだん", "m": "Tim bisbol" },
-  { "k": "球戯", "r": "きゅうぎ", "m": "biliard" },
-  { "k": "球", "r": "たま", "m": "bola" },
-  { "k": "状態", "r": "じょうたい", "m": "status" },
-  { "k": "状差し", "r": "じょうさし", "m": "rak surat" },
-  { "k": "状況", "r": "じょうきょう", "m": "keadaan" }
-], 11:[
-  { "k": "飛行機", "r": "ひこうき", "m": "Pesawat" },
-  { "k": "機会", "r": "きかい", "m": "Kesempatan" },
-  { "k": "機械", "r": "きかい", "m": "Mesin" },
-  { "k": "取る", "r": "とる", "m": "Mengambil" },
-  { "k": "受取人", "r": "うけとりにん", "m": "Penerima" },
-  { "k": "受け取る", "r": "うけとる", "m": "Menerima" },
-  { "k": "期間", "r": "きかん", "m": "Periode waktu" },
-  { "k": "定期券", "r": "ていきけん", "m": "Tiket commuter" },
-  { "k": "長期", "r": "ちょうき", "m": "Periode panjang" },
-  { "k": "短期", "r": "たんき", "m": "Periode pendek" },
-  { "k": "必要", "r": "ひつよう", "m": "Perlu" },
-  { "k": "要る", "r": "いる", "m": "Memerlukan" },
-  { "k": "性別", "r": "せいべつ", "m": "Jenis kelamin" },
-  { "k": "性格", "r": "せいかく", "m": "Kepribadian" },
-  { "k": "女性", "r": "じょせい", "m": "Perempuan" },
-  { "k": "男性", "r": "だんせい", "m": "Laki-laki" },
-  { "k": "方法", "r": "ほう", "m": "Manufaktur / Cara" },
-  { "k": "文法", "r": "ぶんぽう", "m": "Tata bahasa" },
-  { "k": "本当", "r": "ほんとう", "m": "Benar-benar" },
-  { "k": "当たる", "r": "あたる", "m": "Pas, menang" },
-  { "k": "当たり前", "r": "あたりまえ", "m": "Seyogianya, tidak mengejutkan" },
-  { "k": "現金", "r": "げんきん", "m": "Uang tunai" },
-  { "k": "表現", "r": "ひょうげん", "m": "Ungkapan" },
-  { "k": "現れる", "r": "あらわれる", "m": "Muncul" },
-  { "k": "表", "r": "ひょう", "m": "Tabel" },
-  { "k": "発表", "r": "はっぴょう", "m": "Presentasi" },
-  { "k": "表", "r": "おもて", "m": "Bagian depan" },
-  { "k": "表す", "r": "あらわす", "m": "Menunjukkan" },
-  { "k": "港", "r": "みなと", "m": "Pelabuhan" },
-  { "k": "空港", "r": "くうこう", "m": "Bandara" }
-], 12:[
-  { "k": "実際", "r": "じっさい", "m": "Sebenarnya, kebenaran" },
-  { "k": "実施", "r": "じっし", "m": "Pelaksanaan" },
-  { "k": "実のない", "r": "みのない", "m": "Tidak ada yang nyata" },
-  { "k": "選ぶ", "r": "えらぶ", "m": "Memilih" },
-  { "k": "選手", "r": "せんしゅ", "m": "Pemain, Atlet" },
-  { "k": "選挙", "r": "せんきょ", "m": "Pemilihan" },
-  { "k": "相談", "r": "そうだん", "m": "Rembuk" },
-  { "k": "相番", "r": "あいばん", "m": "Rekan" },
-  { "k": "相当", "r": "そうとう", "m": "Substansial" },
-  { "k": "相互", "r": "そうご", "m": "Bilateral" },
-  { "k": "対自", "r": "たいじ", "m": "Versus diri" },
-  { "k": "反対", "r": "はんたい", "m": "Kontra, Menentang" },
-  { "k": "捕虜", "r": "ほりょ", "m": "Tawanan" },
-  { "k": "捕まる", "r": "つかまる", "m": "Ser gap, tangkap" },
-  { "k": "捕獲", "r": "ほかく", "m": "Menangkap" },
-  { "k": "責める", "r": "せめる", "m": "Menyalahkan" },
-  { "k": "責任感", "r": "せきにんかん", "m": "Rasa tanggung jawab" },
-  { "k": "責", "r": "せき", "m": "Tugas, kewajiban" },
-  { "k": "除く", "r": "のぞく", "m": "Merobek" },
-  { "k": "除霊", "r": "じょれい", "m": "Pengusiran setan" },
-  { "k": "除却", "r": "じょきゃく", "m": "Pengecualian" },
-  { "k": "破れる", "r": "やぶれる", "m": "Merobek" },
-  { "k": "破壊", "r": "はかい", "m": "Menghancurkan" },
-  { "k": "破産寸前", "r": "はさんすんぜん", "m": "Hampir bangkrut" },
-  { "k": "単衣", "r": "ひとえ", "m": "Sederhana, kimono bergaris" },
-  { "k": "単位", "r": "たんい", "m": "Satuan, unit" },
-  { "k": "単純性", "r": "たんじゅんせい", "m": "Kesederhanaan" },
-  { "k": "殺す", "r": "ころす", "m": "Membunuh" },
-  { "k": "殺菌消毒", "r": "さっきんしょうどく", "m": "Sterilisasi" },
-  { "k": "殺人的", "r": "さつじんてき", "m": "Kebengisan, kejam" }
-], 13:[
-  { "k": "送信", "r": "そうしん", "m": "Mengirim" },
-  { "k": "信じる", "r": "しんじる", "m": "Percaya" },
-  { "k": "自信", "r": "じしん", "m": "Percaya diri" },
-  { "k": "信用", "r": "しんよう", "m": "Percaya, keyakinan" },
-  { "k": "米", "r": "こめ", "m": "Beras" },
-  { "k": "米国", "r": "べいこく", "m": "Amerika Serikat" },
-  { "k": "定休日", "r": "ていきゅうび", "m": "Hari libur" },
-  { "k": "安定", "r": "あんてい", "m": "Stabil" },
-  { "k": "家内", "r": "かない", "m": "Istri" },
-  { "k": "国内", "r": "こくない", "m": "Dalam negeri" },
-  { "k": "内側", "r": "うちがわ", "m": "Bagian dalam" },
-  { "k": "室内", "r": "しつない", "m": "Dalam ruangan" },
-  { "k": "交換", "r": "こうかん", "m": "Tukar, ganti" },
-  { "k": "換える", "r": "かえる", "m": "Menukar, mengganti" },
-  { "k": "乗り換える", "r": "のりかえる", "m": "Transit kereta" },
-  { "k": "連休", "r": "れんきゅう", "m": "Libur berturut" },
-  { "k": "連れて行く", "r": "つれていく", "m": "Membawa pergi" },
-  { "k": "危険", "r": "きけん", "m": "Bahaya" },
-  { "k": "危ない", "r": "あぶない", "m": "Berbahaya" },
-  { "k": "降りる", "r": "おりる", "m": "Turun" },
-  { "k": "以降", "r": "いこう", "m": "Setelah" },
-  { "k": "降車口", "r": "こうしゃぐち", "m": "Pintu keluar kereta" },
-  { "k": "降る", "r": "ふる", "m": "Turun (hujan, salju)" },
-  { "k": "完了", "r": "かんりょう", "m": "Komplit, selesai" },
-  { "k": "完全", "r": "かんぜん", "m": "Sempurna, selesai" },
-  { "k": "座る", "r": "すわる", "m": "Duduk" },
-  { "k": "座席", "r": "ざせき", "m": "Tempat duduk" },
-  { "k": "正座", "r": "せいざ", "m": "Duduk di lantai (dengan melipat kedua kaki ke belakang)" }
-], 14:[
-  { "k": "信号", "r": "しんごう", "m": "Lampu lalu lintas" },
-  { "k": "番号", "r": "ばんごう", "m": "Nomor" },
-  { "k": "〜号車", "r": "〜ごうしゃ", "m": "Nomor kereta" },
-  { "k": "飛行機", "r": "ひこうき", "m": "Pesawat" },
-  { "k": "飛ぶ", "r": "とぶ", "m": "Terbang" },
-  { "k": "速度", "r": "そくど", "m": "Kecepatan" },
-  { "k": "速い", "r": "はやい", "m": "Cepat" },
-  { "k": "高速道路", "r": "こうそくどうろ", "m": "Jalan tol" },
-  { "k": "登録", "r": "とうろく", "m": "Mendaftar" },
-  { "k": "登山", "r": "とざん", "m": "Mendaki gunung" },
-  { "k": "登る", "r": "のぼる", "m": "Mendaki" },
-  { "k": "客", "r": "きゃく", "m": "Tamu" },
-  { "k": "お客様", "r": "おきゃくさま", "m": "Pelanggan" },
-  { "k": "科学", "r": "かがく", "m": "Ilmu pengetahuan" },
-  { "k": "内科", "r": "ないか", "m": "Penyakit dalam" },
-  { "k": "外科", "r": "げか", "m": "Bagian operasi" },
-  { "k": "通路", "r": "つうろ", "m": "Lorong" },
-  { "k": "道路", "r": "どうろ", "m": "Jalan" },
-  { "k": "線路", "r": "せんろ", "m": "Rel / lintasan kereta" },
-  { "k": "値段", "r": "ねだん", "m": "Harga" },
-  { "k": "値上げ", "r": "ねあげ", "m": "Harga naik" },
-  { "k": "値下げ", "r": "ねさげ", "m": "Harga turun" },
-  { "k": "満車", "r": "まんしゃ", "m": "Penuh (mobil)" },
-  { "k": "満員", "r": "まんいん", "m": "Penuh (orang)" },
-  { "k": "不満", "r": "ふまん", "m": "Tidak puas" },
-  { "k": "満足", "r": "まんぞく", "m": "Puas" },
-  { "k": "上達", "r": "じょうたつ", "m": "Peningkatan" },
-  { "k": "速達", "r": "そくたつ", "m": "Pengiriman kilat" },
-  { "k": "友達", "r": "ともだち", "m": "Teman" }
-], 15:[
-  { "k": "気候", "r": "きこう", "m": "iklim, hawa" },
-  { "k": "候補", "r": "こうほ", "m": "calon" },
-  { "k": "候", "r": "そう", "m": "cuaca" },
-  { "k": "深い", "r": "ふかい", "m": "pekat, dalam" },
-  { "k": "深夜", "r": "しんや", "m": "larut malam" },
-  { "k": "深夜業", "r": "しんやぎょう", "m": "kerja malam" },
-  { "k": "良い", "r": "よい", "m": "bagus" },
-  { "k": "良師", "r": "りょうし", "m": "guru yang baik" },
-  { "k": "良日", "r": "りょうじつ", "m": "hari keberuntungan" },
-  { "k": "祭", "r": "まつり", "m": "festival" },
-  { "k": "祭騒ぎ", "r": "まつりさわぎ", "m": "bergembira" },
-  { "k": "祭式", "r": "さいしき", "m": "ritus, ritual" },
-  { "k": "呼ぶ", "r": "よぶ", "m": "memanggil" },
-  { "k": "呼吸", "r": "こきゅう", "m": "pernafasan" },
-  { "k": "呼吸器系", "r": "こきゅうきけい", "m": "sistem pernapasan" },
-  { "k": "福岡", "r": "ふくおか", "m": "Kota Fukuoka" },
-  { "k": "福", "r": "ふく", "m": "nasib baik" },
-  { "k": "福祉", "r": "ふくし", "m": "kesejahteraan" },
-  { "k": "識別名", "r": "しきべつめい", "m": "pengenal" },
-  { "k": "識別", "r": "しきべつ", "m": "identifikasi" },
-  { "k": "識字", "r": "しきじ", "m": "pengenalan huruf, literasi" },
-  { "k": "命", "r": "いのち", "m": "nyawa, jiwa" },
-  { "k": "命令文", "r": "めいれいぶん", "m": "kalimat perintah" },
-  { "k": "命名日", "r": "めいめいび", "m": "hari pembaptisan" },
-  { "k": "財宝", "r": "ざいほう", "m": "harta pusaka" },
-  { "k": "財産", "r": "ざいさん", "m": "kekayaan" },
-  { "k": "財産家", "r": "ざいさんか", "m": "orang kaya" },
-  { "k": "種", "r": "たね", "m": "bibit, benih" },
-  { "k": "種名", "r": "しゅめい", "m": "nama spesies" },
-  { "k": "種なし", "r": "たねなし", "m": "buah tanpa biji" }
-],16: [
-  { "k": "気候", "r": "きこう", "m": "iklim, hawa" },
-  { "k": "候補", "r": "こうほ", "m": "calon" },
-  { "k": "候", "r": "そう", "m": "cuaca" },
-  { "k": "深い", "r": "ふかい", "m": "pekat, dalam" },
-  { "k": "深夜", "r": "しんや", "m": "larut malam" },
-  { "k": "深夜業", "r": "しんやぎょう", "m": "kerja malam" },
-  { "k": "良い", "r": "よい", "m": "bagus" },
-  { "k": "良師", "r": "りょうし", "m": "guru yang baik" },
-  { "k": "良日", "r": "りょうじつ", "m": "hari keberuntungan" },
-  { "k": "祭", "r": "まつり", "m": "festival" },
-  { "k": "祭騒ぎ", "r": "まつりさわぎ", "m": "bergembira" },
-  { "k": "祭式", "r": "さいしき", "m": "ritus, ritual" },
-  { "k": "呼ぶ", "r": "よぶ", "m": "memanggil" },
-  { "k": "呼吸", "r": "こきゅう", "m": "pernafasan" },
-  { "k": "呼吸器系", "r": "こきゅうきけい", "m": "sistem pernapasan" },
-  { "k": "福岡", "r": "ふくおか", "m": "Kota Fukuoka" },
-  { "k": "福", "r": "ふく", "m": "nasib baik" },
-  { "k": "福祉", "r": "ふくし", "m": "kesejahteraan" },
-  { "k": "識別名", "r": "しきべつめい", "m": "pengenal" },
-  { "k": "識別", "r": "しきべつ", "m": "identifikasi" },
-  { "k": "識字", "r": "しきじ", "m": "pengenalan huruf, literasi" },
-  { "k": "命", "r": "いのち", "m": "nyawa, jiwa" },
-  { "k": "命令文", "r": "めいれいぶん", "m": "kalimat perintah" },
-  { "k": "命名日", "r": "めいめいび", "m": "hari pembaptisan" },
-  { "k": "財宝", "r": "ざいほう", "m": "harta pusaka" },
-  { "k": "財産", "r": "ざいさん", "m": "kekayaan" },
-  { "k": "財産家", "r": "ざいさんか", "m": "orang kaya" },
-  { "k": "種", "r": "たね", "m": "bibit, benih" },
-  { "k": "種名", "r": "しゅめい", "m": "nama spesies" },
-  { "k": "種なし", "r": "たねなし", "m": "buah tanpa biji" }
-],17:[
-  { "k": "〜様", "r": "〜さま", "m": "Bentuk sopan dari さん" },
-  { "k": "様子", "r": "ようす", "m": "Keadaan" },
-  { "k": "申し込む", "r": "もうしこむ", "m": "Mendaftar" },
-  { "k": "申込書", "r": "もうしこみしょ", "m": "Formulir pendaftaran" },
-  { "k": "申請", "r": "しんせい", "m": "Aplikasi (pendaftaran)" },
-  { "k": "横断歩道", "r": "おうだんほどう", "m": "Penyeberangan jalan" },
-  { "k": "横", "r": "よこ", "m": "Sebelah" },
-  { "k": "階段", "r": "かいだん", "m": "Tangga" },
-  { "k": "観光", "r": "かんこう", "m": "Berwisata" },
-  { "k": "観客", "r": "かんきゃく", "m": "Penonton" },
-  { "k": "非常", "r": "ひじょう", "m": "Darurat" },
-  { "k": "非常に", "r": "ひじょうに", "m": "Sangat" },
-  { "k": "非常口", "r": "ひじょうぐち", "m": "Pintu darurat" },
-  { "k": "失望", "r": "しつぼう", "m": "Kekecewaan" },
-  { "k": "望む", "r": "のぞむ", "m": "Berharap" },
-  { "k": "美術館", "r": "びじゅつかん", "m": "Gedung kesenian" },
-  { "k": "美しい", "r": "うつくしい", "m": "Indah" },
-  { "k": "美人", "r": "びじん", "m": "Perempuan cantik" },
-  { "k": "守備", "r": "しゅび", "m": "Pertahanan" },
-  { "k": "守る", "r": "まもる", "m": "Melindungi, Menjaga" },
-  { "k": "留守", "r": "るす", "m": "Tidak ada di tempat/rumah" },
-  { "k": "差", "r": "さ", "m": "Perbedaan" },
-  { "k": "差出人", "r": "さしだしにん", "m": "Pengirim" },
-  { "k": "差し出す", "r": "さしだす", "m": "mengajukan" }
-],18:[
-  { "k": "形式", "r": "けいしき", "m": "Bentuk" },
-  { "k": "図形", "r": "ずけい", "m": "Diagram" },
-  { "k": "整形外科", "r": "せいけいげか", "m": "Ortopedi (bedah)" },
-  { "k": "携帯", "r": "けいたい", "m": "Handphone" },
-  { "k": "帯", "r": "おび", "m": "Ikat pinggang" },
-  { "k": "商品", "r": "しょうひん", "m": "Produk" },
-  { "k": "商店", "r": "しょうてん", "m": "Toko" },
-  { "k": "例", "r": "れい", "m": "Contoh" },
-  { "k": "例えば", "r": "たとえば", "m": "Contohnya" },
-  { "k": "残業", "r": "ざんぎょう", "m": "Lembur" },
-  { "k": "残る", "r": "のこる", "m": "Tinggal, tersisa" },
-  { "k": "残念", "r": "ざんねん", "m": "Disayangkan" },
-  { "k": "残す", "r": "のこす", "m": "Meninggalkan, menyisakan" },
-  { "k": "席", "r": "せき", "m": "Tempat duduk" },
-  { "k": "出席", "r": "しゅっせき", "m": "Menghadiri" },
-  { "k": "欠席", "r": "けっせき", "m": "Tidak hadir" },
-  { "k": "警官", "r": "けいかん", "m": "Polisi" },
-  { "k": "警戒", "r": "けいかい", "m": "Waspada" },
-  { "k": "配達", "r": "はいたつ", "m": "Mengirim" },
-  { "k": "配送料", "r": "はいそうりょう", "m": "Biaya kirim" },
-  { "k": "心配", "r": "しんぱい", "m": "Khawatir" },
-  { "k": "自宅", "r": "じたく", "m": "Rumah seseorang" },
-  { "k": "宅配", "r": "たくはい", "m": "Pengantaran ke rumah" },
-  { "k": "お宅", "r": "おたく", "m": "Rumah (sopan)" },
-  { "k": "美術", "r": "びじゅつ", "m": "Kesenian" },
-  { "k": "技術", "r": "ぎじゅつ", "m": "Teknik, teknologi" },
-  { "k": "手術", "r": "しゅじゅつ", "m": "Operasi" }
-],19:[
-  { "k": "成す", "r": "なす", "m": "Melakukan" },
-  { "k": "成功者", "r": "せいこうしゃ", "m": "Sukses" },
-  { "k": "成長市場", "r": "せいちょうしじょう", "m": "Pasar yang berkembang" },
-  { "k": "務める", "r": "つとめる", "m": "Melayani" },
-  { "k": "務所", "r": "むしょ", "m": "Penjara" },
-  { "k": "務長官", "r": "むちょうかん", "m": "Sekretaris pemerintah" },
-  { "k": "治める", "r": "おさめる", "m": "Memerintah" },
-  { "k": "治療", "r": "ちりょう", "m": "Pengobatan" },
-  { "k": "治部煮", "r": "じぶに", "m": "Rebusan daging bebek" },
-  { "k": "制度", "r": "せいど", "m": "Sistem" },
-  { "k": "制作", "r": "せいさく", "m": "Produksi" },
-  { "k": "制限する", "r": "せいげんする", "m": "Batas" },
-  { "k": "化する", "r": "かする", "m": "Mengkonversi, mengubah" },
-  { "k": "化内", "r": "けない", "m": "Tanah kekaisaran" },
-  { "k": "化学式", "r": "かがくしき", "m": "Rumus kimia" },
-  { "k": "調べ", "r": "しらべ", "m": "Pemeriksaan" },
-  { "k": "調査", "r": "ちょうさ", "m": "Investigasi" },
-  { "k": "調査結果", "r": "ちょうさけっか", "m": "Hasil penyelidikan" },
-  { "k": "最も", "r": "もっとも", "m": "Paling" },
-  { "k": "最近", "r": "さいきん", "m": "Baru-baru ini" },
-  { "k": "最後まで", "r": "さいごまで", "m": "Sampai akhir" },
-  { "k": "経済", "r": "けいざい", "m": "Perekonomian" },
-  { "k": "経験", "r": "けいけん", "m": "Pengalaman" },
-  { "k": "戦う", "r": "たかう", "m": "Bertengkar" },
-  { "k": "戦争する", "r": "せんそうする", "m": "Berperang, Bertempur" },
-  { "k": "決める", "r": "きめる", "m": "Memutuskan" },
-  { "k": "決まって", "r": "きまって", "m": "Pelaksanaan" },
-  { "k": "決定率", "r": "けっていりつ", "m": "Kecepatan menembak (bola)" }
-],20:[
-  { "k": "〜番", "r": "〜ばん", "m": "Nomor~" },
-  { "k": "番号", "r": "ばんごう", "m": "Nomor" },
-  { "k": "〜番線", "r": "〜ばんせん", "m": "Nomor peron~" },
-  { "k": "神社", "r": "じんじゃ", "m": "Kuil shinto" },
-  { "k": "神様", "r": "かみさま", "m": "Tuhan" },
-  { "k": "神経質", "r": "しんけいしつ", "m": "Sensitif, grogi" },
-  { "k": "消防", "r": "しょうぼう", "m": "Pemadam kebakaran" },
-  { "k": "消す", "r": "けす", "m": "Memadamkan" },
-  { "k": "消える", "r": "きえる", "m": "Padam" },
-  { "k": "無断", "r": "むだん", "m": "Tanpa permisi" },
-  { "k": "断る", "r": "ことわる", "m": "Menolak" },
-  { "k": "断水", "r": "だんすい", "m": "Pemadaman air" },
-  { "k": "優しい", "r": "やさしい", "m": "Baik hati" },
-  { "k": "女優", "r": "じょゆう", "m": "Aktris" },
-  { "k": "優先席", "r": "ゆうせんせき", "m": "Kursi prioritas" },
-  { "k": "自由", "r": "じゆう", "m": "Bebas" },
-  { "k": "理由", "r": "りゆう", "m": "Alasan" },
-  { "k": "自由席", "r": "じゆうせき", "m": "Kursi bebas" },
-  { "k": "付ける", "r": "つける", "m": "Memasang" },
-  { "k": "受付", "r": "うけつけ", "m": "Resepsionis" },
-  { "k": "費用", "r": "ひよう", "m": "Biaya" },
-  { "k": "消費者", "r": "しょうひしゃ", "m": "Konsumen" },
-  { "k": "旅費", "r": "りょひ", "m": "Biaya perjalanan" },
-  { "k": "会費", "r": "かいひ", "m": "Biaya keanggotaan" },
-  { "k": "割る", "r": "わる", "m": "Memecahkan" },
-  { "k": "割引", "r": "わりびき", "m": "Diskon" },
-  { "k": "割れる", "r": "われる", "m": "Pecah" },
-  { "k": "割合", "r": "わりあい", "m": "Persentase" },
-  { "k": "市役所", "r": "しやくしょ", "m": "Kantor wali kota" },
-  { "k": "役員", "r": "やくいん", "m": "Anggota" },
-  { "k": "役に立つ", "r": "やくにたつ", "m": "Berguna, bermanfaat" }
-],21:[
-  { "k": "常", "r": "つね, じょう", "m": "Selalu, biasa" },
-  { "k": "常連客", "r": "じょうれんきゃく", "m": "Pelanggan tetap" },
-  { "k": "常識家", "r": "じょうしきか", "m": "Orang yang bijaksana" },
-  { "k": "離れる", "r": "はなれる", "m": "Meninggalkan" },
-  { "k": "離陸", "r": "りく", "m": "Lepas landas" },
-  { "k": "離脱", "r": "りだつ", "m": "Hal perceraian, keluar" },
-  { "k": "放つ", "r": "はなつ", "m": "Menembak" },
-  { "k": "放射", "r": "ほうしゃ", "m": "Radiasi, emisi" },
-  { "k": "放置する", "r": "ほうちする", "m": "Meninggalkan, membiarkan" },
-  { "k": "過ぎる", "r": "すぎる", "m": "Melampaui, berlebihan" },
-  { "k": "過去", "r": "かこ", "m": "Masa lalu, melewati" },
-  { "k": "過程", "r": "かてい", "m": "Proses" },
-  { "k": "君", "r": "きみ", "m": "Kamu, anak laki-laki" },
-  { "k": "君主", "r": "くんしゅ", "m": "Raja" },
-  { "k": "君国", "r": "くんこく", "m": "Kerajaan" },
-  { "k": "夢", "r": "ゆめ", "m": "Mimpi, cita-cita" },
-  { "k": "夢解き", "r": "ゆめとき", "m": "Tafsir mimpi" },
-  { "k": "夢幻", "r": "むげん", "m": "Fantasi" },
-  { "k": "迷う", "r": "まよう", "m": "Tersesat" },
-  { "k": "迷惑な", "r": "めいわくな", "m": "Mengganggu" },
-  { "k": "迷宮", "r": "めいきゅう", "m": "Labirin, misteri" },
-  { "k": "逃げる", "r": "にげる", "m": "Melarikan diri" },
-  { "k": "逃れ", "r": "のがれ", "m": "Menghindari" },
-  { "k": "逃避行", "r": "とうひこう", "m": "Penerbangan kawin lari" },
-  { "k": "探す", "r": "さがす", "m": "Mencari" },
-  { "k": "探偵", "r": "たんてい", "m": "Mata-mata, polisi" },
-  { "k": "探偵社", "r": "たんていしゃ", "m": "Detektif" },
-  { "k": "列", "r": "れつ", "m": "Kolom, baris, lajur" },
-  { "k": "列番号", "r": "れつばんごう", "m": "Nomor kolom" },
-  { "k": "列席", "r": "れっせき", "m": "Kehadiran" }
+  3: [
+  {
+    "k": "大さじ",
+    "r": "おおさじ",
+    "m": "takaran sendok makan"
+  },
+  {
+    "k": "酢酒",
+    "r": "",
+    "m": "sake cuka"
+  },
+  {
+    "k": "小さじ",
+    "r": "こさじ",
+    "m": "takaran sendok teh"
+  },
+  {
+    "k": "1カップ",
+    "r": "カップ",
+    "m": "satu gelas"
+  },
+  {
+    "k": "調味料",
+    "r": "ちょうみりょう",
+    "m": "bumbu"
+  },
+  {
+    "k": "1リットル",
+    "r": "リットル",
+    "m": "satu liter"
+  },
+  {
+    "k": "サラダ油",
+    "r": "サラダあぶら",
+    "m": "minyak goreng"
+  },
+  {
+    "k": "はかり",
+    "r": "はかり",
+    "m": "timbangan"
+  },
+  {
+    "k": "天ぷら油",
+    "r": "てんぷらあぶら",
+    "m": "minyak goreng tempura"
+  },
+  {
+    "k": "夕食のおかず",
+    "r": "ゆうしょくのおかず",
+    "m": "lauk makan malam"
+  },
+  {
+    "k": "栄養のバランスを考える",
+    "r": "えいようのバランスをかんがえる",
+    "m": "memikirkan keseimbangan nutrisi"
+  },
+  {
+    "k": "カロリーが高い食品",
+    "r": "カロリーがたかいしょくひん",
+    "m": "bahan makanan berkalori tinggi"
+  },
+  {
+    "k": "はかりで量る",
+    "r": "はかりではかる",
+    "m": "mengukur dengan timbangan"
+  },
+  {
+    "k": "塩を少々入れる",
+    "r": "しおをしょうしょういれる",
+    "m": "memasukkan sedikit garam"
+  },
+  {
+    "k": "皮をむく",
+    "r": "かわをむく",
+    "m": "mengupas kulit"
+  },
+  {
+    "k": "材料を刻む",
+    "r": "ざいりょうをきざむ",
+    "m": "memotong kecil-kecil, mencincang"
+  },
+  {
+    "k": "大きめに切る",
+    "r": "おおきめにきる",
+    "m": "memotong agak besar"
+  },
+  {
+    "k": "3センチ幅に切る",
+    "r": "さんセンチはばにきる",
+    "m": "memotong dengan lebar 3 cm"
+  },
+  {
+    "k": "みそ汁がぬるくなる",
+    "r": "みそしるがぬるくなる",
+    "m": "miso soup nya menjadi kurang hangat (suhu menurun)"
+  },
+  {
+    "k": "アルミホイル",
+    "r": "アルミホイル",
+    "m": "wrap aluminium foil"
+  }
+],
+  4: [
+  {
+    "k": "ラップでくるむ",
+    "r": "ラップでくるむ",
+    "m": "membungkus dengan plastik wrap"
+  },
+  {
+    "k": "ラップをかぶせる/かける",
+    "r": "ラップをかぶせる/かける",
+    "m": "menutupi dengan plastik wrap"
+  },
+  {
+    "k": "しゃもじ炊飯器フライ返し",
+    "r": "しゃもじフライし",
+    "m": "airnya mendidih"
+  },
+  {
+    "k": "なべ",
+    "r": "なべ",
+    "m": "panci tutup centongan wajan spatula rice cooker sendok nasi"
+  },
+  {
+    "k": "おたま",
+    "r": "おたま",
+    "m": "panci tutup centongan wajan spatula rice cooker sendok nasi"
+  },
+  {
+    "k": "フライパンふた",
+    "r": "フライパンふた",
+    "m": "panci tutup centongan wajan spatula rice cooker sendok nasi"
+  },
+  {
+    "k": "おお湯を沸かす",
+    "r": "おおをかす",
+    "m": "memasak air"
+  },
+  {
+    "k": "湯が湧く",
+    "r": "ゆがわく",
+    "m": "airnya mendidih"
+  },
+  {
+    "k": "お湯を冷ます",
+    "r": "おゆをさます",
+    "m": "mendinginkan air"
+  },
+  {
+    "k": "湯が冷める",
+    "r": "ゆがさめる",
+    "m": "airnya mendingin"
+  },
+  {
+    "k": "なべを火にかける",
+    "r": "なべをひにかける",
+    "m": "meletakkan panci di atas api"
+  },
+  {
+    "k": "ご飯を炊く",
+    "r": "ごはんをたく",
+    "m": "menanak nasi"
+  },
+  {
+    "k": "油を熱する",
+    "r": "あぶらをねっする",
+    "m": "memanaskan minyak (di wajan)"
+  },
+  {
+    "k": "油で揚げる",
+    "r": "あぶらであげる",
+    "m": "menggoreng dengan minyak"
+  },
+  {
+    "k": "水を切る",
+    "r": "みずをきる",
+    "m": "meniriskan air"
+  },
+  {
+    "k": "ゆでる",
+    "r": "ゆでる",
+    "m": "merebus (hanya air)"
+  },
+  {
+    "k": "煮る",
+    "r": "にる",
+    "m": "merebus (+ bumbu)"
+  },
+  {
+    "k": "いためる",
+    "r": "いためる",
+    "m": "menumis"
+  },
+  {
+    "k": "蒸す",
+    "r": "むす",
+    "m": "mengukus"
+  },
+  {
+    "k": "こげる",
+    "r": "こげる",
+    "m": "gosong"
+  }
+],
+  5: [
+  {
+    "k": "混ぜる",
+    "r": "まぜる",
+    "m": "mencampur"
+  },
+  {
+    "k": "ひっくり返す/裏返す",
+    "r": "ひっくりかえす/うらがえす",
+    "m": "membalikkan (yang bawah jadi di atas, dan sebaliknya)"
+  },
+  {
+    "k": "味をつける",
+    "r": "あじをつける",
+    "m": "memberi rasa"
+  },
+  {
+    "k": "塩を加える",
+    "r": "しおをくわえる",
+    "m": "menambahkan garam"
+  },
+  {
+    "k": "こしょうを振る",
+    "r": "こしょうをふる",
+    "m": "menaburi lada"
+  },
+  {
+    "k": "味見をする/味を見る",
+    "r": "あじみをする/あじをみる",
+    "m": "mencicipi rasa"
+  },
+  {
+    "k": "味が濃い",
+    "r": "あじがこい",
+    "m": "rasanya pekat"
+  },
+  {
+    "k": "味が薄い",
+    "r": "あじがうすい",
+    "m": "rasanya hambar"
+  },
+  {
+    "k": "からい",
+    "r": "からい",
+    "m": "pedas"
+  },
+  {
+    "k": "塩からい",
+    "r": "しおからい",
+    "m": "asin"
+  },
+  {
+    "k": "酸っぱい",
+    "r": "すっぱい",
+    "m": "asam"
+  },
+  {
+    "k": "できあがる/できあがり",
+    "r": "できあがる/できあがり",
+    "m": "selesai (makanan)"
+  },
+  {
+    "k": "バケツぞうきん",
+    "r": "バケツぞうきん",
+    "m": "minggir"
+  },
+  {
+    "k": "エプロン",
+    "r": "エプロン",
+    "m": "apron sapu pengki kain lap ember"
+  },
+  {
+    "k": "ほうき",
+    "r": "ほうき",
+    "m": "apron sapu pengki kain lap ember"
+  },
+  {
+    "k": "ちりとり",
+    "r": "ちりとり",
+    "m": "apron sapu pengki kain lap ember"
+  },
+  {
+    "k": "エプロンをする/かける/つける",
+    "r": "エプロンをする/かける/つける",
+    "m": "memakai apron"
+  },
+  {
+    "k": "〜がどく",
+    "r": "がどく",
+    "m": "minggir"
+  },
+  {
+    "k": "ソファーをどける",
+    "r": "ソファーをどける",
+    "m": "meminggirkan, memindahkan"
+  },
+  {
+    "k": "散らかる",
+    "r": "ちらかる",
+    "m": "berantakan"
+  }
+],
+  6: [
+  {
+    "k": "部屋を散らかす",
+    "r": "へやをちらかす",
+    "m": "membuat ruangan jadi"
+  },
+  {
+    "k": "片付く",
+    "r": "かたづく",
+    "m": "rapi"
+  },
+  {
+    "k": "部屋を片付ける",
+    "r": "へやをかたづける",
+    "m": "merapikan ruangan"
+  },
+  {
+    "k": "ジュースをこぼす",
+    "r": "ジュースをこぼす",
+    "m": "menumpahkan Jus"
+  },
+  {
+    "k": "こぼれる",
+    "r": "こぼれる",
+    "m": "tumpah"
+  },
+  {
+    "k": "ほこりがつもる",
+    "r": "ほこりがつもる",
+    "m": "debu menumpuk (dari atas)"
+  },
+  {
+    "k": "ほこりがたまる",
+    "r": "ほこりがたまる",
+    "m": "debu menumpuk (dari banyak arah)"
+  },
+  {
+    "k": "ほこりを取る",
+    "r": "ほこりをとる",
+    "m": "mengambil debu (membersihkan)"
+  },
+  {
+    "k": "掃除機をかける",
+    "r": "そうじきをかける",
+    "m": "membersihkan dengan vacum cleaner"
+  },
+  {
+    "k": "ほうきで掃く",
+    "r": "ほうきではく",
+    "m": "menyapu dengan sapu"
+  },
+  {
+    "k": "水をくむ",
+    "r": "みずをくむ",
+    "m": "mengambil air (dengan tangan, ember, alat dll)"
+  },
+  {
+    "k": "ぞうきんをしぼる",
+    "r": "ぞうきんをしぼる",
+    "m": "memeras kain lap"
+  },
+  {
+    "k": "ぬらす",
+    "r": "ぬらす",
+    "m": "membasahi"
+  },
+  {
+    "k": "床をふく",
+    "r": "ゆかをふく",
+    "m": "mengelap lantai"
+  },
+  {
+    "k": "ふきんで食器をふく",
+    "r": "ふきんでしょっきをふく",
+    "m": "mengelap alat makan dengan kain lap"
+  },
+  {
+    "k": "台ふきんでテーブルをふく",
+    "r": "だいふきんでテーブルをふく",
+    "m": "mengelap meja dengan lap meja"
+  },
+  {
+    "k": "家具をみがく",
+    "r": "かぐをみがく",
+    "m": "menggosok, memoles furnitur (supaya mengkilap, bersih)"
+  },
+  {
+    "k": "ブラシでこする",
+    "r": "ブラシでこする",
+    "m": "menggosok dengan sikat"
+  },
+  {
+    "k": "ゴミを分けるのは面倒くさい/面倒だ",
+    "r": "ゴミをわけけるのはめんどうくさい/めんどうだ",
+    "m": "memisahkan sampah itu hal merepotkan"
+  },
+  {
+    "k": "スリッパをそろえる",
+    "r": "スリッパをそろえる",
+    "m": "merapikan sadal (menjadikan satu pasang, berjajar)"
+  }
+],
+  7: [
+  {
+    "k": "物置にしまう",
+    "r": "ものおきにしまう",
+    "m": "menyimpan di tempat penyimpanan"
+  },
+  {
+    "k": "生ゴミ",
+    "r": "なまゴミ",
+    "m": "sampah dapur sampah yang bisa dibakar"
+  },
+  {
+    "k": "燃えるゴミ",
+    "r": "もえるゴミ",
+    "m": "sampah dapur sampah yang bisa dibakar"
+  },
+  {
+    "k": "燃えないゴミ",
+    "r": "もえないゴミ",
+    "m": "sampah yang tidak bisa dibakar"
+  },
+  {
+    "k": "ためる",
+    "r": "ためる",
+    "m": "menumpuk (kan)"
+  },
+  {
+    "k": "たまる",
+    "r": "たまる",
+    "m": "menumpuk"
+  },
+  {
+    "k": "ぬれている",
+    "r": "ぬれている",
+    "m": "basah"
+  },
+  {
+    "k": "ほす",
+    "r": "ほす",
+    "m": "menjemur"
+  },
+  {
+    "k": "湿っている",
+    "r": "しめっている",
+    "m": "lembab"
+  },
+  {
+    "k": "洗濯機で乾かす",
+    "r": "せんたくきでかわかす",
+    "m": "mengeringkan"
+  },
+  {
+    "k": "乾く",
+    "r": "かわく",
+    "m": "kering"
+  },
+  {
+    "k": "たたむ",
+    "r": "たたむ",
+    "m": "melipat"
+  },
+  {
+    "k": "真っ白に仕上がる",
+    "r": "まっしろにしあがる",
+    "m": "menjadi putih bersih"
+  },
+  {
+    "k": "汚れ",
+    "r": "よごれ",
+    "m": "kotoran"
+  },
+  {
+    "k": "服を汚す",
+    "r": "ふくをよごす",
+    "m": "mengotori pakaian"
+  },
+  {
+    "k": "そでが真っ黒に汚れる",
+    "r": "そでがまっくろによごれる",
+    "m": "lengan baju nya kotor sampai berwarna hitam pekat"
+  },
+  {
+    "k": "洗濯用/台所用洗剤を入れる",
+    "r": "せんたくよう/だいどころようせんざいをいれる",
+    "m": "memasukkan deterjen (untuk cucian atau dapur)"
+  },
+  {
+    "k": "スーツをクリーニングに出す",
+    "r": "スーツをクリーニングにだす",
+    "m": "mencuci jas di laundry"
+  },
+  {
+    "k": "コインランドリーで洗濯をする",
+    "r": "コインランドリーでせんたくをする",
+    "m": "mencuci menggunakan koin laundry"
+  }
+],
+  8: [
+  {
+    "k": "タオルを干す",
+    "r": "タオルをほす",
+    "m": "menjemur handuk"
+  },
+  {
+    "k": "服をつるす",
+    "r": "ふくをつるす",
+    "m": "menggantung baju"
+  },
+  {
+    "k": "ワイシャツにアイロンをかける",
+    "r": "ワイシャツにアイロンをかける",
+    "m": "menyeterika baju"
+  },
+  {
+    "k": "しわが伸びる",
+    "r": "しわがのびる",
+    "m": "menjadi kusut"
+  },
+  {
+    "k": "しわを伸ばす",
+    "r": "しわをのばす",
+    "m": "merapikan baju yang kusut"
+  },
+  {
+    "k": "ウールのセーターが縮む",
+    "r": "ウールのセーターがちじむ",
+    "m": "sweater berbahan wool mengkerut"
+  },
+  {
+    "k": "ジーンズの色が落ちる",
+    "r": "ジーンズのいろがおちる",
+    "m": "warna jeans luntur"
+  },
+  {
+    "k": "犬",
+    "r": "いぬ",
+    "m": "lucu, imut"
+  },
+  {
+    "k": "かわいらしい",
+    "r": "かわいらしい",
+    "m": "lucu, imut"
+  },
+  {
+    "k": "かわいそうな",
+    "r": "かわいそうな",
+    "m": "kasihan"
+  },
+  {
+    "k": "行儀がいい",
+    "r": "ぎょうぎがいい",
+    "m": "berperilaku baik"
+  },
+  {
+    "k": "吠える",
+    "r": "ほえる",
+    "m": "menggonggong"
+  },
+  {
+    "k": "利口な/かしこい",
+    "r": "りこうな/かしこい",
+    "m": "cerdas, cerdik"
+  },
+  {
+    "k": "しっぽをふる",
+    "r": "しっぽをふる",
+    "m": "mengibaskan ekor"
+  },
+  {
+    "k": "人懐っこい",
+    "r": "ひとなつっこい",
+    "m": "ramah"
+  },
+  {
+    "k": "人になれる",
+    "r": "ひとになれる",
+    "m": "menjadi jinak"
+  },
+  {
+    "k": "子ども",
+    "r": "こども",
+    "m": "egois"
+  },
+  {
+    "k": "うなる",
+    "r": "うなる",
+    "m": "menggeram"
+  },
+  {
+    "k": "わがままな",
+    "r": "わがままな",
+    "m": "egois"
+  },
+  {
+    "k": "穴を掘る",
+    "r": "あなをほる",
+    "m": "menggali lubang"
+  }
+],
+  9: [
+  {
+    "k": "生意気な",
+    "r": "なまいきな",
+    "m": "nakal, seenaknya, sok"
+  },
+  {
+    "k": "穴を埋める",
+    "r": "あなをうめる",
+    "m": "mengisi lubang"
+  },
+  {
+    "k": "生意気な態度",
+    "r": "なまいきなたいど",
+    "m": "bersikap seenaknya"
+  },
+  {
+    "k": "甘やかす",
+    "r": "あまやかす",
+    "m": "memanjakan"
+  },
+  {
+    "k": "抱っこする",
+    "r": "だっこする",
+    "m": "menggendong"
+  },
+  {
+    "k": "かわいがる",
+    "r": "かわいがる",
+    "m": "menyayangi"
+  },
+  {
+    "k": "=腕に抱く",
+    "r": "うでにだく",
+    "m": "menggendong di lengan"
+  },
+  {
+    "k": "おんぶする",
+    "r": "おんぶする",
+    "m": "menggendong"
+  },
+  {
+    "k": "えらい",
+    "r": "えらい",
+    "m": "hebat"
+  },
+  {
+    "k": "育児/子育て",
+    "r": "いくじ/こそだて",
+    "m": "mendidik anak"
+  },
+  {
+    "k": "幼児(=おさない子ども)",
+    "r": "ようじ(おさないこども)",
+    "m": "anak kecil"
+  },
+  {
+    "k": "子どもが成長する",
+    "r": "こどもがせいちょうする",
+    "m": "anak tumbuh (besar)"
+  },
+  {
+    "k": "わがままに育つ",
+    "r": "わがままにそだつ",
+    "m": "tumbuh besar jadi anak yang egois"
+  },
+  {
+    "k": "頭をなでる",
+    "r": "あたまをなでる",
+    "m": "membelai kepala (rambut)"
+  },
+  {
+    "k": "お尻をたたく/ぶつ",
+    "r": "おしりをたたく/ぶつ",
+    "m": "memukul pantat"
+  },
+  {
+    "k": "いたずらをする",
+    "r": "いたずらをする",
+    "m": "melakukan hal iseng"
+  },
+  {
+    "k": "いたずらな",
+    "r": "いたずらな",
+    "m": "iseng, nakal"
+  },
+  {
+    "k": "はなす",
+    "r": "はなす",
+    "m": "melepaskan"
+  },
+  {
+    "k": "手をつなぐ",
+    "r": "てをつなぐ",
+    "m": "menggandeng tangan"
+  },
+  {
+    "k": "子どもが迷子になる",
+    "r": "こどもがまいごになる",
+    "m": "anak tersesat, nyasar (anak nya hilang)"
+  }
+],
+  10: [
+  {
+    "k": "子どもが母親の後をついていく",
+    "r": "こどもがははおやのあとをついていく",
+    "m": "anak mengikuti ibunya"
+  },
+  {
+    "k": "犬を飼う",
+    "r": "いぬをかう",
+    "m": "memelihara anjing"
+  },
+  {
+    "k": "散歩に連れて行く",
+    "r": "さんぽにつれていく",
+    "m": "mengajak pergi jalan-jalan (jalan kaki)"
+  },
+  {
+    "k": "犬にえさをやる/与える",
+    "r": "いぬにえさをやる/あたえる",
+    "m": "memberi makan ke anjing"
+  },
+  {
+    "k": "さきおととい",
+    "r": "さきおととい",
+    "m": "3 hari yang lalu"
+  },
+  {
+    "k": "一昨日",
+    "r": "いっさくじつ",
+    "m": "kemarin lusa"
+  },
+  {
+    "k": "元日/元旦",
+    "r": "がんじつ/がんたん",
+    "m": "1 Januari"
+  },
+  {
+    "k": "昨日",
+    "r": "さくじつ",
+    "m": "kemarin"
+  },
+  {
+    "k": "上旬/初旬",
+    "r": "じょうじゅん/しょじゅん",
+    "m": "awal bulan"
+  },
+  {
+    "k": "今日",
+    "r": "きょう",
+    "m": "hari ini"
+  },
+  {
+    "k": "中旬",
+    "r": "ちゅうじゅん",
+    "m": "tengah bulan"
+  },
+  {
+    "k": "明日",
+    "r": "あす",
+    "m": "besok"
+  },
+  {
+    "k": "下旬",
+    "r": "げじゅん",
+    "m": "akhir bulan"
+  },
+  {
+    "k": "あさって",
+    "r": "あさって",
+    "m": "besok lusa"
+  },
+  {
+    "k": "しあさって",
+    "r": "しあさって",
+    "m": "3 hari ke depan"
+  },
+  {
+    "k": "月末",
+    "r": "げつまつ",
+    "m": "akhir bulan"
+  },
+  {
+    "k": "昨年",
+    "r": "さくねん",
+    "m": "tahun lalu"
+  },
+  {
+    "k": "平日",
+    "r": "へいじつ",
+    "m": "hari biasa (weekedays)"
+  },
+  {
+    "k": "一昨年",
+    "r": "いっさくねん",
+    "m": "2 tahun yang lalu"
+  },
+  {
+    "k": "祝日/祭日",
+    "r": "しゅくじつ/さいじつ",
+    "m": "hari libur nasional"
+  }
+],
+  11: [
+  {
+    "k": "再来年",
+    "r": "さらいねん",
+    "m": "2 tahun ke depan"
+  },
+  {
+    "k": "先々月",
+    "r": "せんせんげつ",
+    "m": "2 bulan lalu"
+  },
+  {
+    "k": "先日",
+    "r": "せんじつ",
+    "m": "beberapa hari lalu"
+  },
+  {
+    "k": "先々週",
+    "r": "せんせんしゅう",
+    "m": "2 minggu lalu"
+  },
+  {
+    "k": "年末年始",
+    "r": "ねんまつねんし",
+    "m": "akhir awal tahun"
+  },
+  {
+    "k": "再来月",
+    "r": "さらいげつ",
+    "m": "2 bulan ke depan"
+  },
+  {
+    "k": "年の暮れ",
+    "r": "としのくれ",
+    "m": "akhir tahun"
+  },
+  {
+    "k": "再来週",
+    "r": "さらいしゅう",
+    "m": "2 minggu ke depan"
+  },
+  {
+    "k": "休暇を取る",
+    "r": "きゅうかをとる",
+    "m": "mengambil cuti"
+  },
+  {
+    "k": "予定",
+    "r": "よてい",
+    "m": "rencana"
+  },
+  {
+    "k": "調整する",
+    "r": "ちょうせいする",
+    "m": "menyesuaikan"
+  },
+  {
+    "k": "日にち",
+    "r": "ひにち",
+    "m": "hari tanggal"
+  },
+  {
+    "k": "変更する",
+    "r": "へんこうする",
+    "m": "mengganti"
+  },
+  {
+    "k": "日程",
+    "r": "にってい",
+    "m": "jadwal"
+  },
+  {
+    "k": "ずらす",
+    "r": "ずらす",
+    "m": "menggeser"
+  },
+  {
+    "k": "スケジュール",
+    "r": "スケジュール",
+    "m": "jadwal"
+  },
+  {
+    "k": "予約を取り消す/キャンセルする",
+    "r": "よやくをとりけす/キャンセルする",
+    "m": "membatalkan reservasi"
+  },
+  {
+    "k": "旅行会社に申し込む",
+    "r": "りょこうがいしゃにもうしこむ",
+    "m": "mendaftar ke agen perjalanan wisata"
+  },
+  {
+    "k": "荷物をつめる",
+    "r": "にもつをつめる",
+    "m": "packing barang"
+  },
+  {
+    "k": "国内旅行",
+    "r": "こくないりょこう",
+    "m": "wisata domestik"
+  }
+],
+  12: [
+  {
+    "k": "海外旅行",
+    "r": "かいがいりょこう",
+    "m": "wisata internasional"
+  },
+  {
+    "k": "2泊3日で温泉に行く",
+    "r": "にはくみっかでおんせんにいく",
+    "m": "pergi ke onsen selama 3 hari 2 malam"
+  },
+  {
+    "k": "日帰りで温泉に行く",
+    "r": "ひがえりでおんせんにいく",
+    "m": "pergi ke onsen seharian (PP di hari yang sama)"
+  },
+  {
+    "k": "旅館に宿泊する",
+    "r": "りょかんにしゅくはくする",
+    "m": "menginap di ryokan (penginapan trandisional Jepang)"
+  },
+  {
+    "k": "階段を上る/上がる",
+    "r": "かいだんをのぼる/あがる",
+    "m": "naik (menaiki) tangga"
+  },
+  {
+    "k": "階段を下る/下りる",
+    "r": "かいだんをくだる/おりる",
+    "m": "turun (menuruni) tangga"
+  },
+  {
+    "k": "下りエスカレーター",
+    "r": "くだりエスカレーター",
+    "m": "eskalator turun"
+  },
+  {
+    "k": "上りエスカレーター",
+    "r": "のぼりエスカレーター",
+    "m": "eskalator naik"
+  },
+  {
+    "k": "上り電車",
+    "r": "のぼりでんしゃ",
+    "m": "sebutan untuk kereta dari daerah menuju ke pusat kota tokyo"
+  },
+  {
+    "k": "青森方面行き",
+    "r": "あおもりほうめんゆき",
+    "m": "kereta arah (tujuan) ke aomori"
+  },
+  {
+    "k": "下り電車",
+    "r": "くだりでんしゃ",
+    "m": "sebutan untuk kereta dari pusat kota tokyo menuju daerah"
+  },
+  {
+    "k": "東京方面行き",
+    "r": "とうきょうほうめんゆき",
+    "m": "kereta arah (tujuan) ke tokyo"
+  },
+  {
+    "k": "時刻表",
+    "r": "じこくひょう",
+    "m": "kereta jadwal kereta"
+  },
+  {
+    "k": "列車の時刻を調べる",
+    "r": "れっしゃのじこくをしらべる",
+    "m": "mencari tahu jadwal"
+  },
+  {
+    "k": "東京発 横浜行き",
+    "r": "とうきょうはつよこはまゆき",
+    "m": "berangkat dari tokyo, tujuan ke yokohama"
+  },
+  {
+    "k": "座席を指定する",
+    "r": "ざせきをしていする",
+    "m": "menentukan tempat duduk"
+  },
+  {
+    "k": "指定席",
+    "r": "していせき",
+    "m": "kursi harus reservasi"
+  },
+  {
+    "k": "特急券",
+    "r": "とっきゅうけん",
+    "m": "tiket kereta express"
+  },
+  {
+    "k": "自由席",
+    "r": "じゆうせき",
+    "m": "kursi bebas"
+  },
+  {
+    "k": "特急料金",
+    "r": "とっきゅうりょうきん",
+    "m": "biaya kereta express"
+  }
+],
+  13: [
+  {
+    "k": "窓側",
+    "r": "まどがわ",
+    "m": "(kursi) sisi jendela"
+  },
+  {
+    "k": "回数券",
+    "r": "かいすうけん",
+    "m": "tiket terusan"
+  },
+  {
+    "k": "通路側",
+    "r": "つうろがわ",
+    "m": "(kursi) sisi lorong"
+  },
+  {
+    "k": "定期券",
+    "r": "ていきけん",
+    "m": "tiket terusan"
+  },
+  {
+    "k": "乗車券",
+    "r": "じょうしゃけん",
+    "m": "tiket naik kereta"
+  },
+  {
+    "k": "改札口を通る",
+    "r": "かいさつぐちをとおる",
+    "m": "melewati gate stasiun"
+  },
+  {
+    "k": "片道切符",
+    "r": "かたみちきっぷ",
+    "m": "tiket sekali jalan"
+  },
+  {
+    "k": "切符を払い戻す",
+    "r": "きっぷをはらいもどす",
+    "m": "refund biaya tiket"
+  },
+  {
+    "k": "往復切符",
+    "r": "おうふくきっぷ",
+    "m": "tiket pulang pergi"
+  },
+  {
+    "k": "払い戻し",
+    "r": "はらいもどし",
+    "m": "pengembalian dana"
+  },
+  {
+    "k": "プラットホームが混雑している",
+    "r": "プラットホームがこんざつしている",
+    "m": "platform nya penuh (jadi susah di atur)"
+  },
+  {
+    "k": "白線/黄色い線の内側に下がる",
+    "r": "はくせん/きいろいせんのうちがわにさがる",
+    "m": "mundur ke dalam sisi garis putih/kuning"
+  },
+  {
+    "k": "特急が通過する",
+    "r": "とっきゅうがつうかする",
+    "m": "kereta expres akan lewat"
+  },
+  {
+    "k": "下車する",
+    "r": "げしゃする",
+    "m": "turun kereta"
+  },
+  {
+    "k": "乗車する",
+    "r": "じょうしゃする",
+    "m": "naik kereta"
+  },
+  {
+    "k": "発車する",
+    "r": "はっしゃする",
+    "m": "keretanya berangkat"
+  },
+  {
+    "k": "空っぽ",
+    "r": "からっぽ",
+    "m": "kosong"
+  },
+  {
+    "k": "電車はがらがらだ",
+    "r": "でんしゃはがらがらだ",
+    "m": "kereta sedikit penumpang"
+  },
+  {
+    "k": "満員電車で通勤する",
+    "r": "まんいんでんしゃでつうきんする",
+    "m": "pulang-pergi kantor menggunakan kereta penuh penumpang"
+  },
+  {
+    "k": "電車がゆれる",
+    "r": "でんしゃがゆれる",
+    "m": "keretanya bergoyang"
+  }
+],
+  14: [
+  {
+    "k": "終電",
+    "r": "しゅうでん",
+    "m": "kereta terakhir (malam)"
+  },
+  {
+    "k": "始発(電車)",
+    "r": "しはつ(でんしゃ)",
+    "m": "kereta pertama (pagi)"
+  },
+  {
+    "k": "始発駅から乗る",
+    "r": "しはつえきからのる",
+    "m": "naik dari stasiun keberangatan pertama"
+  },
+  {
+    "k": "終点で降りる",
+    "r": "しゅうてんでおりる",
+    "m": "turun di stasiun pemberhentian terakhir"
+  },
+  {
+    "k": "急行から各駅停車に乗り換える",
+    "r": "きゅうこうからかくえきていしゃにのりかえる",
+    "m": "transfer dari kereta “express” ke “local”"
+  },
+  {
+    "k": "乗り越し",
+    "r": "のりこし",
+    "m": "(KB)"
+  },
+  {
+    "k": "乗り越す",
+    "r": "のりこす",
+    "m": "melewati stasiun tujuan"
+  },
+  {
+    "k": "乗り遅れる",
+    "r": "のりおくれる",
+    "m": "telat naik"
+  },
+  {
+    "k": "乗り過ごす",
+    "r": "のりすごす",
+    "m": "kelewatan (tidak sengaja)"
+  },
+  {
+    "k": "乗り換え",
+    "r": "のりかえ",
+    "m": "transfer (ganti kereta)"
+  },
+  {
+    "k": "運賃を精算する",
+    "r": "うんちんをせいさんする",
+    "m": "menyesuaikan tarif"
+  },
+  {
+    "k": "車掌が車内アナウンスをする",
+    "r": "しゃしょうがしゃないアナウンスをする",
+    "m": "kondektur memberi pengumuman dalam kereta"
+  },
+  {
+    "k": "携帯電話の使用を控える",
+    "r": "けいたいでんわのしようをひかえる",
+    "m": "menahan diri (untuk) menggunaan handphone"
+  },
+  {
+    "k": "お年寄り/老人に席をゆずる",
+    "r": "おとしより/ろうじんにせきをゆずる",
+    "m": "memberikan tempat duduk kepada orang tua"
+  },
+  {
+    "k": "優先席",
+    "r": "ゆうせんせき",
+    "m": "kursi prioritas"
+  },
+  {
+    "k": "体の不自由な人",
+    "r": "からだのふじゆうなひと",
+    "m": "orang yang mempunyai cacat tubuh"
+  },
+  {
+    "k": "ちかんにあう",
+    "r": "ちかんにあう",
+    "m": "mengalami pelecehan seksual"
+  },
+  {
+    "k": "駅の売店",
+    "r": "えきのばいてん",
+    "m": "toko yang jualan di stasiun"
+  },
+  {
+    "k": "バックミラー",
+    "r": "バックミラー",
+    "m": "kaca spion (dalam)"
+  },
+  {
+    "k": "トランク",
+    "r": "トランク",
+    "m": "bagasi"
+  }
+],
+  15: [
+  {
+    "k": "タイヤ",
+    "r": "タイヤ",
+    "m": "ban"
+  },
+  {
+    "k": "運転席",
+    "r": "うんてんせき",
+    "m": "kursi pengemudi"
+  },
+  {
+    "k": "ライト",
+    "r": "ライト",
+    "m": "lampu"
+  },
+  {
+    "k": "助手席",
+    "r": "じょしゅせき",
+    "m": "kursi penumpang depan"
+  },
+  {
+    "k": "ハンドル",
+    "r": "ハンドル",
+    "m": "setir"
+  },
+  {
+    "k": "ボンネット",
+    "r": "ボンネット",
+    "m": "kap mesin"
+  },
+  {
+    "k": "フロントガラス",
+    "r": "フロントガラス",
+    "m": "kaca depan"
+  },
+  {
+    "k": "カーナビ",
+    "r": "カーナビ",
+    "m": "navigasi"
+  },
+  {
+    "k": "ワイパー",
+    "r": "ワイパー",
+    "m": "wiper (pembersih kaca)"
+  },
+  {
+    "k": "キー",
+    "r": "キー",
+    "m": "kunci"
+  },
+  {
+    "k": "サイドミラー",
+    "r": "サイドミラー",
+    "m": "kaca spion"
+  },
+  {
+    "k": "運転免許書",
+    "r": "うんてんめんきょしょ",
+    "m": "SIM"
+  },
+  {
+    "k": "ドライブをする",
+    "r": "ドライブをする",
+    "m": "menyetir mobil (dengan tujuan jalan-jalan)"
+  },
+  {
+    "k": "レンタカーを借りる",
+    "r": "レンタカーをかりる",
+    "m": "meminjam mobil (rental)"
+  },
+  {
+    "k": "トランクに荷物を積む",
+    "r": "トランクににもつをつむ",
+    "m": "menumpuk barang di bagasi"
+  },
+  {
+    "k": "人を乗せる",
+    "r": "ひとをのせる",
+    "m": "menaikkan orang ke dalam mobil (membuat orang lain naik ke mobil)"
+  },
+  {
+    "k": "シートベルトをしめる",
+    "r": "シートベルトをしめる",
+    "m": "memakai sabuk pengaman"
+  },
+  {
+    "k": "エンジンをかける",
+    "r": "エンジンをかける",
+    "m": "menyalakan mesin"
+  },
+  {
+    "k": "バックミラーで確認をする",
+    "r": "バックミラーでかくにんをする",
+    "m": "memastikan dengan kaca spion dalam"
+  },
+  {
+    "k": "ハンドルをにぎる",
+    "r": "ハンドルをにぎる",
+    "m": "memegang setir"
+  }
+],
+  16: [
+  {
+    "k": "アクセルをふむ",
+    "r": "アクセルをふむ",
+    "m": "menginjak pedal gas"
+  },
+  {
+    "k": "ブレーキをかける",
+    "r": "ブレーキをかける",
+    "m": "mengerem"
+  },
+  {
+    "k": "急ブレーキ",
+    "r": "きゅうブレーキ",
+    "m": "rem mendadak"
+  },
+  {
+    "k": "ライトをつける",
+    "r": "ライトをつける",
+    "m": "menyalakan lampu"
+  },
+  {
+    "k": "ワイパーを動かす",
+    "r": "ワイパーをうごかす",
+    "m": "menggerakkan wiper"
+  },
+  {
+    "k": "ガソリンスタンドに寄る",
+    "r": "ガソリンスタンドによる",
+    "m": "mampir ke pom bensin"
+  },
+  {
+    "k": "高速道路に乗る",
+    "r": "こうそくどうろにのる",
+    "m": "naik jalan tol"
+  },
+  {
+    "k": "タイヤがパンクする",
+    "r": "タイヤがパンクする",
+    "m": "ban nya bocor"
+  },
+  {
+    "k": "一方通行",
+    "r": "いっぽうつうこう",
+    "m": "jalan satu arah"
+  },
+  {
+    "k": "通行止め",
+    "r": "つうこうどめ",
+    "m": "jalan ditutup"
+  },
+  {
+    "k": "工事中",
+    "r": "こうじちゅう",
+    "m": "sedang ada pengerjaan"
+  },
+  {
+    "k": "バス停",
+    "r": "バスてい",
+    "m": "halte bus"
+  },
+  {
+    "k": "信号",
+    "r": "しんごう",
+    "m": "lampu lalu lintas"
+  },
+  {
+    "k": "バスの停留所",
+    "r": "バスのていりゅうじょ",
+    "m": "halte bus"
+  },
+  {
+    "k": "横断歩道",
+    "r": "おうだんほどう",
+    "m": "zebra cross"
+  },
+  {
+    "k": "踏切",
+    "r": "ふみきり",
+    "m": "perlintasan kereta api"
+  },
+  {
+    "k": "交差点",
+    "r": "こうさてん",
+    "m": "perempatan"
+  },
+  {
+    "k": "線路",
+    "r": "せんろ",
+    "m": "rel kereta api"
+  },
+  {
+    "k": "四つ角",
+    "r": "よつかど",
+    "m": "belokan 4 (perempatan)"
+  },
+  {
+    "k": "渋滞",
+    "r": "じゅうたい",
+    "m": "macet"
+  }
+],
+  17: [
+  {
+    "k": "すいている",
+    "r": "すいている",
+    "m": "padat"
+  },
+  {
+    "k": "道路が渋滞している/混んでいる",
+    "r": "どうろがじゅうたいしている/こんでいる",
+    "m": "jalanan"
+  },
+  {
+    "k": "回り道/遠回りをする",
+    "r": "まわりみち/とおまわりをする",
+    "m": "mengambil jalan memutar (semakin jauh)"
+  },
+  {
+    "k": "近道をする",
+    "r": "ちかみちをする",
+    "m": "mengambil jalan pintas"
+  },
+  {
+    "k": "突き当りを左に曲がる",
+    "r": "つきあたりをひだりにまがる",
+    "m": "mentok belok kiri"
+  },
+  {
+    "k": "バスが停車する",
+    "r": "バスがていしゃする",
+    "m": "bus nya berhenti"
+  },
+  {
+    "k": "線路を超える",
+    "r": "せんろをこえる",
+    "m": "melintasi rel kereta api"
+  },
+  {
+    "k": "時速",
+    "r": "じそく",
+    "m": "berjalan dengan kecepatan 100 km/jam"
+  },
+  {
+    "k": "キロで走る",
+    "r": "キロではしる",
+    "m": "berjalan dengan kecepatan 100 km/jam"
+  },
+  {
+    "k": "スピード違反で捕まる",
+    "r": "スピードいはんでつかまる",
+    "m": "ditangkap karena mengebut"
+  },
+  {
+    "k": "駐車違反をする",
+    "r": "ちゅうしゃいはんをする",
+    "m": "melakukan pelanggaran parkir"
+  },
+  {
+    "k": "信号無視",
+    "r": "しんごうむし",
+    "m": "lintas (KB)"
+  },
+  {
+    "k": "信号を無視する",
+    "r": "しんごうをむしする",
+    "m": "mengabaikan lampu lalu"
+  },
+  {
+    "k": "車がぶつかる",
+    "r": "くるまがぶつかる",
+    "m": "mobilnya nabrak"
+  },
+  {
+    "k": "車をぶつける",
+    "r": "くるまをぶつける",
+    "m": "menabrakkan mobil"
+  },
+  {
+    "k": "猫が車にひかれる猫をひく",
+    "r": "がにひかれるをひく",
+    "m": "melindas kucing kucing terlindas mobil"
+  },
+  {
+    "k": "交通事故にあう",
+    "r": "こうつうじこにあう",
+    "m": "mengalami kecelakaan lalu lintas"
+  },
+  {
+    "k": "車に気をつける",
+    "r": "くるまにきをつける",
+    "m": "hati-hati terhadap mobil"
+  },
+  {
+    "k": "ななめに横断する",
+    "r": "ななめにおうだんする",
+    "m": "menyeberang secara diagonal (miring)"
+  },
+  {
+    "k": "道路を横切る",
+    "r": "どうろをよこぎる",
+    "m": "menyeberang jalan"
+  }
+],
+  18: [
+  {
+    "k": "サイン",
+    "r": "サイン",
+    "m": "tanda tangan"
+  },
+  {
+    "k": "キャッシュカード通帳",
+    "r": "キャッシュカード",
+    "m": "uang kertas"
+  },
+  {
+    "k": "はんこ/印鑑",
+    "r": "はんこ/いんかん",
+    "m": "buku tabungan kartu ATM"
+  },
+  {
+    "k": "お金をためる/貯金する",
+    "r": "おかねをためる/ちょきんする",
+    "m": "mengumpulkan uang, menabung"
+  },
+  {
+    "k": "預金する銀行にお金を預ける",
+    "r": "よきんするぎんこうにおかねをあすける",
+    "m": "menitipkan uang di bank"
+  },
+  {
+    "k": "給料を引き出す/下ろす",
+    "r": "きゅうりょうをひきだす/おろす",
+    "m": "mengambil gaji"
+  },
+  {
+    "k": "通帳記入をする通帳に記入する",
+    "r": "つうちょうきにゅうをするつうちょうにきにゅうする",
+    "m": "mengisi buku tabungan (biasanya diprint)"
+  },
+  {
+    "k": "暗証番号",
+    "r": "あんしょうばんごう",
+    "m": "nomor pin"
+  },
+  {
+    "k": "銀行の本店",
+    "r": "ぎんこうのほんてん",
+    "m": "kantor pusat bank"
+  },
+  {
+    "k": "口座を開く",
+    "r": "こうざをひらく",
+    "m": "membuka rekening"
+  },
+  {
+    "k": "家賃を振り込む",
+    "r": "やちんをふりこむ",
+    "m": "mentrasfer biaya sewa properti"
+  },
+  {
+    "k": "公共料金を支払う",
+    "r": "こうきょうりょうきんをしはらう",
+    "m": "membayar tagihan utilitas (tagihan bulanan)"
+  },
+  {
+    "k": "商品の代金を払う",
+    "r": "しょうひんのだいきんをはらう",
+    "m": "membayar biaya produk"
+  },
+  {
+    "k": "窓口で両替をする",
+    "r": "まどぐちでりょうがえをする",
+    "m": "menukar mata uang di konter"
+  },
+  {
+    "k": "送金する",
+    "r": "そうきんする",
+    "m": "mengirim uang"
+  },
+  {
+    "k": "仕送りする",
+    "r": "しおくりする",
+    "m": "mengirim uang (untuk orang tua)"
+  },
+  {
+    "k": "手数料がかかる",
+    "r": "てすうりょうがかかる",
+    "m": "memerlukan (terkena) biaya administrasi"
+  },
+  {
+    "k": "あて名",
+    "r": "あてな",
+    "m": "alamat yang dituju"
+  },
+  {
+    "k": "差出人名",
+    "r": "さしだしにんめい",
+    "m": "nama pengirim"
+  },
+  {
+    "k": "手紙を速達で出す",
+    "r": "てがみをそくたつでだす",
+    "m": "mengirimkan surat kilat"
+  }
+],
+  19: [
+  {
+    "k": "送料がかかる",
+    "r": "そうりょうがかかる",
+    "m": "memerlukan (terkena) biaya pengiriman"
+  },
+  {
+    "k": "田中さんのことが",
+    "r": "たなかさんのことが",
+    "m": "penasaran, ingin tahu"
+  },
+  {
+    "k": "気になる",
+    "r": "きになる",
+    "m": "penasaran, ingin tahu"
+  },
+  {
+    "k": "好きになる",
+    "r": "すきになる",
+    "m": "jadi suka"
+  },
+  {
+    "k": "きらいになる",
+    "r": "きらいになる",
+    "m": "jadi tidak suka"
+  },
+  {
+    "k": "田中さんと",
+    "r": "たなかさんと",
+    "m": "berpacaran"
+  },
+  {
+    "k": "いやになる",
+    "r": "いやになる",
+    "m": "jadi tidak tertarik"
+  },
+  {
+    "k": "交際する/付き合う",
+    "r": "こうさいする/つきあう",
+    "m": "berpacaran"
+  },
+  {
+    "k": "うらやましい",
+    "r": "うらやましい",
+    "m": "merasa iri"
+  },
+  {
+    "k": "けんかする",
+    "r": "けんかする",
+    "m": "bertengkar"
+  },
+  {
+    "k": "田中さんを",
+    "r": "たなかさんを",
+    "m": "mengajak ke konser"
+  },
+  {
+    "k": "仲直りする",
+    "r": "なかなおりする",
+    "m": "baikan"
+  },
+  {
+    "k": "コンサートにさそう",
+    "r": "コンサートにさそう",
+    "m": "mengajak ke konser"
+  },
+  {
+    "k": "仲がいい",
+    "r": "なかがいい",
+    "m": "hubungan nya baik"
+  },
+  {
+    "k": "いやがる",
+    "r": "いやがる",
+    "m": "tidak suka, tidak mau sama..."
+  },
+  {
+    "k": "仲良しだ",
+    "r": "なかよしだ",
+    "m": "akrab"
+  },
+  {
+    "k": "ふる",
+    "r": "ふる",
+    "m": "menolak, mutusin"
+  },
+  {
+    "k": "田中さんに",
+    "r": "たなかさんに",
+    "m": "disukai"
+  },
+  {
+    "k": "好かれる",
+    "r": "すかれる",
+    "m": "disukai"
+  },
+  {
+    "k": "気がある",
+    "r": "きがある",
+    "m": "ada rasa/perasaan"
+  }
+],
+  20: [
+  {
+    "k": "きらわれる",
+    "r": "きらわれる",
+    "m": "tidak disukai, dibenci"
+  },
+  {
+    "k": "あこがれる",
+    "r": "あこがれる",
+    "m": "kagum"
+  },
+  {
+    "k": "いやがられる",
+    "r": "いやがられる",
+    "m": "tidak disukai"
+  },
+  {
+    "k": "夢中になる",
+    "r": "むちゅうになる",
+    "m": "tergila-gila"
+  },
+  {
+    "k": "ふられる",
+    "r": "ふられる",
+    "m": "ditolak, diputusin"
+  },
+  {
+    "k": "恋をする",
+    "r": "こいをする",
+    "m": "jatuh cinta"
+  },
+  {
+    "k": "女性にもてる",
+    "r": "じょせいにもてる",
+    "m": "populer, banyak disukai cewek"
+  },
+  {
+    "k": "お互いに気に入る",
+    "r": "おたがいにきにいる",
+    "m": "saling menyukai"
+  },
+  {
+    "k": "相手の予定を聞く",
+    "r": "あいてのよていをきく",
+    "m": "bertanya rencana pasangan"
+  },
+  {
+    "k": "都合をつける",
+    "r": "つごうをつける",
+    "m": "membuat jadi ada waktu (meluangkan waktu)"
+  },
+  {
+    "k": "都合がつく",
+    "r": "つごうがつく",
+    "m": "waktunya ada (ada waktu, bisa)"
+  },
+  {
+    "k": "買い物に付き合う",
+    "r": "かいものにつきあう",
+    "m": "menemani (orang lain) belanja"
+  },
+  {
+    "k": "付き合い",
+    "r": "つきあい",
+    "m": "(KB)"
+  },
+  {
+    "k": "恋人",
+    "r": "こいびと",
+    "m": "orang yang dicintai (pacar)"
+  },
+  {
+    "k": "彼女",
+    "r": "かのじょ",
+    "m": "pacar perempuan"
+  },
+  {
+    "k": "田中さんの彼/彼氏",
+    "r": "たなかさんのかれ/かれし",
+    "m": "pacar (laki) nya tanaka-san"
+  },
+  {
+    "k": "結婚を申し込む",
+    "r": "けっこんをもうしこむ",
+    "m": "mengajak nikah"
+  },
+  {
+    "k": "断る",
+    "r": "ことわる",
+    "m": "menolak"
+  },
+  {
+    "k": "あいまいな返事をする",
+    "r": "あいまいなへんじをする",
+    "m": "memberi respon yang ambigu"
+  }
+],
+  21: [
+  {
+    "k": "ネックレス",
+    "r": "ネックレス",
+    "m": "anting kalung"
+  },
+  {
+    "k": "イヤリング",
+    "r": "イヤリング",
+    "m": "sabuk"
+  },
+  {
+    "k": "ベルト",
+    "r": "ベルト",
+    "m": "sabuk"
+  },
+  {
+    "k": "パンツ",
+    "r": "パンツ",
+    "m": "celana, celana dalam"
+  },
+  {
+    "k": "下着",
+    "r": "したぎ",
+    "m": "pakaian"
+  },
+  {
+    "k": "上着",
+    "r": "うわぎ",
+    "m": "dalam pakaian luar, jaket dll"
+  },
+  {
+    "k": "明日の支度をする",
+    "r": "あしたのしたくをする",
+    "m": "mempersiapkan untuk besok"
+  },
+  {
+    "k": "シャワーを浴びる",
+    "r": "シャワーをあびる",
+    "m": "mandi shower"
+  },
+  {
+    "k": "歯をみがく",
+    "r": "はをみがく",
+    "m": "memakai pasta gigi"
+  },
+  {
+    "k": "歯磨き",
+    "r": "はみがき",
+    "m": "menggosok gigi (gosok gigi)"
+  },
+  {
+    "k": "歯みがき粉をつける",
+    "r": "はみがきこをつける",
+    "m": "memakai pasta gigi"
+  },
+  {
+    "k": "ひげをそる",
+    "r": "ひげをそる",
+    "m": "mencukur jenggot"
+  },
+  {
+    "k": "髪をとく/とかす",
+    "r": "かみをとく/とかす",
+    "m": "menyisir rambut"
+  },
+  {
+    "k": "ドライヤーで髪を乾かす",
+    "r": "ドライヤーでかみをかわかす",
+    "m": "mengeringkan rambut dengan hair dryer"
+  },
+  {
+    "k": "お化粧をする",
+    "r": "おけしょうをする",
+    "m": "dandan, merias wajah"
+  },
+  {
+    "k": "口紅を塗る/つける",
+    "r": "くちべにをぬる/つける",
+    "m": "memakai lipstik"
+  },
+  {
+    "k": "服を着替える",
+    "r": "ふくをきがえる",
+    "m": "mengganti"
+  },
+  {
+    "k": "着替え",
+    "r": "ことわえ",
+    "m": "baju ganti baju"
+  },
+  {
+    "k": "おしゃれな人",
+    "r": "おしゃれな",
+    "m": "orang modis"
+  },
+  {
+    "k": "おしゃれをする",
+    "r": "おしゃれをする",
+    "m": "memakai pakaian yang modis"
+  }
+],
+  22: [
+  {
+    "k": "ほどく",
+    "r": "ほどく",
+    "m": "melepas"
+  },
+  {
+    "k": "ひもを結ぶ",
+    "r": "ひもをむずぶ",
+    "m": "mengikat tali"
+  },
+  {
+    "k": "マフラーを巻く/する",
+    "r": "マフラーをまく/する",
+    "m": "memakai syal"
+  },
+  {
+    "k": "手袋をはめる/する",
+    "r": "てぶくろをはめる/する",
+    "m": "memakai sarung tangan"
+  },
+  {
+    "k": "指輪をはめる/する",
+    "r": "ゆびわをはめる/する",
+    "m": "memakai cincin"
+  },
+  {
+    "k": "気に入る",
+    "r": "きにいる",
+    "m": "menyukai"
+  },
+  {
+    "k": "お気に入り",
+    "r": "おきにいり",
+    "m": "kesukaan, favorit"
+  },
+  {
+    "k": "好む",
+    "r": "このむ",
+    "m": "menyukai"
+  },
+  {
+    "k": "好み",
+    "r": "このみ",
+    "m": "kesukaan"
+  },
+  {
+    "k": "似合う",
+    "r": "にあう",
+    "m": "cocok"
+  },
+  {
+    "k": "目立つ色",
+    "r": "めだついろ",
+    "m": "warna mencolok"
+  },
+  {
+    "k": "はでな",
+    "r": "はでな",
+    "m": "mencolok"
+  },
+  {
+    "k": "地味な",
+    "r": "じみな",
+    "m": "sederhana"
+  },
+  {
+    "k": "人気のあるデザイン",
+    "r": "にんきのあるデザイン",
+    "m": "desain populer, banyak disukai"
+  },
+  {
+    "k": "はやっている",
+    "r": "はやっている",
+    "m": "lagi nge-tren"
+  },
+  {
+    "k": "はやり/流行",
+    "r": "はやり/りゅうこう",
+    "m": "nge-tren"
+  },
+  {
+    "k": "サイズを確かめる/確認する",
+    "r": "サイズをたしかめる/かくにんする",
+    "m": "memastikan ukuran"
+  },
+  {
+    "k": "サイズが合う",
+    "r": "サイズがあう",
+    "m": "ukurannya cocok"
+  },
+  {
+    "k": "きつい",
+    "r": "きつい",
+    "m": "ketat"
+  },
+  {
+    "k": "ゆるい",
+    "r": "ゆるい",
+    "m": "kendor, tidak pas"
+  }
+],
+  23: [
+  {
+    "k": "品物をかごに入れる",
+    "r": "しなものをかごにいれる",
+    "m": "memasukkan barang ke keranjang"
+  },
+  {
+    "k": "セール/バーゲンで買う",
+    "r": "セール/バーゲンでかう",
+    "m": "membeli barang promo"
+  },
+  {
+    "k": "デパートの特売品",
+    "r": "デパートのとくばいひん",
+    "m": "barang promo yang dijual di departmen store"
+  },
+  {
+    "k": "パーセント",
+    "r": "パーセント",
+    "m": "diskon 30%"
+  },
+  {
+    "k": "オフ/3割引き",
+    "r": "オフ/わりびき",
+    "m": "diskon 30%"
+  },
+  {
+    "k": "家族そろって家族全員で",
+    "r": "かぞくそろってかぞくぜんいんで",
+    "m": "bersama dengan semua anggota keluarga"
+  },
+  {
+    "k": "子ども連れ",
+    "r": "こどもづれ",
+    "m": "orang tua dengan anak"
+  },
+  {
+    "k": "子どもを連れる",
+    "r": "こどもをつれる",
+    "m": "mengajak anak"
+  },
+  {
+    "k": "すいている腹おなかがへる",
+    "r": "すいているおなかがへる",
+    "m": "lapar"
+  },
+  {
+    "k": "外食をする",
+    "r": "がいしょくをする",
+    "m": "makan di luar (tidak di rumah)"
+  },
+  {
+    "k": "ランチ",
+    "r": "ランチ",
+    "m": "siang"
+  },
+  {
+    "k": "お昼を食べる/昼食をとる",
+    "r": "おひるをたべる/ちゅうしょくをとる",
+    "m": "makan"
+  },
+  {
+    "k": "雰囲気のいい店",
+    "r": "ふんいきのいいみせ",
+    "m": "toko dengan suasana yang bagus, nyaman"
+  },
+  {
+    "k": "満席",
+    "r": "まんせき",
+    "m": "penuh (semua kursi terisi)"
+  },
+  {
+    "k": "行列ができる",
+    "r": "ぎょうれつができる",
+    "m": "timbul antrian"
+  },
+  {
+    "k": "列に並ぶ",
+    "r": "れつにならぶ",
+    "m": "mengantri"
+  },
+  {
+    "k": "喫煙席",
+    "r": "きつえんせき",
+    "m": "merokok"
+  },
+  {
+    "k": "禁煙席",
+    "r": "きんえんせき",
+    "m": "kursi dilarang"
+  },
+  {
+    "k": "ウエートレスにお勧めを聞く",
+    "r": "ウエートレスにおすすめをきく",
+    "m": "menanyakan rekomendasi ke pelayan"
+  },
+  {
+    "k": "少ない",
+    "r": "すくない",
+    "m": "merokok"
+  }
+],
+  24: [
+  {
+    "k": "量が多い",
+    "r": "りょうがおおい",
+    "m": "porsi banyak"
+  },
+  {
+    "k": "注文が決まる",
+    "r": "ちゅうもんがきまる",
+    "m": "pesanan (telah) ditentukan"
+  },
+  {
+    "k": "注文する",
+    "r": "ちゅうもんする",
+    "m": "memesan"
+  },
+  {
+    "k": "注文を取る/受け取る",
+    "r": "ちゅうもんをとる/うけとる",
+    "m": "menerima pesanan"
+  },
+  {
+    "k": "デザートを追加する",
+    "r": "デザートをついかする",
+    "m": "menambah (order) dessert"
+  },
+  {
+    "k": "コーヒーのおかわり",
+    "r": "コーヒーのおかわり",
+    "m": "menambah kopi"
+  },
+  {
+    "k": "無料/ただ",
+    "r": "むりょう/ただ",
+    "m": "gratis"
+  },
+  {
+    "k": "食器を下げる",
+    "r": "しょっきをさげる",
+    "m": "mengambil peralatan makan (setelah selesai makan)"
+  },
+  {
+    "k": "料理を残す",
+    "r": "りょうりをのこす",
+    "m": "menyisakan makanan"
+  },
+  {
+    "k": "もったいない",
+    "r": "もったいない",
+    "m": "sayang, mubadzir"
+  },
+  {
+    "k": "「何名様ですか。」",
+    "r": "なんめいさまですか",
+    "m": "berapa orang?"
+  },
+  {
+    "k": "人です。」",
+    "r": "りです",
+    "m": "2 orang"
+  },
+  {
+    "k": "申し訳ありません。",
+    "r": "もうしわけありません",
+    "m": "mohon maaf"
+  },
+  {
+    "k": "もう少々お待ちください。",
+    "r": "もうしょうしょう々おまちください",
+    "m": "mohon tunggu sebentar"
+  },
+  {
+    "k": "お待たせいたしました。",
+    "r": "おまたせいたしました",
+    "m": "mohon maaf telah membuat (anda) menunggu"
+  },
+  {
+    "k": "お待ちどおさまです",
+    "r": "おまちどおさまです",
+    "m": "terima kasih telah bersedia menunggu"
+  },
+  {
+    "k": "宴会を開く",
+    "r": "えんかいをひらく",
+    "m": "mengadakan pesta"
+  },
+  {
+    "k": "飲み会",
+    "r": "のみかい",
+    "m": "pesta minum-minum"
+  },
+  {
+    "k": "送別会",
+    "r": "そうべつかい",
+    "m": "pesta perpisahan"
+  },
+  {
+    "k": "歓迎会",
+    "r": "かんげいかい",
+    "m": "pesta selamat datang"
+  }
+],
+  25: [
+  {
+    "k": "飲み放題",
+    "r": "のみほうだい",
+    "m": "minum sepuasnya"
+  },
+  {
+    "k": "食べ放題",
+    "r": "たべほうだい",
+    "m": "makan sepuasnya"
+  },
+  {
+    "k": "お酒を注ぐ",
+    "r": "おさけをそそぐ",
+    "m": "menuangkan sake"
+  },
+  {
+    "k": "お湯を注ぐ",
+    "r": "おゆをそそぐ",
+    "m": "menuangkan air hangat"
+  },
+  {
+    "k": "乾杯する",
+    "r": "かんぱいする",
+    "m": "mulai minum-minum bersama"
+  },
+  {
+    "k": "盛り上がる",
+    "r": "もりあがる",
+    "m": "seru, ramai, heboh"
+  },
+  {
+    "k": "土が盛り上がる",
+    "r": "つちがもりあがる",
+    "m": "tanah nya naik"
+  },
+  {
+    "k": "こぼす",
+    "r": "こぼす",
+    "m": "menumpahkan"
+  },
+  {
+    "k": "ビールを一気に飲む",
+    "r": "ビールをいっきにのむ",
+    "m": "minum sekaligus langsung habis"
+  },
+  {
+    "k": "ウィスキーの水割り",
+    "r": "ウィスキーのみずわり",
+    "m": "whisky campur air"
+  },
+  {
+    "k": "おつまみのチーズ",
+    "r": "おつまみのチーズ",
+    "m": "cemilan keju (cemilan sambil minum sake)"
+  },
+  {
+    "k": "よっぱらい",
+    "r": "よっぱらい",
+    "m": "pemabuk"
+  },
+  {
+    "k": "よっぱらう",
+    "r": "よっぱらう",
+    "m": "mabuk"
+  },
+  {
+    "k": "あばれる",
+    "r": "あばれる",
+    "m": "bikin onar, hilang kontrol"
+  },
+  {
+    "k": "ビールの泡",
+    "r": "ビールのあわ",
+    "m": "busa bir"
+  },
+  {
+    "k": "やかましい",
+    "r": "やかましい",
+    "m": "berisik"
+  },
+  {
+    "k": "あふれる",
+    "r": "あふれる",
+    "m": "meluap"
+  },
+  {
+    "k": "そうぞうしい",
+    "r": "そうぞうしい",
+    "m": "berisik, bising"
+  },
+  {
+    "k": "お酒によう",
+    "r": "おさけによう",
+    "m": "mabuk sake"
+  },
+  {
+    "k": "さわがしい",
+    "r": "さわがしい",
+    "m": "gaduh"
+  }
+],
+  26: [
+  {
+    "k": "さわぐ",
+    "r": "さわぐ",
+    "m": "membuat gaduh"
+  },
+  {
+    "k": "煙い/煙たい",
+    "r": "けむい/けむたい",
+    "m": "berasap"
+  },
+  {
+    "k": "たばこの煙",
+    "r": "たばこのけむり",
+    "m": "asap rokok"
+  },
+  {
+    "k": "グラスを割る",
+    "r": "グラスをわる",
+    "m": "memecahkan gelas"
+  },
+  {
+    "k": "グラスが割れる",
+    "r": "グラスがわれる",
+    "m": "gelasnya pecah"
+  },
+  {
+    "k": "ビールびんを倒す",
+    "r": "ビールびんをたおす",
+    "m": "menjatuhkan botol bir (menghabiskan bir)"
+  },
+  {
+    "k": "ビールびんが倒れる",
+    "r": "ビールびんがたおれる",
+    "m": "botol bir nya jatuh (bir nya habis)"
+  },
+  {
+    "k": "ほかの客に迷惑をかける",
+    "r": "ほかのきゃくにめいわくをかける",
+    "m": "mengganggu customer lain"
+  },
+  {
+    "k": "迷惑がかかる",
+    "r": "めいわくがかかる",
+    "m": "terganggu"
+  },
+  {
+    "k": "レジ",
+    "r": "レジ",
+    "m": "kasir"
+  },
+  {
+    "k": "おごる",
+    "r": "おごる",
+    "m": "mentraktir"
+  },
+  {
+    "k": "おごり",
+    "r": "おごり",
+    "m": "traktir"
+  },
+  {
+    "k": "現金で払う",
+    "r": "げんきんではらう",
+    "m": "bayar dengan uang cash"
+  },
+  {
+    "k": "割り勘にする",
+    "r": "わりかんにする",
+    "m": "membagi tagihan, bayar sendiri"
+  },
+  {
+    "k": "勘定を済ませる",
+    "r": "かんじょうをすませる",
+    "m": "menyelesaikan tagihan (membayar)"
+  },
+  {
+    "k": "別々に払う",
+    "r": "べつべつ々にはらう",
+    "m": "bayar sendiri-sendiri"
+  },
+  {
+    "k": "クレジットカードで払う",
+    "r": "クレジットカードではらう",
+    "m": "bayar dengan kartu kredit"
+  },
+  {
+    "k": "カードの有効期限を確認する",
+    "r": "カードのゆうこうきげんをかくにんする",
+    "m": "memastikan tanggal expired kartu kredit"
+  },
+  {
+    "k": "お札をくずす",
+    "r": "おさつをくずす",
+    "m": "tukar uang kertas (dengan uang kecil)"
+  },
+  {
+    "k": "おつりをもらう",
+    "r": "おつりをもらう",
+    "m": "menerima kembalian"
+  }
+],
+  27: [
+  {
+    "k": "レシート",
+    "r": "レシート",
+    "m": "receipt"
+  },
+  {
+    "k": "領収書をもらう",
+    "r": "りょうしゅうしょをもらう",
+    "m": "menerima receipt"
+  },
+  {
+    "k": "ぜいたくをする",
+    "r": "ぜいたくをする",
+    "m": "berfoya-foya (menggunakan uang untuk hal yang mewah)"
+  },
+  {
+    "k": "むだづかいをする",
+    "r": "むだづかいをする",
+    "m": "menggunakan uang dengan sia-sia"
+  },
+  {
+    "k": "請求書が届く",
+    "r": "せいきゅうしょがとどく",
+    "m": "tagihannya tiba"
+  },
+  {
+    "k": "費用がかかる",
+    "r": "ひようがかかる",
+    "m": "memerlukan biaya"
+  },
+  {
+    "k": "足りない",
+    "r": "たりない",
+    "m": "tidak cukup"
+  },
+  {
+    "k": "お金が足りる",
+    "r": "おかねがたりる",
+    "m": "uangnya cukup"
+  },
+  {
+    "k": "食費を節約する",
+    "r": "しょくひをせつやくする",
+    "m": "menghemat uang makan"
+  },
+  {
+    "k": "今月の生活費が不足する",
+    "r": "こんげつのせいかつひがふそくする",
+    "m": "biaya hidup bulan ini kurang"
+  },
+  {
+    "k": "交通費",
+    "r": "こうつうひ",
+    "m": "biaya transportasi"
+  },
+  {
+    "k": "むだをなくす",
+    "r": "むだをなくす",
+    "m": "menjadi kaya"
+  },
+  {
+    "k": "むだを省く",
+    "r": "むだをはぶく",
+    "m": "mengurangi yang tidak perlu"
+  },
+  {
+    "k": "お金持ちになる",
+    "r": "おかねもちになる",
+    "m": "menjadi kaya"
+  },
+  {
+    "k": "貧乏になる",
+    "r": "びんぼうになる",
+    "m": "menjadi miskin"
+  },
+  {
+    "k": "貧しい生活",
+    "r": "まずしいせいかつ",
+    "m": "hidup miskin"
+  },
+  {
+    "k": "借金をする",
+    "r": "しゃっきんをする",
+    "m": "meminjam uang (berhutang)"
+  },
+  {
+    "k": "教科",
+    "r": "きょうか",
+    "m": "mata"
+  },
+  {
+    "k": "科目は",
+    "r": "かもくは",
+    "m": "bahasa negara (Jepang)"
+  },
+  {
+    "k": "です。",
+    "r": "です",
+    "m": "bahasa negara (Jepang)"
+  }
+],
+  28: [
+  {
+    "k": "得意な",
+    "r": "とくいな",
+    "m": "pelajaran"
+  },
+  {
+    "k": "国語",
+    "r": "こくご",
+    "m": "bahasa negara (Jepang)"
+  },
+  {
+    "k": "算数",
+    "r": "さんすう",
+    "m": "matematika"
+  },
+  {
+    "k": "科目",
+    "r": "かもく",
+    "m": "pandai, kuat"
+  },
+  {
+    "k": "苦手な",
+    "r": "にがてな",
+    "m": "pelajaran"
+  },
+  {
+    "k": "理科",
+    "r": "りか",
+    "m": "ilmu pengetahuan alam"
+  },
+  {
+    "k": "社会",
+    "r": "しゃかい",
+    "m": "ilmu pengetahuan sosial"
+  },
+  {
+    "k": "体育",
+    "r": "たいいく",
+    "m": "olahraga"
+  },
+  {
+    "k": "に入学する",
+    "r": "ににゅうがくする",
+    "m": "masuk sekolah"
+  },
+  {
+    "k": "昼休みに私立高校",
+    "r": "みに",
+    "m": "sekolah SMA swasta"
+  },
+  {
+    "k": "を食べる",
+    "r": "をたべる",
+    "m": "olahraga"
+  },
+  {
+    "k": "公立高校",
+    "r": "こうりつこうこう",
+    "m": "bekal untuk makan, bento"
+  },
+  {
+    "k": "お弁当",
+    "r": "おべんとう",
+    "m": "bekal untuk makan, bento"
+  },
+  {
+    "k": "国立大学",
+    "r": "こくりつだいがく",
+    "m": "makanan disediakan sekolah"
+  },
+  {
+    "k": "給食",
+    "r": "きゅうしょく",
+    "m": "makanan disediakan sekolah"
+  },
+  {
+    "k": "時間割",
+    "r": "じかんわり",
+    "m": "jadwal, time table"
+  },
+  {
+    "k": "卒業式",
+    "r": "そつぎょうしき",
+    "m": "upacara kelulusan"
+  },
+  {
+    "k": "入学式",
+    "r": "にゅうがくしき",
+    "m": "upacara masuk sekolah"
+  },
+  {
+    "k": "欠席する",
+    "r": "けっせきする",
+    "m": "tidak hadir, absen"
+  },
+  {
+    "k": "出席する",
+    "r": "しゅっせきする",
+    "m": "menghadiri, hadir"
+  }
+],
+  29: [
+  {
+    "k": "通勤する",
+    "r": "つうきんする",
+    "m": "PP ke tempat kerja"
+  },
+  {
+    "k": "バスで通学する",
+    "r": "バスでつうがくする",
+    "m": "PP ke sekolah dengan bus"
+  },
+  {
+    "k": "今学期",
+    "r": "こんがっき",
+    "m": "semester ini"
+  },
+  {
+    "k": "学期",
+    "r": "がっき",
+    "m": "semster 1, 2, 3"
+  },
+  {
+    "k": "後期",
+    "r": "こうき",
+    "m": "semester setelahnya"
+  },
+  {
+    "k": "前期",
+    "r": "ぜんき",
+    "m": "semester sebelumnya"
+  },
+  {
+    "k": "同じ学年",
+    "r": "おなじがくねん",
+    "m": "satu angkatan (tingkatan/kelas yang sama)"
+  },
+  {
+    "k": "自習する",
+    "r": "じしゅうする",
+    "m": "belajar sendiri, tidak ada guru"
+  },
+  {
+    "k": "えんぴつをけずる",
+    "r": "えんぴつをけずる",
+    "m": "meraut pensil"
+  },
+  {
+    "k": "物差し定規で測る",
+    "r": "ものさしじょうぎではかる",
+    "m": "mengukur dengan penggaris"
+  },
+  {
+    "k": "進学を希望する",
+    "r": "しんがくをきぼうする",
+    "m": "ingin melanjutkan sekolah atau kuliah"
+  },
+  {
+    "k": "合格発表を見に行く",
+    "r": "こうかくはっぴょうをみにいく",
+    "m": "pergi melihat pengumuman kelulusan"
+  },
+  {
+    "k": "不合格になる/落ちる",
+    "r": "ふごうかくになる/おちる",
+    "m": "gagal"
+  },
+  {
+    "k": "合格する/受かる",
+    "r": "ごうかくする/うかる",
+    "m": "lulus, lolos"
+  },
+  {
+    "k": "授業料/学費を払う",
+    "r": "じゅぎょうりょう/がくひをはらう",
+    "m": "biaya kuliah, membayar biaya sekolah"
+  },
+  {
+    "k": "奨学金をもらう",
+    "r": "しょうがくきんをもらう",
+    "m": "menerima beasiswa"
+  },
+  {
+    "k": "学者",
+    "r": "がくしゃ",
+    "m": "ilmuan"
+  },
+  {
+    "k": "大学教授",
+    "r": "だいがくきょうじゅ",
+    "m": "profesor"
+  },
+  {
+    "k": "講義に間に合う",
+    "r": "こうぎにまにあう",
+    "m": "keburu masuk kelas (tidak telat)"
+  },
+  {
+    "k": "講義に遅れる/遅刻する",
+    "r": "こうぎにおくれる/ちこくする",
+    "m": "telat masuk kelas"
+  }
+],
+  30: [
+  {
+    "k": "成績がいい",
+    "r": "せいせきがいい",
+    "m": "nilainya bagus"
+  },
+  {
+    "k": "成績が悪い",
+    "r": "せいせきがわるい",
+    "m": "nilainya jelek"
+  },
+  {
+    "k": "授業中に居眠りをする",
+    "r": "じゅぎょうちゅうにいねむりをする",
+    "m": "tidur disaat sedang kuliah"
+  },
+  {
+    "k": "授業をサボる",
+    "r": "じゅぎょうをサボる",
+    "m": "bolos kuliah"
+  },
+  {
+    "k": "単位を落とす",
+    "r": "たんいをおとす",
+    "m": "tidak lulus mata kuliah"
+  },
+  {
+    "k": "休学する",
+    "r": "きゅうがくする",
+    "m": "cuti kuliah"
+  },
+  {
+    "k": "留学する",
+    "r": "りゅうがくする",
+    "m": "belajar ke luar negeri"
+  },
+  {
+    "k": "担当の先生",
+    "r": "たんとうのせんせい",
+    "m": "wali kelas, dosen wali"
+  },
+  {
+    "k": "先生に教わる",
+    "r": "せんせいにおそわる",
+    "m": "diajari oleh sensei"
+  },
+  {
+    "k": "何度もくり返す",
+    "r": "なんどもくりかえす",
+    "m": "mengulang berkali-kali"
+  },
+  {
+    "k": "暗記する",
+    "r": "あんきする",
+    "m": "menghafal"
+  },
+  {
+    "k": "試験で問われる",
+    "r": "しけんでとわれる",
+    "m": "ditanyakan di"
+  },
+  {
+    "k": "問い",
+    "r": "とい",
+    "m": "ujian pertanyaan"
+  },
+  {
+    "k": "落ち着いて考える",
+    "r": "おちついてかんがえる",
+    "m": "berpikir dengan tenang"
+  },
+  {
+    "k": "聞き直す",
+    "r": "ききなおす",
+    "m": "menanyakan kembali (untuk memastikan)"
+  },
+  {
+    "k": "言い直す",
+    "r": "いいなおす",
+    "m": "mengatakan dengan ungkapan lain"
+  },
+  {
+    "k": "聞き取り",
+    "r": "ききとり",
+    "m": "orang lain katakan) (KB)"
+  },
+  {
+    "k": "聞き取る",
+    "r": "ききとる",
+    "m": "mendengar (yang"
+  },
+  {
+    "k": "書き取り",
+    "r": "かきとり",
+    "m": "yang didengar) (KB)"
+  },
+  {
+    "k": "書き取る",
+    "r": "かきとる",
+    "m": "menulis (apa"
+  }
+],
+  31: [
+  {
+    "k": "ついている",
+    "r": "ついている",
+    "m": "beruntung"
+  },
+  {
+    "k": "ついていない",
+    "r": "ついていない",
+    "m": "sial"
+  },
+  {
+    "k": "試験が済む",
+    "r": "しけんがすむ",
+    "m": "ujiannya selesai"
+  },
+  {
+    "k": "試験の結果",
+    "r": "しけんのけっか",
+    "m": "hasil ujian"
+  },
+  {
+    "k": "カンニングする",
+    "r": "カンニングする",
+    "m": "menyontek"
+  },
+  {
+    "k": "清書する",
+    "r": "せいしょする",
+    "m": "laporan menulis kembali"
+  },
+  {
+    "k": "レポートの下書きをする",
+    "r": "レポートのしたがきをする",
+    "m": "menulis draft"
+  },
+  {
+    "k": "提出期限を守る",
+    "r": "ていしゅつきげんをまもる",
+    "m": "mematuhi batas pengumpulan"
+  },
+  {
+    "k": "翻訳する",
+    "r": "ほんやくする",
+    "m": "menerjemahkan"
+  },
+  {
+    "k": "通訳する",
+    "r": "つうやくする",
+    "m": "menerjemahkan"
+  },
+  {
+    "k": "仕事を探す",
+    "r": "しごとをさがす",
+    "m": "mencari pekerjaan"
+  },
+  {
+    "k": "給料",
+    "r": "きゅうりょう",
+    "m": "gaji"
+  },
+  {
+    "k": "履歴書を書く",
+    "r": "りれきしょをかく",
+    "m": "menulis CV lamaran"
+  },
+  {
+    "k": "時給",
+    "r": "じきゅう",
+    "m": "gaji per jam"
+  },
+  {
+    "k": "円",
+    "r": "えん",
+    "m": "gaji per jam"
+  },
+  {
+    "k": "ボーナス",
+    "r": "ボーナス",
+    "m": "bonus"
+  },
+  {
+    "k": "面接をする",
+    "r": "めんせつをする",
+    "m": "melakukan wawancara"
+  },
+  {
+    "k": "交通費が出る",
+    "r": "こうつうひがでる",
+    "m": "dapat biaya transport"
+  },
+  {
+    "k": "ホテルの従業員",
+    "r": "ホテルのじゅうぎょういん",
+    "m": "pegawai hotel"
+  },
+  {
+    "k": "勤務時間",
+    "r": "きんむじかん",
+    "m": "jam kerja"
+  }
+],
+  32: [
+  {
+    "k": "仕事仲間",
+    "r": "しごとなかま",
+    "m": "rekan kerja"
+  },
+  {
+    "k": "やとわれる",
+    "r": "やとわれる",
+    "m": "dipekerjakan"
+  },
+  {
+    "k": "やとう",
+    "r": "やとう",
+    "m": "mempekerjakan"
+  },
+  {
+    "k": "きついつらい仕事",
+    "r": "きついつらいしごと",
+    "m": "pekerjaan yang berat, keras"
+  },
+  {
+    "k": "お金をかせぐ",
+    "r": "おかねをかせぐ",
+    "m": "mencari uang"
+  },
+  {
+    "k": "お金をもうける",
+    "r": "おかねをもうける",
+    "m": "menghasilkan banyak uang"
+  },
+  {
+    "k": "お金がもうかる",
+    "r": "おかねがもうかる",
+    "m": "untung, dapat banyak uang"
+  },
+  {
+    "k": "仕事を済ます/済ませる",
+    "r": "しごとをすます/すませる",
+    "m": "menyelesaikan pekerjaan"
+  },
+  {
+    "k": "仕事をなまける",
+    "r": "しごとをなまける",
+    "m": "malas-malasan bekerja"
+  },
+  {
+    "k": "働き者",
+    "r": "はたらきもの",
+    "m": "pekerja keras"
+  },
+  {
+    "k": "なまけ者",
+    "r": "なまけもの",
+    "m": "pemalas"
+  },
+  {
+    "k": "首になる",
+    "r": "くびになる",
+    "m": "dipecat, diberhentikan"
+  },
+  {
+    "k": "やめさせられる",
+    "r": "やめさせられる",
+    "m": "diminta berhenti"
+  },
+  {
+    "k": "初めてパソコンをさわる",
+    "r": "はじめてパソコンをさわる",
+    "m": "pertama kali"
+  },
+  {
+    "k": "初心者",
+    "r": "しょしんしゃ",
+    "m": "pakai komputer pemula"
+  },
+  {
+    "k": "入門講座を受ける",
+    "r": "にゅうもんこうざをうける",
+    "m": "mengikuti kursus pengantar (dasar)"
+  },
+  {
+    "k": "パソコンに慣れる",
+    "r": "パソコンになれる",
+    "m": "terbiasa dengan komputer"
+  },
+  {
+    "k": "新製品",
+    "r": "しんせいひん",
+    "m": "produk baru"
+  },
+  {
+    "k": "中古",
+    "r": "ちゅうこ",
+    "m": "baru"
+  },
+  {
+    "k": "新品",
+    "r": "しんぴん",
+    "m": "barang yang masih"
+  }
+],
+  33: [
+  {
+    "k": "画面を見る",
+    "r": "がめんをみる",
+    "m": "melihat layar, monitor"
+  },
+  {
+    "k": "ソフトウェアをインストールする",
+    "r": "ソフトウェアをインストールする",
+    "m": "menginstall software"
+  },
+  {
+    "k": "スタートボタンをクリックする",
+    "r": "スタートボタンをクリックする",
+    "m": "mengklik tombol start"
+  },
+  {
+    "k": "閉じる",
+    "r": "とじる",
+    "m": "file"
+  },
+  {
+    "k": "ファイルを開く",
+    "r": "ファイルをひらく",
+    "m": "membuka"
+  },
+  {
+    "k": "年賀状を作る",
+    "r": "ねんがじょうをつくる",
+    "m": "membuat kartu ucapan tahun baru"
+  },
+  {
+    "k": "インターネットにつなぐ",
+    "r": "インターネットにつなぐ",
+    "m": "menghubungkan ke internet"
+  },
+  {
+    "k": "世界中とつながる",
+    "r": "せかいじゅうとつながる",
+    "m": "terhubung dengan seluruh dunia"
+  },
+  {
+    "k": "情報を得る",
+    "r": "じょうほをえる",
+    "m": "mendapatkan informasi"
+  },
+  {
+    "k": "オークションに参加する",
+    "r": "オークションにさんかする",
+    "m": "berpartisipasi dalam lelang"
+  },
+  {
+    "k": "オークションに品物を出す",
+    "r": "オークションにしなものをだす",
+    "m": "melelang suatu"
+  },
+  {
+    "k": "出品する",
+    "r": "しゅっぴんする",
+    "m": "barang mendisplay"
+  },
+  {
+    "k": "ホームページを作る",
+    "r": "ホームページをつくる",
+    "m": "membuat halaman di internet"
+  },
+  {
+    "k": "ブログを始める",
+    "r": "ブログをはじめる",
+    "m": "memulai (menulis) blog"
+  },
+  {
+    "k": "あて先",
+    "r": "あてさき",
+    "m": "tujuan (yang dituju) pengirim"
+  },
+  {
+    "k": "差出人",
+    "r": "さしだしにん",
+    "m": "tujuan (yang dituju) pengirim"
+  },
+  {
+    "k": "件名",
+    "r": "けんめい",
+    "m": "judul email"
+  },
+  {
+    "k": "メールのやり取りをする",
+    "r": "メールのやりとりをする",
+    "m": "saling mengirimkan email (berkomunikasi dengan email)"
+  },
+  {
+    "k": "写真を添付する",
+    "r": "しゃしんをてんぶする",
+    "m": "melampirkan foto (attachment)"
+  },
+  {
+    "k": "改行する",
+    "r": "かいぎょうする",
+    "m": "membuat baris baru (meng- enter"
+  }
+],
+  34: [
+  {
+    "k": "送信が完了する",
+    "r": "そうしんがかんりょうする",
+    "m": "pengriman (email) telah selesai"
+  },
+  {
+    "k": "アドレス帳",
+    "r": "アドレスちょう",
+    "m": "buku alamat"
+  },
+  {
+    "k": "送信者のメールアドレスを登録する",
+    "r": "そうしんしゃのメールアドレスをとうろくする",
+    "m": "mendaftarkan alamat pengirim"
+  },
+  {
+    "k": "人兄弟の末っ子",
+    "r": "にんきょうだいのすえっこ",
+    "m": "anak bungsu dari 6 bersaudara"
+  },
+  {
+    "k": "人姉妹のいちばん上",
+    "r": "にんしまいのいちばんうえ",
+    "m": "anak sulung dari 3 bersaudara (perempuan)"
+  },
+  {
+    "k": "兄弟",
+    "r": "きょうだい",
+    "m": "perempuan juga termasuk"
+  },
+  {
+    "k": "姉妹",
+    "r": "しまい",
+    "m": "hanya perempuan saja"
+  },
+  {
+    "k": "私は",
+    "r": "わたしは",
+    "m": "suka iseng"
+  },
+  {
+    "k": "人が好きです。",
+    "r": "ひとがすきです",
+    "m": "pintar"
+  },
+  {
+    "k": "かしこい",
+    "r": "かしこい",
+    "m": "pintar"
+  },
+  {
+    "k": "かっこ悪い",
+    "r": "かっこわるい",
+    "m": "penampilan buruk"
+  },
+  {
+    "k": "礼儀正しい",
+    "r": "れいぎただしい",
+    "m": "sopan"
+  },
+  {
+    "k": "勇気のある",
+    "r": "ゆうきのある",
+    "m": "berani"
+  },
+  {
+    "k": "ユーモアのある",
+    "r": "ユーモアのある",
+    "m": "humoris"
+  },
+  {
+    "k": "正直な",
+    "r": "しょうじきな",
+    "m": "jujur, tidak bohong"
+  },
+  {
+    "k": "正直に言うと",
+    "r": "しょうじきにいうと",
+    "m": "sejujurnya"
+  },
+  {
+    "k": "積極的な",
+    "r": "せっきょくてきな",
+    "m": "agresif"
+  },
+  {
+    "k": "素直な",
+    "r": "すなおな",
+    "m": "jujur, apa adanya"
+  },
+  {
+    "k": "消極的な",
+    "r": "しょうきょくてきな",
+    "m": "pasif"
+  }
+],
+  35: [
+  {
+    "k": "純粋な",
+    "r": "じゅんすいな",
+    "m": "polos, murni"
+  },
+  {
+    "k": "落ち着いている",
+    "r": "おちついている",
+    "m": "tenang, kalem"
+  },
+  {
+    "k": "おとなしい",
+    "r": "おとなしい",
+    "m": "nurut, diam"
+  },
+  {
+    "k": "純粋な気持ち",
+    "r": "じゅんすいなきもち",
+    "m": "perasaan murni"
+  },
+  {
+    "k": "かっこいい",
+    "r": "かっこいい",
+    "m": "penampilan keren, cakep"
+  },
+  {
+    "k": "まじめな",
+    "r": "まじめな",
+    "m": "sungguh-sungguh"
+  },
+  {
+    "k": "のんきな",
+    "r": "のんきな",
+    "m": "santai, kalem"
+  },
+  {
+    "k": "美人",
+    "r": "びじん",
+    "m": "cantik"
+  },
+  {
+    "k": "ハンサムな",
+    "r": "ハンサムな",
+    "m": "tampan"
+  },
+  {
+    "k": "スマートな",
+    "r": "スマートな",
+    "m": "slim, stylish, cekatan"
+  },
+  {
+    "k": "人が好きではありません。",
+    "r": "ひとがすきではありません",
+    "m": "suka iseng"
+  },
+  {
+    "k": "しつこい",
+    "r": "しつこい",
+    "m": "ngeyel"
+  },
+  {
+    "k": "意地悪な",
+    "r": "いじわるな",
+    "m": "suka iseng"
+  },
+  {
+    "k": "しつこく注意する",
+    "r": "しつこくちゅういする",
+    "m": "ceroboh, tidak teratur"
+  },
+  {
+    "k": "意地悪をする",
+    "r": "いじわるをする",
+    "m": "iseng"
+  },
+  {
+    "k": "うそをつく",
+    "r": "うそをつく",
+    "m": "berbohong"
+  },
+  {
+    "k": "だらしない",
+    "r": "だらしない",
+    "m": "ceroboh, tidak teratur"
+  },
+  {
+    "k": "うそつき",
+    "r": "うそつき",
+    "m": "pembohong"
+  },
+  {
+    "k": "けちな",
+    "r": "けちな",
+    "m": "pelit"
+  },
+  {
+    "k": "ずるい",
+    "r": "ずるい",
+    "m": "licik, curang"
+  }
+],
+  36: [
+  {
+    "k": "無責任な",
+    "r": "むせきにんな",
+    "m": "tidak tanggung jawab"
+  },
+  {
+    "k": "ずうずうしい",
+    "r": "ずうずうしい",
+    "m": "kurang ajar"
+  },
+  {
+    "k": "いいかげんな",
+    "r": "いいかげんな",
+    "m": "tidak tanggung jawab"
+  },
+  {
+    "k": "いいかげんなことを言う",
+    "r": "いいかげんなことをいう",
+    "m": "mengatakan hal yang tidak bertanggung jawab"
+  },
+  {
+    "k": "いいかげんにしろ!",
+    "r": "いいかげんにしろ",
+    "m": "sudah, cukup, hentikan!"
+  },
+  {
+    "k": "どうしましたか。",
+    "r": "どうしましたか",
+    "m": "kondisi badan sedang buruk"
+  },
+  {
+    "k": "んです。",
+    "r": "んです",
+    "m": "sakit kepala"
+  },
+  {
+    "k": "体の調子/具合が悪い",
+    "r": "からだのちょうし/ぐあいがわるい",
+    "m": "kondisi badan sedang buruk"
+  },
+  {
+    "k": "めまいがする",
+    "r": "めまいがする",
+    "m": "pusing"
+  },
+  {
+    "k": "頭痛がする",
+    "r": "ずつうがする",
+    "m": "sakit kepala"
+  },
+  {
+    "k": "胃が痛い",
+    "r": "いがいい",
+    "m": "lambung terasa sakit"
+  },
+  {
+    "k": "腰が痛い",
+    "r": "こしがいい",
+    "m": "sakit pinggang"
+  },
+  {
+    "k": "息が苦しい",
+    "r": "いきがくるしい",
+    "m": "sesak nafas"
+  },
+  {
+    "k": "苦しむ",
+    "r": "くるしむ",
+    "m": "menderita"
+  },
+  {
+    "k": "鼻がつまる",
+    "r": "はながつまる",
+    "m": "hidung tersumbat"
+  },
+  {
+    "k": "鼻をかむ",
+    "r": "はなをかむ",
+    "m": "membuang ingus"
+  },
+  {
+    "k": "吐き気がする",
+    "r": "はきけがする",
+    "m": "mual, ingin muntah"
+  },
+  {
+    "k": "吐く",
+    "r": "はく",
+    "m": "muntah"
+  },
+  {
+    "k": "気分が悪い/気持ちが悪い",
+    "r": "きぶんがわるい/きもちがわるい",
+    "m": "merasa tidak enak (ingin muntah, dll)"
+  },
+  {
+    "k": "目をこするかく",
+    "r": "めをこするかく",
+    "m": "mengucek mata"
+  }
+],
+  37: [
+  {
+    "k": "目がかゆい",
+    "r": "めがかゆい",
+    "m": "mata terasa gatal"
+  },
+  {
+    "k": "風邪を引いてつらい",
+    "r": "かぜをひいてつらい",
+    "m": "terasa menyakitkan karena kena flu"
+  },
+  {
+    "k": "アレルギーがある",
+    "r": "アレルギーがある",
+    "m": "mempunyai alergi"
+  },
+  {
+    "k": "患者「お世話になりました。」",
+    "r": "かんじゃおせわになりました",
+    "m": "terima kasih atas bantuannya selama ini"
+  },
+  {
+    "k": "看護師「お大事に。」",
+    "r": "かんごしおだいじに",
+    "m": "semoga lekas sembuh"
+  },
+  {
+    "k": "専門の医師にみてもらう",
+    "r": "せんもんのいしにみてもらう",
+    "m": "diperiksa oleh dokter spesialis"
+  },
+  {
+    "k": "医師の診察を受ける",
+    "r": "いしのしんさつをうける",
+    "m": "periksa ke dokter"
+  },
+  {
+    "k": "歯医者にかかる",
+    "r": "はいしゃにかかる",
+    "m": "pergi ke dokter gigi"
+  },
+  {
+    "k": "インフルエンザにかかる",
+    "r": "インフルエンザにかかる",
+    "m": "terkena influenza"
+  },
+  {
+    "k": "病気の症状",
+    "r": "びょうきのしょうじょう",
+    "m": "gejala penyakit"
+  },
+  {
+    "k": "けがを治す",
+    "r": "けがをなおす",
+    "m": "menyembuhkan luka"
+  },
+  {
+    "k": "手の傷",
+    "r": "てのきず",
+    "m": "luka di tangan"
+  },
+  {
+    "k": "注射をしてもらう",
+    "r": "ちゅうしゃをしてもらう",
+    "m": "disuntik"
+  },
+  {
+    "k": "やけどをする",
+    "r": "やけどをする",
+    "m": "terkena luka bakar"
+  },
+  {
+    "k": "手術を受ける",
+    "r": "しゅじゅつをうける",
+    "m": "dioperasi"
+  },
+  {
+    "k": "大したことがない",
+    "r": "たいしたことがない",
+    "m": "bukan masalah berarti"
+  },
+  {
+    "k": "痛みをがまんする",
+    "r": "いたみをがまんする",
+    "m": "menahan rasa sakit"
+  },
+  {
+    "k": "ましになる",
+    "r": "ましになる",
+    "m": "mendingan"
+  },
+  {
+    "k": "花粉症になる",
+    "r": "かふんしょうになる",
+    "m": "terkena “kafunsho”"
+  },
+  {
+    "k": "うがいをする",
+    "r": "うがいをする",
+    "m": "kumur-kumur"
+  }
+],
+  38: [
+  {
+    "k": "お見舞いに行く",
+    "r": "おみまいにいく",
+    "m": "pergi menjenguk"
+  },
+  {
+    "k": "体重が増える",
+    "r": "たいじゅうがふえる",
+    "m": "berat badan bertambah menambah berat badan"
+  },
+  {
+    "k": "体重を増やす",
+    "r": "たいじゅうをふやす",
+    "m": "berat badan bertambah menambah berat badan"
+  },
+  {
+    "k": "体重が減る",
+    "r": "たいじゅうがへる",
+    "m": "berat badan berkurang mengurangi berat badan"
+  },
+  {
+    "k": "体重を減らす",
+    "r": "たいじゅうをへらす",
+    "m": "berat badan berkurang mengurangi berat badan"
+  },
+  {
+    "k": "いびきをかく",
+    "r": "いびきをかく",
+    "m": "mengorok"
+  },
+  {
+    "k": "年を取る",
+    "r": "としをとる",
+    "m": "menjadi tua"
+  },
+  {
+    "k": "足がしびれる",
+    "r": "あしがしびれる",
+    "m": "kaki kesemutan"
+  },
+  {
+    "k": "つめが伸びる",
+    "r": "つめがのびる",
+    "m": "kuku memanjang"
+  },
+  {
+    "k": "体がふるえる",
+    "r": "からだがふるえる",
+    "m": "tubuh gemetar"
+  },
+  {
+    "k": "ひげが生える",
+    "r": "ひげがはえる",
+    "m": "jenggot tumbuh"
+  },
+  {
+    "k": "肩がこる",
+    "r": "かたがこる",
+    "m": "bahu terasa pegal"
+  },
+  {
+    "k": "歯が生える",
+    "r": "はがはえる",
+    "m": "gigi tumbuh"
+  },
+  {
+    "k": "くせがつく",
+    "r": "くせがつく",
+    "m": "kebiasaan, terbiasa"
+  },
+  {
+    "k": "髪の毛が抜ける",
+    "r": "かみのけがぬける",
+    "m": "rambut rontok"
+  },
+  {
+    "k": "くせになる",
+    "r": "くせになる",
+    "m": "menjadi kebiasaan"
+  },
+  {
+    "k": "はげる",
+    "r": "はげる",
+    "m": "botak"
+  },
+  {
+    "k": "ストレスがたまる",
+    "r": "ストレスがたまる",
+    "m": "stres menumpuk"
+  },
+  {
+    "k": "髪をそめる",
+    "r": "かみをそめる",
+    "m": "mewarnai rambut"
+  },
+  {
+    "k": "花が咲く",
+    "r": "はながさく",
+    "m": "bunga mekar"
+  }
+],
+  39: [
+  {
+    "k": "箱がつぶれる",
+    "r": "はこがつぶれる",
+    "m": "kotak nya hancur"
+  },
+  {
+    "k": "つぶす",
+    "r": "つぶす",
+    "m": "menghancurkan"
+  },
+  {
+    "k": "花が散る",
+    "r": "はながちる",
+    "m": "bunga rontok"
+  },
+  {
+    "k": "浮く",
+    "r": "うく",
+    "m": "mengapung"
+  },
+  {
+    "k": "木が枯れる",
+    "r": "きがかれる",
+    "m": "pohon mati"
+  },
+  {
+    "k": "沈む",
+    "r": "しずむ",
+    "m": "tenggelam"
+  },
+  {
+    "k": "山がくずれる",
+    "r": "やまがくずれる",
+    "m": "gunung runtuh"
+  },
+  {
+    "k": "蒸し暑い",
+    "r": "むしあつい",
+    "m": "lembab"
+  },
+  {
+    "k": "険しい山",
+    "r": "けわしいやま",
+    "m": "gunung terjal, curam"
+  },
+  {
+    "k": "くさる",
+    "r": "くさる",
+    "m": "membusuk"
+  },
+  {
+    "k": "なだらかな坂",
+    "r": "なだらかなさか",
+    "m": "tanjakan landai"
+  },
+  {
+    "k": "かびが生える",
+    "r": "かびがはえる",
+    "m": "tumbuh jamur"
+  },
+  {
+    "k": "におう",
+    "r": "におう",
+    "m": "mencium (bau, aroma)"
+  },
+  {
+    "k": "変なにおいがする",
+    "r": "へんなにおいがする",
+    "m": "tercium bau aneh"
+  },
+  {
+    "k": "気味が悪い生き物",
+    "r": "きみがわるいいきもの",
+    "m": "makhluk menyeramkan"
+  },
+  {
+    "k": "気持ちが悪い生き物",
+    "r": "きもちがわるいいきもの",
+    "m": "makhluk menjijikkan"
+  },
+  {
+    "k": "親しい友人",
+    "r": "したしいゆうじん",
+    "m": "teman akrab"
+  },
+  {
+    "k": "親友",
+    "r": "しんゆう",
+    "m": "sahabat"
+  },
+  {
+    "k": "あやしい男",
+    "r": "あやしいおとこ",
+    "m": "laki-laki mencurigakan"
+  },
+  {
+    "k": "恐ろしい事件",
+    "r": "おそろしいじけん",
+    "m": "kejadian yang mengerikan"
+  }
+],
+  40: [
+  {
+    "k": "さびる",
+    "r": "さびる",
+    "m": "berkarat"
+  },
+  {
+    "k": "さびた包丁",
+    "r": "さびたほうちょう",
+    "m": "pisau berkarat"
+  },
+  {
+    "k": "鋭い",
+    "r": "するどい",
+    "m": "tajam"
+  },
+  {
+    "k": "鈍い",
+    "r": "にぶい",
+    "m": "tumpul"
+  },
+  {
+    "k": "のろい車",
+    "r": "のろいくるま",
+    "m": "mobil lambat"
+  },
+  {
+    "k": "安全な場所",
+    "r": "あんぜんなばしょ",
+    "m": "tempat yang aman"
+  },
+  {
+    "k": "薄暗い部屋",
+    "r": "うすぐらいへや",
+    "m": "ruangan redup, remang-remang"
+  },
+  {
+    "k": "まぶしい明かり",
+    "r": "まぶしいあかり",
+    "m": "cahaya terang, silau"
+  },
+  {
+    "k": "くわしい説明書",
+    "r": "くわしいせつめいしょ",
+    "m": "buku petunjuk yang lengkap, detail"
+  },
+  {
+    "k": "くだらない小説",
+    "r": "くだらないしょうせつ",
+    "m": "novel yang konyol, tidak bernilai"
+  },
+  {
+    "k": "でたらめに答える",
+    "r": "でたらめにこたえる",
+    "m": "menjawab secara asal, omong kosong"
+  },
+  {
+    "k": "売り切れる",
+    "r": "うりきれる",
+    "m": "habis terjual"
+  },
+  {
+    "k": "売り切れ",
+    "r": "うりきれ",
+    "m": "habis terjual"
+  },
+  {
+    "k": "本物のダイヤモンド",
+    "r": "ほんもののダイヤモンド",
+    "m": "berlian asli"
+  },
+  {
+    "k": "偽物",
+    "r": "にせもの",
+    "m": "barang palsu"
+  },
+  {
+    "k": "得をする",
+    "r": "とくをする",
+    "m": "mendapat untung"
+  },
+  {
+    "k": "損をする",
+    "r": "そんをする",
+    "m": "menderita kerugian"
+  },
+  {
+    "k": "物差し",
+    "r": "ものさし",
+    "m": "mengukur dengan penggaris"
+  },
+  {
+    "k": "定規で測る",
+    "r": "じょうぎではかる",
+    "m": "mengukur dengan penggaris"
+  },
+  {
+    "k": "合計を出す",
+    "r": "ごうけいをだす",
+    "m": "menghitung total"
+  }
 ]
-,22: [
-  { "k": "郵便局", "r": "ゆうびんきょく", "m": "Kantor pos" },
-  { "k": "薬局", "r": "やっきょく", "m": "Apotik" },
-  { "k": "速度", "r": "そくど", "m": "Kecepatan" },
-  { "k": "速い", "r": "はやい", "m": "Cepat" },
-  { "k": "高速道路", "r": "こうそくどうろ", "m": "Jalan tol" },
-  { "k": "箱", "r": "はこ", "m": "Kotak" },
-  { "k": "ごみ箱", "r": "ごみばこ", "m": "Tong sampah" },
-  { "k": "煙", "r": "けむり", "m": "Asap" },
-  { "k": "禁煙", "r": "きんえん", "m": "Dilarang merokok" },
-  { "k": "折る", "r": "おる", "m": "Melipat, membengkokkan" },
-  { "k": "右折", "r": "うせつ", "m": "Belok kanan" },
-  { "k": "左折", "r": "させつ", "m": "Belok kiri" },
-  { "k": "閉店", "r": "へいてん", "m": "Toko tutup" },
-  { "k": "閉める", "r": "しめる", "m": "Menutup" },
-  { "k": "閉まる", "r": "しまる", "m": "Tertutup" },
-  { "k": "遊ぶ", "r": "あそぶ", "m": "Bermain" },
-  { "k": "遊園地", "r": "ゆうえんち", "m": "Taman bermain" },
-  { "k": "戻る", "r": "もどる", "m": "Kembali" },
-  { "k": "戻す", "r": "もどす", "m": "Mengembalikan" },
-  { "k": "願う", "r": "ねがう", "m": "Memohon, meminta tolong" },
-  { "k": "困る", "r": "こまる", "m": "Dalam masalah" }
-],23:[
-  { "k": "演技場", "r": "えんぎば", "m": "Gelanggang" },
-  { "k": "演技者", "r": "えんぎしゃ", "m": "Pemain, aktor" },
-  { "k": "演じる", "r": "えんじる", "m": "Memainkan, memerankan" },
-  { "k": "容疑", "r": "ようぎ", "m": "Tersangka, kecurigaan" },
-  { "k": "容積", "r": "ようせき", "m": "Volume" },
-  { "k": "容量集合", "r": "ようりょうしゅうごう", "m": "Kapasitas" },
-  { "k": "果たす", "r": "はたす", "m": "Melaksanakan, mencapai" },
-  { "k": "果実店", "r": "かじつてん", "m": "Toko buah" },
-  { "k": "果て", "r": "はて", "m": "Ujung, berakhir" },
-  { "k": "直", "r": "じか, なお", "m": "Lurus, jujur" },
-  { "k": "直接", "r": "ちょくせつ", "m": "Langsung" },
-  { "k": "直接選挙", "r": "ちょくせつせんきょ", "m": "Pemilihan langsung" },
-  { "k": "打つ", "r": "うつ", "m": "Memukul" },
-  { "k": "打ったくり", "r": "うったくり", "m": "Perampokan" },
-  { "k": "打法", "r": "だほう", "m": "Cara memukul" },
-  { "k": "変わる", "r": "かわる", "m": "Mengubah" },
-  { "k": "変える", "r": "かえる", "m": "Berpaling" },
-  { "k": "変更", "r": "へんこう", "m": "Pergantian" },
-  { "k": "投げる", "r": "なげる", "m": "Melempar" },
-  { "k": "投稿", "r": "とうこう", "m": "Memposting" },
-  { "k": "投稿者", "r": "とうこうしゃ", "m": "Penyumbang" },
-  { "k": "情", "r": "じょう", "m": "Cinta" },
-  { "k": "情報化", "r": "じょうほうか", "m": "Komputerisasi" },
-  { "k": "情無い", "r": "なさけ", "m": "Yang menyedihkan" },
-  { "k": "感", "r": "かん", "m": "Perasaan" },
-  { "k": "感情的", "r": "かんじょうてき", "m": "Emosional" },
-  { "k": "感謝", "r": "かんしゃ", "m": "Rasa syukur" },
-  { "k": "官", "r": "かん", "m": "Pemerintah" },
-  { "k": "官人", "r": "かんにんじん", "m": "Pejabat pemerintah" },
-  { "k": "官僚化", "r": "かんりょうか", "m": "Birokrasi" }
-],24:[
-  { "k": "払う", "r": "はらう", "m": "Membayar" },
-  { "k": "支払い", "r": "しはらい", "m": "Pembayaran" },
-  { "k": "押す", "r": "おす", "m": "Menekan" },
-  { "k": "押さえる", "r": "おさえる", "m": "Menekan" },
-  { "k": "押し入れ", "r": "おしいれ", "m": "Lemari penyimpanan kasur" },
-  { "k": "留学", "r": "りゅうがく", "m": "Belajar ke luar negeri" },
-  { "k": "保留", "r": "ほりゅう", "m": "Reservasi" },
-  { "k": "留守番", "r": "るすばん", "m": "Jaga rumah" },
-  { "k": "危険", "r": "きけん", "m": "Bahaya" },
-  { "k": "返事", "r": "へんじ", "m": "Balasan" },
-  { "k": "返却", "r": "へんきゃく", "m": "Pengembalian" },
-  { "k": "返す", "r": "かえす", "m": "Mengembalikan" },
-  { "k": "込む", "r": "こむ", "m": "Penuh" },
-  { "k": "税込み", "r": "ぜいこみ", "m": "Termasuk pajak" },
-  { "k": "振り込む", "r": "ふりこむ", "m": "Mentransfer uang" },
-  { "k": "込む", "r": "こむ", "m": "Penuh" },
-  { "k": "振り込む", "r": "ふりこむ", "m": "Mentransfer uang" },
-  { "k": "婦人", "r": "ふじん", "m": "Wanita" },
-  { "k": "主婦", "r": "しゅふ", "m": "Ibu rumah tangga" },
-  { "k": "産婦人科", "r": "さんふじんか", "m": "Departemen kebidanan" },
-  { "k": "冷房", "r": "れいぼう", "m": "Pendinginan" },
-  { "k": "冷たい", "r": "つめたい", "m": "Dingin (benda)" },
-  { "k": "冷やす", "r": "ひやす", "m": "Mendinginkan" },
-  { "k": "冷える", "r": "ひえる", "m": "Menjadi dingin" },
-  { "k": "動物園", "r": "どうぶつえん", "m": "Kebun binatang" },
-  { "k": "公園", "r": "こうえん", "m": "Taman" }
-],25:[
-  { "k": "似る", "r": "にる", "m": "Mirip" },
-  { "k": "似合い", "r": "にあい", "m": "Cocok" },
-  { "k": "似非", "r": "えせ", "m": "Palsu, tiruan" },
-  { "k": "束ねる", "r": "たばねる", "m": "Tumpukan, bundel berkas" },
-  { "k": "束", "r": "そく", "m": "Gepok, ikat bundel" },
-  { "k": "束縛", "r": "そくばく", "m": "Perbudakan" },
-  { "k": "互に", "r": "かたみ", "m": "Gonta ganti" },
-  { "k": "互換機", "r": "ごかんき", "m": "Kompatibel" },
-  { "k": "互", "r": "たがい", "m": "Saling" },
-  { "k": "互に", "r": "かたみ", "m": "Gonta ganti" },
-  { "k": "互", "r": "たがい", "m": "Saling" },
-  { "k": "笑話", "r": "しょうわ", "m": "Cerita lucu" },
-  { "k": "笑う", "r": "わらう", "m": "Tertawa" },
-  { "k": "笑止", "r": "しょうし", "m": "Bodoh" },
-  { "k": "笑話", "r": "しょうわ", "m": "Cerita lucu" },
-  { "k": "痛める", "r": "いためる", "m": "Sakit, melukai" },
-  { "k": "痛っ", "r": "いたっ", "m": "Aduh" },
-  { "k": "痛恨", "r": "つうこん", "m": "Penyesalan" },
-  { "k": "欲しい", "r": "ほしい", "m": "Melewati, melintasi" },
-  { "k": "欲", "r": "よく", "m": "Keserakahan" },
-  { "k": "欲望", "r": "よくぼう", "m": "Syahwat" },
-  { "k": "絵", "r": "え", "m": "Gambar" },
-  { "k": "絵様", "r": "えよう", "m": "Ukiran dekoratif" },
-  { "k": "絵画", "r": "かいが", "m": "Lukisan, pigura" },
-  { "k": "息吹", "r": "いぶき", "m": "Napas, pernapasan" },
-  { "k": "息子さん", "r": "むすこさん", "m": "Putra" },
-  { "k": "息つく", "r": "いきつく", "m": "Mengambil napas" },
-  { "k": "恐れる", "r": "おそれる", "m": "Takut, khawatir" },
-  { "k": "恐怖心", "r": "きょうふしん", "m": "Ketakutan, teror" },
-  { "k": "恐怖症", "r": "きょうふしょう", "m": "Fobia" }
-],26:[
-  { "k": "携帯", "r": "けいたい", "m": "Handphone" },
-  { "k": "帯", "r": "おび", "m": "Ikat pinggang" },
-  { "k": "通勤", "r": "つうきん", "m": "Berangkat kerja" },
-  { "k": "勤める", "r": "つとめる", "m": "Bekerja" },
-  { "k": "衣類", "r": "いるい", "m": "Pakaian" },
-  { "k": "衣服", "r": "いふく", "m": "Pakaian" },
-  { "k": "預金", "r": "よきん", "m": "Deposit" },
-  { "k": "預ける", "r": "あずける", "m": "Menitipkan" },
-  { "k": "金額", "r": "きんがく", "m": "Jumlah uang" },
-  { "k": "半額", "r": "はんがく", "m": "Separuh harga" },
-  { "k": "金額", "r": "きんがく", "m": "Jumlah uang" },
-  { "k": "半額", "r": "はんがく", "m": "Separuh harga" },
-  { "k": "交換", "r": "こうかん", "m": "Tukar, ganti" },
-  { "k": "換える", "r": "かえる", "m": "Menukar, mengganti" },
-  { "k": "乗り換える", "r": "のりかえる", "m": "Transit kereta" },
-  { "k": "入荷", "r": "にゅうか", "m": "Menerima (barang)" },
-  { "k": "荷物", "r": "にもつ", "m": "Barang bawaan" },
-  { "k": "希望", "r": "きぼう", "m": "Harapan" },
-  { "k": "届ける", "r": "とどける", "m": "Mengantarkan" },
-  { "k": "届く", "r": "とどく", "m": "(barang) sampai" }
-],27:[
-  { "k": "犯罪人", "r": "はんざいにん", "m": "Kriminal, pelaku" },
-  { "k": "犯罪歴", "r": "はんざいれき", "m": "Catatan kriminal" },
-  { "k": "犯", "r": "はん", "m": "Jahat" },
-  { "k": "抱く", "r": "いだく", "m": "Memeluk, pelabuhan" },
-  { "k": "抱負", "r": "ほうふ", "m": "Aspirasi" },
-  { "k": "抱きしめる", "r": "だきしめる", "m": "Merangkul dengan erat" },
-  { "k": "賛成", "r": "さんせい", "m": "Persetujuan" },
-  { "k": "賛成多数", "r": "さんせいたすう", "m": "Mayoritas suara" },
-  { "k": "賛", "r": "さん", "m": "Pujian" },
-  { "k": "刻む", "r": "きざむ", "m": "Mengukir" },
-  { "k": "刻", "r": "こく", "m": "Waktu" },
-  { "k": "刻薄", "r": "こくうす", "m": "Kekejaman" },
-  { "k": "更", "r": "こう", "m": "Lebih lanjut" },
-  { "k": "更新", "r": "こうしん", "m": "Memperbaharui, mengabari" },
-  { "k": "更にもっと", "r": "さらに", "m": "Lebih jauh" },
-  { "k": "欠ける", "r": "かける", "m": "Kekurangan" },
-  { "k": "欠", "r": "けつ", "m": "Tidak hadir" },
-  { "k": "欠け", "r": "かけ", "m": "Retak" },
-  { "k": "招く", "r": "まねく", "m": "Mengundang" },
-  { "k": "招待日", "r": "しょうたいび", "m": "Hari/tanggal undangan" },
-  { "k": "招集", "r": "しょうしゅう", "m": "Pertemuan" },
-  { "k": "雑える", "r": "まじえる", "m": "Bermacam-macam, aneka" },
-  { "k": "雑", "r": "ざつ", "m": "Keparagaman, varian" },
-  { "k": "雑誌", "r": "ざっし", "m": "Majalah" },
-  { "k": "居る", "r": "いる", "m": "Ada" },
-  { "k": "居待ち", "r": "いまち", "m": "Duduk sambil menunggu" },
-  { "k": "居もしない", "r": "い", "m": "Tak terlihat" },
-  { "k": "遅れる", "r": "おくれる", "m": "Terlambat, ketinggalan" },
-  { "k": "遅い", "r": "おそい", "m": "Lambat" },
-  { "k": "遅延処理", "r": "ちえんしょり", "m": "Rasa hormat" }
-],
-28:[
-  { "k": "連絡", "r": "れんらく", "m": "Kontak, mengontak" },
-  { "k": "年齢", "r": "ねんれい", "m": "Usia" },
-  { "k": "高齢", "r": "こうれい", "m": "Lanjut usia" },
-  { "k": "価格", "r": "かかく", "m": "Harga" },
-  { "k": "定価", "r": "ていか", "m": "Harga pas" },
-  { "k": "税金", "r": "ぜいきん", "m": "Pajak" },
-  { "k": "消費税", "r": "しょうひぜい", "m": "Pajak konsumsi" },
-  { "k": "大型", "r": "おがた", "m": "Ukuran besar" },
-  { "k": "小型", "r": "こがた", "m": "Ukuran kecil" },
-  { "k": "新型", "r": "しんがた", "m": "Model baru" },
-  { "k": "高級", "r": "こうきゅう", "m": "Kualitas tinggi" },
-  { "k": "中級", "r": "ちゅうきゅう", "m": "Tingkat menengah" },
-  { "k": "上級", "r": "じょうきゅう", "m": "Tingkat atas" },
-  { "k": "〜倍", "r": "〜ばい", "m": "Kali lipat" },
-  { "k": "〜枚", "r": "〜まい", "m": "Hitungan benda tipis" },
-  { "k": "枚数", "r": "まいすう", "m": "Jumlah kopi" },
-  { "k": "〜個", "r": "〜こ", "m": "Hitungan benda kecil" },
-  { "k": "個人", "r": "こじん", "m": "Individu" },
-  { "k": "個数", "r": "こすう", "m": "Jumlah item" },
-  { "k": "〜冊", "r": "〜さつ", "m": "Jumlah buku" },
-  { "k": "冊数", "r": "さっすう", "m": "Jumlah kopi" }
-] ,29:[
-  { "k": "勤める", "r": "つとめる", "m": "Bertugas, melayani" },
-  { "k": "勤しむ", "r": "いそしむ", "m": "Rajin, tekun" },
-  { "k": "勤務", "r": "きんむ", "m": "Kerja, dinas" },
-  { "k": "徒言", "r": "いたずらごと", "m": "Pidato" },
-  { "k": "徒歩", "r": "とほ", "m": "Berjalan" },
-  { "k": "徒らに", "r": "いたずら", "m": "Sia-sia" },
-  { "k": "庭", "r": "にわ", "m": "Halaman" },
-  { "k": "庭園", "r": "ていえん", "m": "Taman" },
-  { "k": "庭前", "r": "ていぜん", "m": "Kebun" },
-  { "k": "曲げる", "r": "まげる", "m": "Berbelok" },
-  { "k": "曲度", "r": "きょくど", "m": "Lengkungan" },
-  { "k": "曲", "r": "きょくきょく", "m": "Sudut" },
-  { "k": "老ける", "r": "ふける", "m": "Bertambah tua" },
-  { "k": "老人性", "r": "ろうじんせい", "m": "Uzur, pikun" },
-  { "k": "老鳥", "r": "ろうちょう", "m": "Burung tua" },
-  { "k": "等", "r": "など", "m": "Dan lain-lain" },
-  { "k": "等値", "r": "とうち", "m": "Setara, nilai yang sama" },
-  { "k": "等しい", "r": "ひとしい", "m": "Sama, tak ubahnya" },
-  { "k": "倒れる", "r": "たおれる", "m": "Jatuh" },
-  { "k": "倒産", "r": "とうさん", "m": "Kebangkrutan" },
-  { "k": "倒壊", "r": "とうかい", "m": "Runtuh, roboh" },
-  { "k": "幸い", "r": "さいわい", "m": "Keberuntungan" },
-  { "k": "幸", "r": "さち", "m": "Nasib" },
-  { "k": "幸あれ", "r": "さちあれ", "m": "Semoga berhasil" },
-  { "k": "絶望", "r": "ぜつぼう", "m": "Keputusasaan" },
-  { "k": "絶対", "r": "ぜったい", "m": "Kemutlakan, benar" },
-  { "k": "絶滅種", "r": "ぜつめつしゅ", "m": "Hewan punah" },
-  { "k": "浮かぶ", "r": "うかぶ", "m": "Mengapung" },
-  { "k": "浮気者", "r": "うわきもの", "m": "Orang genit" },
-  { "k": "浮遊", "r": "ふゆう", "m": "Mengambang" }
-],30:[
-  { "k": "紅茶", "r": "こうちゃ", "m": "Teh hitam" },
-  { "k": "口紅", "r": "くちべに", "m": "Lipstik" },
-  { "k": "紅葉", "r": "こうよう", "m": "Daun berwarna di musim gugur" },
-  { "k": "緑茶", "r": "りょくちゃ", "m": "Teh hijau" },
-  { "k": "緑", "r": "みどり", "m": "Hijau" },
-  { "k": "石油", "r": "せきゆ", "m": "Minyak bumi" },
-  { "k": "灯油", "r": "とうゆ", "m": "Minyak tanah" },
-  { "k": "油", "r": "あぶら", "m": "Minyak" },
-  { "k": "食用油", "r": "しょくようあぶら", "m": "Minyak goreng" },
-  { "k": "食塩", "r": "しょくえん", "m": "Garam makan" },
-  { "k": "塩", "r": "しお", "m": "Garam" },
-  { "k": "塩分", "r": "えんぶん", "m": "Kandungan garam" },
-  { "k": "砂糖", "r": "さとう", "m": "Gula" },
-  { "k": "砂", "r": "すな", "m": "Pasir" },
-  { "k": "記録", "r": "きろく", "m": "Merekam" },
-  { "k": "録画", "r": "ろくが", "m": "Merekam video" },
-  { "k": "録音", "r": "ろくおん", "m": "Merekam suara" },
-  { "k": "了解", "r": "りょうかい", "m": "Mengerti" },
-  { "k": "終了", "r": "しゅうりょう", "m": "Selesai, tuntas" },
-  { "k": "接続", "r": "せつぞく", "m": "Terhubung" },
-  { "k": "面接", "r": "めんせつ", "m": "Wawancara" },
-  { "k": "濃い", "r": "こい", "m": "Pekat, gelap (warna)" },
-  { "k": "裏", "r": "うら", "m": "Bagian belakang" },
-  { "k": "裏返す", "r": "うらがえす", "m": "Membalikkan, Menyerahkan" }
-],31:[
-  { "k": "喜ぶ", "r": "よろこぶ", "m": "Riang, gembira" },
-  { "k": "喜劇", "r": "きげき", "m": "Komedi" },
-  { "k": "喜寿", "r": "きじゅ", "m": "Usia 77 tahun" },
-  { "k": "結婚", "r": "けっこん", "m": "Menikah" },
-  { "k": "婚約者", "r": "こんやくしゃ", "m": "Calon suami/istri" },
-  { "k": "婚姻届", "r": "こんいんとどけ", "m": "Pendaftaran pernikahan" },
-  { "k": "静か", "r": "しずか", "m": "Sepi, tenang" },
-  { "k": "静音", "r": "せいおん", "m": "Volume rendah, senyap" },
-  { "k": "静岡県", "r": "しずおかけん", "m": "Prefektur Shizuoka" },
-  { "k": "散らす", "r": "ちらす", "m": "Menyebar" },
-  { "k": "散歩", "r": "さんぽ", "m": "Jalan-jalan" },
-  { "k": "散る", "r": "ちる", "m": "Bubar, buyar" },
-  { "k": "精神", "r": "せいしん", "m": "Jiwa, nyawa, spirit, roh" },
-  { "k": "精神病院", "r": "せいしんびょういん", "m": "Rumah sakit jiwa" },
-  { "k": "精神主義", "r": "せいしんしゅぎ", "m": "Idealisme" },
-  { "k": "罪", "r": "つみ", "m": "Dosa" },
-  { "k": "罪源", "r": "ざいげん", "m": "Sumber dosa" },
-  { "k": "罪悪感", "r": "ざいあくかん", "m": "Rasa bersalah" },
-  { "k": "抜ける", "r": "ぬける", "m": "Melarikan diri, lepas" },
-  { "k": "抜き", "r": "ぬき", "m": "Tanpa" },
-  { "k": "抜く", "r": "ぬく", "m": "Mencabut" },
-  { "k": "許す", "r": "ゆるす", "m": "Mengizinkan, memaafkan" },
-  { "k": "許容", "r": "きょよう", "m": "Tunjangan" },
-  { "k": "許諾", "r": "きょだく", "m": "Lisensi" },
-  { "k": "途", "r": "みち", "m": "Cara, rute" },
-  { "k": "途次", "r": "とじ", "m": "Mengikat" },
-  { "k": "途絶", "r": "とぜつ", "m": "Gangguan" },
-  { "k": "船", "r": "ふね", "m": "Kapal" },
-  { "k": "船中", "r": "せんちゅう", "m": "Di atas kapal" },
-  { "k": "船会社", "r": "ふながいしゃ", "m": "Perusahaan pelayaran" }
-],32:[
-  { "k": "焼く", "r": "やく", "m": "Memanggang" },
-  { "k": "焼ける", "r": "やける", "m": "Terpanggang" },
-  { "k": "混雑", "r": "こんざつ", "m": "Penuh sesak" },
-  { "k": "混ぜる", "r": "まぜる", "m": "Mencampur" },
-  { "k": "袋", "r": "ふくろ", "m": "Kantong" },
-  { "k": "手袋", "r": "てぶくろ", "m": "Sarung tangan" },
-  { "k": "ごみ袋", "r": "ごみぶくろ", "m": "Kantong sampah" },
-  { "k": "粉", "r": "こな", "m": "Tepung" },
-  { "k": "小麦粉", "r": "こむぎこ", "m": "Tepung terigu" },
-  { "k": "牛乳", "r": "ぎゅうにゅう", "m": "Susu" },
-  { "k": "卵", "r": "たまご", "m": "Telur" },
-  { "k": "卵焼き", "r": "たまごやき", "m": "Telur dadar/omelet" },
-  { "k": "材料", "r": "ざいりょう", "m": "Bahan masakan" },
-  { "k": "教材", "r": "きょうざい", "m": "Bahan ajar" },
-  { "k": "お湯", "r": "おゆ", "m": "Air panas" },
-  { "k": "氷", "r": "こおり", "m": "Es" },
-  { "k": "量", "r": "りょう", "m": "Banyaknya" },
-  { "k": "数量", "r": "すうりょう", "m": "Jumlah" },
-  { "k": "増量", "r": "ぞうりょう", "m": "Pertambahan jumlah" }
-],33:[
-  { "k": "覚える", "r": "おぼえる", "m": "Mengingat, menghafal" },
-  { "k": "覚悟", "r": "かくご", "m": "Kesiapan" },
-  { "k": "覚醒", "r": "かくせい", "m": "Gairah, kesadaran" },
-  { "k": "頼", "r": "よりゆき", "m": "Mempercayai" },
-  { "k": "頼む", "r": "たのむ", "m": "Memohon" },
-  { "k": "頼り", "r": "たより", "m": "Kepercayaan" },
-  { "k": "宿る", "r": "やどる", "m": "Tinggal" },{ "k": "宿", "r": "やど", "m": "Losmen" },
-  { "k": "宿泊客", "r": "しゅくはくきゃく", "m": "Tamu hotel" },
-  { "k": "熱い", "r": "あつい", "m": "Panas" },
-  { "k": "熱水", "r": "ねっすい", "m": "Air panas" },
-  { "k": "熱波", "r": "ねっぱ", "m": "Gelombang panas" },
-  { "k": "背く", "r": "そむく", "m": "Tidak patuh" },
-  { "k": "背", "r": "せ", "m": "Punggung, tinggi badan" },
-  { "k": "背幅", "r": "せはば", "m": "Lebar punggung" },
-  { "k": "妻帯", "r": "さいたい", "m": "Pernikahan" },
-  { "k": "妻子", "r": "さいし", "m": "Istri dan anak" },
-  { "k": "妻女", "r": "さいじょ", "m": "Istri dan anak perempuan" },
-  { "k": "王様", "r": "おうさま", "m": "Raja, prabu" },
-  { "k": "王都", "r": "おうと", "m": "Ibu kota kerajaan" },
-  { "k": "王子", "r": "おうじ", "m": "Pangeran" },
-  { "k": "余り", "r": "あまり", "m": "Kelebihan, sisa" },
-  { "k": "余計", "r": "よけい", "m": "Tidak perlu" },
-  { "k": "余地", "r": "よち", "m": "Kamar, keluasan" },
-  { "k": "類い", "r": "たぐい", "m": "Jenis" },
-  { "k": "類話", "r": "るいわ", "m": "Cerita serupa" },
-  { "k": "類形", "r": "るいがた", "m": "Sejenis" },
-  { "k": "寄る", "r": "よる", "m": "Mendekati" },
-  { "k": "寄", "r": "やどりき", "m": "Mengunjungi" },
-  { "k": "寄付金", "r": "きふきん", "m": "Donasi" }
-],34:[
-  { "k": "減少", "r": "げんしょう", "m": "Berkurang" },
-  { "k": "減らす", "r": "へらす", "m": "Mengurangi" },
-  { "k": "減る", "r": "へる", "m": "Berkurang" },
-  { "k": "販売", "r": "はんばい", "m": "Penjualan" },
-  { "k": "自動販売機", "r": "じどうはんばいき", "m": "Mesin penjual otomatis" },
-  { "k": "温度", "r": "おんど", "m": "Suhu" },
-  { "k": "気温", "r": "きおん", "m": "Temperatur" },
-  { "k": "温かい", "r": "あたかい", "m": "Hangat" },
-  { "k": "賞", "r": "しょう", "m": "Hadiah" },
-  { "k": "賞味期限", "r": "しょうみきげん", "m": "Batas waktu digunakan sebelum" },
-  { "k": "賞金", "r": "しょうきん", "m": "Hadiah uang" },
-  { "k": "賞品", "r": "しょうひん", "m": "Hadiah" },
-  { "k": "保存", "r": "ほぞん", "m": "Menyimpan" },
-  { "k": "製造", "r": "せいぞう", "m": "Manufaktur" },
-  { "k": "造る", "r": "つくる", "m": "Membuat" },
-  { "k": "製品", "r": "せいひん", "m": "Produk" },
-  { "k": "〜製", "r": "〜せい", "m": "Buatan..." },
-  { "k": "日本製", "r": "にほんせい", "m": "Buatan Jepang" },
-  { "k": "召し上がる", "r": "めしあがる", "m": "Makan (bentuk sopan)" },
-  { "k": "冷凍庫", "r": "れいとうこ", "m": "Lemari pendingin freezer" },
-  { "k": "凍る", "r": "こおる", "m": "Beku" },
-  { "k": "事故", "r": "じこ", "m": "Kecelakaan" },
-  { "k": "故障", "r": "こしょう", "m": "Rusak" }
-        ],35:[
-  { "k": "適う", "r": "かなう", "m": "Cocok" },
-  { "k": "適応性", "r": "てきおうせい", "m": "Penyesuaian" },
-  { "k": "適用", "r": "てきよう", "m": "Pelamaran" },
-  { "k": "亡くなった", "r": "なくなる", "m": "Meninggal dunia" },
-  { "k": "亡者", "r": "もうじゃ", "m": "Mati" },
-  { "k": "亡骸", "r": "なきがら", "m": "Mayat" },
-  { "k": "舞う", "r": "まう", "m": "Tari" },
-  { "k": "舞台", "r": "ぶたい", "m": "Pentas" },
-  { "k": "舞手", "r": "まいて", "m": "Penari" },
-  { "k": "未", "r": "み", "m": "Belum" },
-  { "k": "未教育", "r": "みきょういく", "m": "Tidak cakap" },
-  { "k": "未経験", "r": "みけいけん", "m": "Kurang berpengalaman" },
-  { "k": "彼", "r": "かれ", "m": "Dia" },
-  { "k": "彼女", "r": "かのじょ", "m": "Pacar, dia perempuan" },
-  { "k": "彼氏", "r": "かれし", "m": "Pacar laki-laki" },
-  { "k": "富む", "r": "とむ", "m": "Berlimpah" },
-  { "k": "富", "r": "とみ", "m": "Kekayaan" },
-  { "k": "富山県", "r": "とやまけん", "m": "Prefektur Toyama" },
-  { "k": "愛", "r": "あい", "m": "Cinta" },
-  { "k": "愛日", "r": "あいじつ", "m": "Siang hari musim dingin" },
-  { "k": "愛知県", "r": "あいちけん", "m": "Prefektur Aichi" },
-  { "k": "馬", "r": "うま", "m": "Kuda" },
-  { "k": "馬軍", "r": "うまいくさ", "m": "Kavaleri" },
-  { "k": "馬来西亜", "r": "マレーシア", "m": "Malaysia" },
-  { "k": "因む", "r": "ちなむ", "m": "Penyebab, faktor" },
-  { "k": "因子", "r": "いんし", "m": "Elemen" },
-  { "k": "因果", "r": "いんが", "m": "Sebab akibat" },
-  { "k": "辞める", "r": "やめる", "m": "Berhenti, meninggalkan" },
-  { "k": "辞", "r": "じ", "m": "Merendah (hati)" },
-  { "k": "辞任", "r": "じにん", "m": "Permintaan berhenti" }
-],36:[
-  { "k": "警察", "r": "けいさつ", "m": "Polisi" },
-  { "k": "警察署", "r": "けいさつしょ", "m": "Kepolisian" },
-  { "k": "冷蔵庫", "r": "れいぞうこ", "m": "Lemari es" },
-  { "k": "救う", "r": "すくう", "m": "Menolong, menyelamatkan" },
-  { "k": "救急車", "r": "きゅうきゅうしゃ", "m": "Mobil ambulan" },
-  { "k": "防ぐ", "r": "ふせぐ", "m": "Mencegah" },
-  { "k": "予防", "r": "よぼう", "m": "Pencegahan" },
-  { "k": "骨折", "r": "こっせつ", "m": "Patah tulang" },
-  { "k": "骨", "r": "ほね", "m": "Tulang" },
-  { "k": "鼻", "r": "はな", "m": "Hidung" },
-  { "k": "耳鼻科", "r": "じびか", "m": "Departemen penyakit THT" },
-  { "k": "橋", "r": "はし", "m": "Jembatan" },
-  { "k": "点数", "r": "てんすう", "m": "Skor" },
-  { "k": "歩道橋", "r": "ほどうきょう", "m": "Jembatan pejalan kaki" },
-  { "k": "郵便", "r": "ゆうびん", "m": "Antaran pos" },
-  { "k": "〜寺", "r": "〜じ", "m": "Kuil..." },
-  { "k": "お寺", "r": "おてら", "m": "Kuil budha" },
-  { "k": "協力", "r": "きょうりょく", "m": "Kerja sama" },
-  { "k": "協会", "r": "きょうかい", "m": "Asosiasi" }
-],37:[
-  { "k": "具", "r": "そなえる", "m": "Alat, furniture" },
-  { "k": "具体化", "r": "ぐたいか", "m": "Pelaksanaan" },
-  { "k": "具体", "r": "ぐたい", "m": "Beton" },
-  { "k": "迎える", "r": "むかえる", "m": "Menyapa, menyambut" },
-  { "k": "迎", "r": "むかえ", "m": "Selamat datang" },
-  { "k": "迎撃機", "r": "げいげき", "m": "Pencegat" },
-  { "k": "苦しい", "r": "くるしい", "m": "Menyakitkan" },
-  { "k": "苦い", "r": "にがい", "m": "Pahit" },
-  { "k": "苦", "r": "く", "m": "Rasa sakit" },
-  { "k": "給ふ", "r": "たまう", "m": "Memberi" },
-  { "k": "給", "r": "きゅう", "m": "Persediaan" },
-  { "k": "給料", "r": "きゅうりょう", "m": "Gaji" },
-  { "k": "娘", "r": "むすめ", "m": "Anak perempuan" },
-  { "k": "娘子", "r": "じょうし", "m": "Gadis" },
-  { "k": "娘盛り", "r": "むすめざかり", "m": "Masa muda" },
-  { "k": "吹く", "r": "ふく", "m": "Bertiup, berhembus" },
-  { "k": "吹雪", "r": "ふぶき", "m": "Badai salju" },
-  { "k": "吹き", "r": "ふ", "m": "Yang ditiup" },
-  { "k": "雪", "r": "ゆき", "m": "Salju" },
-  { "k": "雪花", "r": "ゆきばな", "m": "Kepingan salju" },
-  { "k": "雪夜", "r": "ゆきよ", "m": "Malam bersalju" },
-  { "k": "忘れる", "r": "わすれる", "m": "Lupa, melupakan" },
-  { "k": "忘我", "r": "ぼうが", "m": "Kesurupan" },
-  { "k": "忘失", "r": "ぼうしつ", "m": "Kalah" },
-  { "k": "歯", "r": "は", "m": "Gigi, roda bergigi" },
-  { "k": "歯質", "r": "しつ", "m": "Kualitas gigi" },
-  { "k": "歯切り", "r": "はぎり", "m": "Mengertakan gigi" },
-  { "k": "御", "r": "お", "m": "Anda, untuk kata hormat" },
-  { "k": "御頭", "r": "おつむ", "m": "Kepala, otak, kecerdasan" },
-  { "k": "御成功", "r": "ごせいこう", "m": "Kesuksesanmu" }
-],38:[
-  { "k": "理解", "r": "りかい", "m": "Memahami" },
-  { "k": "解答", "r": "かいとう", "m": "Jawaban" },
-  { "k": "解説", "r": "かいせつ", "m": "Menjelaskan" },
-  { "k": "分解", "r": "ぶんかい", "m": "Membagi" },
-  { "k": "案内", "r": "あんない", "m": "Panduan, memandu" },
-  { "k": "案", "r": "あん", "m": "Rencana, proposal, saran" },
-  { "k": "営業", "r": "えいぎょう", "m": "Beroperasi, bisnis" },
-  { "k": "準備", "r": "じゅんび", "m": "Persiapan" },
-  { "k": "取り替える", "r": "とりかえる", "m": "Menukar" },
-  { "k": "両替", "r": "りょうがえ", "m": "Nilai tukar mata uang" },
-  { "k": "駐車券", "r": "ちゅうしゃけん", "m": "Tiket parkir" },
-  { "k": "乗車券", "r": "じょうしゃけん", "m": "Tiket kereta" },
-  { "k": "整理", "r": "せいり", "m": "Pengaturan" },
-  { "k": "整理券", "r": "せいりけん", "m": "Tiket yang sudah dipesan" },
-  { "k": "通路", "r": "つうろ", "m": "Lorong" },
-  { "k": "道路", "r": "どうろ", "m": "Jalan" },
-  { "k": "線路", "r": "せんろ", "m": "Rel/lintasan kereta" },
-  { "k": "鉄", "r": "てつ", "m": "Baja" },
-  { "k": "鉄道", "r": "てつどう", "m": "Rel kereta" },
-  { "k": "地下鉄", "r": "ちかてつ", "m": "Rel/kereta bawah tanah" },
-  { "k": "快速", "r": "かいそく", "m": "(Kereta) Ekspres" }
-],39:[
-  { "k": "陽", "r": "よう", "m": "Sinar matahari" },
-  { "k": "陽性", "r": "ようせい", "m": "Positif" },
-  { "k": "陽気", "r": "ようき", "m": "Keriangan, keramahan" },
-  { "k": "吸収", "r": "きゅうしゅう", "m": "Penyerapann" },
-  { "k": "吸収力", "r": "きゅうしゅうりょく", "m": "Data serap" },
-  { "k": "吸収する", "r": "きゅうしゅうする", "m": "Menghisap, menghirup" },
-  { "k": "盗む", "r": "ぬすむ", "m": "Mencuri" },
-  { "k": "盗用", "r": "とうよう", "m": "Plagiat" },
-  { "k": "盗人", "r": "ぬすびと", "m": "Pencuri" },
-  { "k": "寝る", "r": "ねる", "m": "Tidur, berbaring" },
-  { "k": "寝坊助", "r": "ねぼすけ", "m": "Kesiangan, tulang tidur" },
-  { "k": "寝様", "r": "ねざま", "m": "Posisi tidur" },
-  { "k": "到着", "r": "とうちゃく", "m": "Tiba, kedatangan" },
-  { "k": "到達", "r": "とうたつ", "m": "Mencapai" },
-  { "k": "到底", "r": "とうてい", "m": "Mungkin" },
-  { "k": "掛かり", "r": "かかり", "m": "Biaya, gantungan" },
-  { "k": "掛かる", "r": "かかる", "m": "Habis, bergantung, berlangsung" },
-  { "k": "掛", "r": "かけ", "m": "Gantung" },
-  { "k": "晴れ", "r": "はれ", "m": "Cerah, terang" },
-  { "k": "晴朗", "r": "せいろう", "m": "Tenang" },
-  { "k": "晴夜", "r": "せいや", "m": "Malam yang cerah" },
-  { "k": "悲しい", "r": "かなしい", "m": "Bersedih" },
-  { "k": "悲しみ", "r": "かなしみ", "m": "Kedukaan" },
-  { "k": "悲観", "r": "ひかん", "m": "Pesimis" },
-  { "k": "酒", "r": "さけ", "m": "Minuman alkohol, sake" },
-  { "k": "酒好き", "r": "さけずき", "m": "Pemabuk" },
-  { "k": "酒店", "r": "しゅてん", "m": "Toko penjual sake" },
-  { "k": "暮らす", "r": "くらす", "m": "Hidup" },
-  { "k": "暮夜", "r": "ぼや", "m": "Malam" },
-  { "k": "暮色", "r": "ぼしょく", "m": "Senja" }
-],40:[
-  { "k": "各駅", "r": "かくえき", "m": "Setiap stasiun" },
-  { "k": "各国", "r": "かっこく", "m": "Setiap negara" },
-  { "k": "各自", "r": "かくじ", "m": "Setiap orang" },
-  { "k": "普通", "r": "ふつう", "m": "Biasa" },
-  { "k": "線", "r": "せん", "m": "Lintasan, jalur" },
-  { "k": "〜番線", "r": "〜ばんせん", "m": "Lintasan, jalur nomor..." },
-  { "k": "捨てる", "r": "すてる", "m": "Membuang" },
-  { "k": "〜階", "r": "〜かい", "m": "Lantai...(gedung)" },
-  { "k": "禁止", "r": "きんし", "m": "Dilarang" },
-  { "k": "禁煙", "r": "きんえん", "m": "Dilarang merokok" },
-  { "k": "無休", "r": "むきゅう", "m": "Tanpa libur" },
-  { "k": "無理", "r": "むり", "m": "Tidak mungkin" },
-  { "k": "無料", "r": "むりょう", "m": "Gratis" },
-  { "k": "駐車", "r": "ちゅうしゃ", "m": "Memarkir" },
-  { "k": "駐車場", "r": "ちゅうしゃじょう", "m": "Tempat parkir" },
-  { "k": "草", "r": "くさ", "m": "Rumput" },
-  { "k": "草食動物", "r": "そうしょくどうぶつ", "m": "Herbivora" },
-  { "k": "草枯れ", "r": "くさがれ", "m": "Musim gugur, rumput layu" },
-  { "k": "緒", "r": "お、しょ、ちょ", "m": "Tali" },
-  { "k": "緒締め", "r": "おじめ", "m": "Pengikat tali" },
-  { "k": "緒言", "r": "しょげん", "m": "Kata pengantar, permulaan" }
-]
-
-        };
+};
 
 
         /* =====================================================
